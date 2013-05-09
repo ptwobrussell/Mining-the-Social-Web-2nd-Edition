@@ -22,11 +22,11 @@ In order to use the virtual machine, there are just a few easy steps to follow:
  * It is highly recommanded that you take a moment to read its excellent "Getting Started" guide as a matter of initial familiarization
 * Checkout this code repository to your machine using git or with the download links at the top of the main GitHub page.
 * Navigate to the 'vagrant' directory in the checkout
-* Run the following command: 'vagrant up'
+* Run the following command: <code>vagrant up</code>
  * What should happen at this point is that Vagrant will use the Vagrantfile that's provided to download a Virtualbox base image and use the commands in the bootstrap.sh script to customize it by installing dependencies that are needed and checking out the latest copy of this GitHub repository. 
  * When all of the dependencies are installed, it will start the IPython Notebook server automatically
 * Now, point your web browser to http://localhost:8888 and read the instructions in the 'Welcome' IPython Notebook to get started running the code!
- * Ultimately, you'll need to run the 'vagrant ssh' command to login to the virtual machine and get comfortable starting/stopping IPython Notebook servers as needed, so again, it's worthwhile to take a moment to familiarize yourself with Vagrant and how to run IPython Notebook. In short, execute <code>ipython notebook --ip='0.0.0.0'</code> in any directory containing a pynb file.
+ * Ultimately, you'll need to run the <code>vagrant ssh</code> command to login to the virtual machine and get comfortable starting/stopping IPython Notebook servers as needed, so again, it's worthwhile to take a moment to familiarize yourself with Vagrant and how to run IPython Notebook. In short, execute <code>ipython notebook --ip='0.0.0.0'</code> in any directory containing a pynb file.
 
 Please file tickets here on GitHub if you experience any troubles whatsoever. The goal is to provide you with a completely turn-key system so that you can get the most out of Mining the Social Web -- not to divert your attention into unnecessary system configuration issues. 
 
