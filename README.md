@@ -1,7 +1,7 @@
 Mining-the-Social-Web-2nd-Edition
 =================================
 
-# Summary
+## Summary
 
 The official online compendium for Mining the Social Web, 2nd Edition (O'Reilly, 2013)
 
@@ -11,7 +11,7 @@ Pre-ordering through O'Reilly's Early Access program contains a number of great 
 
 Whatever you choose to do, be sure to follow [@SocialWebMining](http://twitter.com/socialwebmining) on Twitter and stay connected on Facebook by liking http://facebook.com/MiningTheSocialWeb
 
-# The Mining the Social Web Virtual Machine
+## The Mining the Social Web Virtual Machine
 
 Some of the Python dependencies for _Mining the Social Web_ can be a little bit tricky to get installed and configured, so a turn-key VirtualBox virtual machine is available with all of the dependencies pre-loaded and ready to go. Even if you are a seasoned developer, you may still find some value in using this virtual machine to get started in order to save yourself some time. After all, you're more interested in following along and learning from the example code than learning how to install and manage system dependencies, right?
 
