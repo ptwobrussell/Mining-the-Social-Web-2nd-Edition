@@ -5,7 +5,7 @@ Mining the Social Web (2nd Edition)
 
 The official online compendium for Mining the Social Web, 2nd Edition (O'Reilly, 2013)
 
-_Mining the Social Web, 2nd Edition_ is currently available through O'Reilly Media's Early Access and Rough Cuts programs. The final version of the book will not be complete until the September/October timeframe, but in the meanwhile, you can get the latest source code here and pre-order a copy of the ebook directly from O'Reilly at http://shop.oreilly.com/product/0636920030195.do 
+_Mining the Social Web, 2nd Edition_ is currently available through O'Reilly Media's Early Access and Rough Cuts programs. The final version of the book will not be complete until the September/October timeframe, but in the meanwhile, you can [get the latest source code here and pre-order a copy of the ebook directly from O'Reilly](http://oreil.ly/11WyouT).
 
 Pre-ordering through O'Reilly's Early Access program contains a number of great benefits including regular updates as the final manuscript of the book is completed as well as continual updates to the book for life! (And for a book that's built on social web APIs, rest assured that API changes will occasionally require the text of the book and examples to be updated.)
 
@@ -30,4 +30,4 @@ In order to use the virtual machine, there are just a few easy steps to follow:
 
 Please file tickets here on GitHub if you experience any troubles whatsoever. The goal is to provide you with a completely turn-key system so that you can get the most out of Mining the Social Web -- not to divert your attention into unnecessary system configuration issues. 
 
-Disclaimer: tech support will be provided as time allows for anyone who needs it, but requests filed by readers of _Mining the Social Web, 2nd Edition_ will take priority.
+Disclaimer: tech support will be provided as time allows for anyone who needs it, but requests filed by readers of [_Mining the Social Web, 2nd Edition_](http://oreil.ly/11WyouT) will necessarily take priority as a matter of professional courtesy.
