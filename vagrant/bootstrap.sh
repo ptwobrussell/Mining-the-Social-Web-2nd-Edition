@@ -25,8 +25,8 @@ sudo apt-get install -y git
 # Checkout code using git to the home directory as mtsw2e.
 git clone https://github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition.git mtsw2e
 
-# Use requirements.txt that will be included with the git checkout 
-# to install all Python dependencies
+# Use the mtsw2e-requirements.txt that is included with the source code
+# to install all Python dependencies. A couple of them need to be handled specially...
 
 cd mtsw2e
 # matplotlib won't install any other way right now unless you install numpy first.
