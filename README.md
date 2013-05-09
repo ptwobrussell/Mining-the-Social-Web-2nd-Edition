@@ -20,9 +20,10 @@ In order to use the virtual machine, there are just a few easy steps to follow:
 * Download the latest copy of VirtualBox for your operating system at https://www.virtualbox.org/
 * Download and unzip the pre-built virtual machine for _Mining the Social Web_ from XXX.
 * Start the virtual machine with the VirtualBox GUI console that you've already downloaded and installed by clicking on the ovf file in the download or by importing it through the Virtualbox console's "Machine -> Add..." menu.
-** When prompted, login with vagrant/vagrant as the login/password to login to the machine.
+ * When prompted, login with vagrant/vagrant as the login/password to login to the machine.
 * Start the IPython Notebook server in the ~/mtsw2e directory or any of the subdirectories containing an ipynb file by typing the following commands: 
-** cd ~/mtsw2e
-** ipython notebook --ip='0.0.0.0'
+ * cd ~/mtsw2e
+ * ipython notebook --ip='0.0.0.0'
 * Now, point your web browser to http://localhost:8888 and read the instructions in the 'Welcome' IPython Notebook to get started with the code!
-* Note that if you need to change any network settings to pass through port 8888 on the VirtualBox to another port on your machine, you an do so through the Virtualbox GUI console by clicking on the "Port Forwarding" button that appears on the active network adapter's tab that is displayed when you click on the "Network" pane or select the "Settings..." contextual menu by right clicking on a Virtualbox. Typical settings would be to forward 0.0.0.0:8888 on the guest machine (the Virtualbox) to 0.0.0.0:8888 on the host  machine (your computer.)
+* Note that if you need to change any network settings to pass through port 8888 on the VirtualBox to another port on your machine, you an do so through the Virtualbox GUI console by clicking on the "Port Forwarding" button that appears on the active network adapter's tab that is displayed when you click on the "Network" pane or select the "Settings..." contextual menu by right clicking on a Virtualbox. 
+ * Typical settings would be to forward 0.0.0.0:8888 on the guest machine (the Virtualbox) to 0.0.0.0:8888 on the host  machine (your computer.)
