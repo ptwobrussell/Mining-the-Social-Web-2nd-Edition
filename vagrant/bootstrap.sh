@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# Update
+sudo apt-get update
+
+# A recent JDK is required for one of the dependencies
+sudo apt-get install openjdk-6-jdk
+
 # The lucid64 box is already running Python 2.7, so just install pip
 sudo apt-get install -y python-pip python-dev build-essential
 sudo pip install --upgrade pip
@@ -19,6 +25,9 @@ git clone https://github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition.git 
 # to install all Python dependencies
 
 cd mtsw2e
+# matplotlib won't install any other way right now unless you install numpy first.
+# See http://stackoverflow.com/questions/11797688/matplotlib-requirements-with-pip-install-in-virtualenv
+pip install numpy==1.7.1 
 pip install -r mtsw2e-requirements.txt
 
 # Start the IPython Notebook server
