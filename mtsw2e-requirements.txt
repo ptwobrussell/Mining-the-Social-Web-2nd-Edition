@@ -1,12 +1,10 @@
 BeautifulSoup==3.2.1
 Flask==0.9
--e git://github.com/ptwobrussell/jpype.git#egg=jpype-github
 Jinja2==2.6
 PyGithub==1.12.2
 PyYAML==3.10
 Werkzeug==0.8.3
 beautifulsoup4==4.1.3
--e git://github.com/ptwobrussell/python-boilerpipe.git#egg=boilerpipe-github
 chardet==2.1.1
 cluster==1.1.2
 facebook-sdk==0.4.0

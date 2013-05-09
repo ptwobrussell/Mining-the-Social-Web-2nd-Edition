@@ -28,6 +28,9 @@ cd mtsw2e
 # matplotlib won't install any other way right now unless you install numpy first.
 # See http://stackoverflow.com/questions/11797688/matplotlib-requirements-with-pip-install-in-virtualenv
 pip install numpy==1.7.1 
+# Also need to guarantee that jpype is installed prior to boilerpipe, so just do it here
+pip install git+git://github.com/ptwobrussell/jpype.git#egg=jpype-github
+pip install git+git://github.com/ptwobrussell/pythonboilerpipe.git#egg=boilerpipe-github
 pip install -r mtsw2e-requirements.txt
 
 # Start the IPython Notebook server
