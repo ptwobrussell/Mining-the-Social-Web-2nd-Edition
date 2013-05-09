@@ -4,7 +4,7 @@
 sudo apt-get update
 
 # A recent JDK is required for one of the dependencies
-sudo apt-get install openjdk-6-jdk
+sudo apt-get install -y openjdk-6-jdk
 
 # The lucid64 box is already running Python 2.7, so just install pip
 sudo apt-get install -y python-pip python-dev build-essential
