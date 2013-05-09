@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Dorling Cartogram</title>
+<style>
+
+circle {
+  fill: #eee;
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+text {
+  font: 10px sans-serif;
+}
+
+</style>
+<body>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script>
+
+var margin = {top: 0, right: 0, bottom: 0, left: 0},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom,
+    padding = 3;
+
+var projection = d3.geo.albersUsa();
+
+var radius = d3.scale.sqrt()
+    .domain([0, 10]) // XXX: Tweak this value to a higher range or automatically set with additional scripting.
+    .range([0, 30]);
+
+var force = d3.layout.force()
+    .charge(0)
+    .gravity(0)
+    .size([width, height]);
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+// Load data
+var statesToFreqs = null;
+d3.json("states-freqs.json", function(error, sf) {
+    statesToFreqs = sf;
+});
+
+
+d3.json("us-states-centroids-simple.json", function(error, states) {
+      var nodes = [];
+      for (s in states) {
+        var point = projection(states[s]);
+        var value = statesToFreqs[s]; //Math.random();
+        var node = {
+            x : point[0], y : point[1],
+            x0 : point[0], y0 : point[1],
+            r : radius(value),
+            value : value,
+            name : s
+        };
+        nodes.push(node);
+      }
+
+  force
+      .nodes(nodes)
+      .on("tick", tick)
+      .start();
+
+  var node = svg.selectAll("circle")
+      .data(nodes)
+    .enter().append("circle")
+      .attr("r", function(d) { return d.r; });
+
+  node.append("title").text(function(d) { return d.name });
+
+  function tick(e) {
+    node.each(gravity(e.alpha * .1))
+        .each(collide(.5))
+        .attr("cx", function(d) { return d.x; })
+        .attr("cy", function(d) { return d.y; });
+  }
+
+  function gravity(k) {
+    return function(d) {
+      d.x += (d.x0 - d.x) * k;
+      d.y += (d.y0 - d.y) * k;
+    };
+  }
+
+  function collide(k) {
+    var q = d3.geom.quadtree(nodes);
+    return function(node) {
+      var nr = node.r + padding,
+          nx1 = node.x - nr,
+          nx2 = node.x + nr,
+          ny1 = node.y - nr,
+          ny2 = node.y + nr;
+      q.visit(function(quad, x1, y1, x2, y2) {
+        if (quad.point && (quad.point !== node)) {
+          var x = node.x - quad.point.x,
+              y = node.y - quad.point.y,
+              l = x * x + y * y,
+              r = nr + quad.point.r;
+          if (l < r * r) {
+            l = ((l = Math.sqrt(l)) - r) / l * k;
+            node.x -= x *= l;
+            node.y -= y *= l;
+            quad.point.x += x;
+            quad.point.y += y;
+          }
+        }
+        return x1 > nx2 || x2 < nx1 || y1 > ny2 || y2 < ny1;
+      });
+    };
+  }
+});
+
+</script>
