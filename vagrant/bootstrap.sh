@@ -6,6 +6,10 @@ sudo apt-get update
 # A recent JDK is required for one of the dependencies
 sudo apt-get install -y openjdk-6-jdk
 
+# These dependencies are required for matplotlib to build
+sudo apt-get install -y libfreetype6-dev
+sudo apt-get install -y libpng-dev
+
 # The lucid64 box is already running Python 2.7, so just install pip
 sudo apt-get install -y python-pip python-dev build-essential
 sudo pip install --upgrade pip
@@ -30,7 +34,7 @@ cd mtsw2e
 pip install numpy==1.7.1 
 # Also need to guarantee that jpype is installed prior to boilerpipe, so just do it here
 pip install git+git://github.com/ptwobrussell/jpype.git#egg=jpype-github
-pip install git+git://github.com/ptwobrussell/pythonboilerpipe.git#egg=boilerpipe-github
+pip install git+git://github.com/ptwobrussell/python-boilerpipe.git#egg=boilerpipe-github
 pip install -r mtsw2e-requirements.txt
 
 # Start the IPython Notebook server
