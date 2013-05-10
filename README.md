@@ -27,7 +27,7 @@ In order to use the virtual machine, there are just a few easy steps to follow:
  * When all of the dependencies are installed, it will start the [IPython Notebook](http://ipython.org/notebook.html) server automatically
 * Now, point your web browser to http://localhost:8888 and read the instructions in the 'Welcome' IPython Notebook to get started running the code!
  * Ultimately, you'll need to run the <code>vagrant ssh</code> command to login to the virtual machine and get comfortable starting/stopping IPython Notebook servers as needed, so again, it's worthwhile to take a moment to familiarize yourself with Vagrant and how to run IPython Notebook. In short, execute <code>ipython notebook --ip='0.0.0.0'</code> in any directory containing a pynb file.
- * If you want to take a break from the excitement, use the <code>vagrant suspend</code> command to save the current running state of your virtual machine and stop it. To resume working again, simply issue a <code>vagrant resume</code>. Additional documentation on operating vagrant can be found here at http://docs-v1.vagrantup.com/v1/docs/getting-started/teardown.html
+ * If you want to take a break from the excitement, use the <code>vagrant suspend</code> command to save the current running state of your virtual machine and stop it. To resume working again, simply issue a <code>vagrant resume</code>. Additional documentation on operating vagrant can be found [here](http://docs.vagrantup.com/v2/getting-started/teardown.html).
 
 Please file tickets here on GitHub if you experience any troubles whatsoever. The goal is to provide you with a completely turn-key system so that you can get the most out of Mining the Social Web -- not to divert your attention into unnecessary system configuration issues. 
 
