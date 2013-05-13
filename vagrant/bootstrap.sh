@@ -38,4 +38,4 @@ pip install git+git://github.com/ptwobrussell/python-boilerpipe.git#egg=boilerpi
 pip install -r mtsw2e-requirements.txt
 
 # Start the IPython Notebook server
-ipython notebook --ip='0.0.0.0'
+ipython notebook --ip='0.0.0.0' --pylab=inline
