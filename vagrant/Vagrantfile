@@ -26,6 +26,9 @@ Vagrant.configure("2") do |config|
   config.vm.network :forwarded_port, host: 8897, guest: 8897
   config.vm.network :forwarded_port, host: 8898, guest: 8898
 
+  # Map through port 5000, which is what Flask uses by default
+  config.vm.network :forwarded_port, host: 5000, guest: 5000
+
   # Bootstrap
   config.vm.provision :shell, :path => "bootstrap.sh"
 
