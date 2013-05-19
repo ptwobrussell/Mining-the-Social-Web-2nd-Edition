@@ -5,11 +5,27 @@ Mining the Social Web (2nd Edition)
 
 The official online compendium for Mining the Social Web, 2nd Edition (O'Reilly, 2013)
 
-_Mining the Social Web, 2nd Edition_ is currently available through O'Reilly Media's Early Access and Rough Cuts programs. The final version of the book will not be complete until the September/October timeframe, but in the meanwhile, you can [get the latest source code here and pre-order a copy of the ebook directly from O'Reilly](http://bit.ly/135dHfs).
+_Mining the Social Web, 2nd Edition_ is currently available through O'Reilly Media's Early Access and Rough Cuts programs. The final version of the book will not be complete until the September/October timeframe, but in the meanwhile, you can [get the latest source code here and pre-order a copy of the ebook directly from O'Reilly](http://bit.ly/135dHfs). Pre-ordering through O'Reilly's Early Access program contains a number of great benefits including regular updates as the final manuscript of the book is completed as well as continual updates to the book for life! (And for a book that's built on social web APIs, rest assured that API changes will occasionally require the text of the book and examples to be updated.)
 
-Pre-ordering through O'Reilly's Early Access program contains a number of great benefits including regular updates as the final manuscript of the book is completed as well as continual updates to the book for life! (And for a book that's built on social web APIs, rest assured that API changes will occasionally require the text of the book and examples to be updated.)
+There's also an incredible turn-key virtual machine experience for this second edition of the book (see below) that provides you with all of the source code in a hassle-free manner so even if you're not interested in the book at this time, be sure to clone this repository and use the virtual machine to hack on the source code in ten minutes or less.
 
 Whatever you choose to do, be sure to follow [@SocialWebMining](http://twitter.com/socialwebmining) on Twitter and stay connected on Facebook by liking http://facebook.com/MiningTheSocialWeb
+
+## Product Description for the Book
+
+With this Early Access edition of Mining the Social Web (2nd Ed), you'll get access the author's raw and unedited content as he finishes writing so that you can take advantage of this powerful content long before the official release. You'll be able to influence and shape the final manuscript of the book by leaving the author direct feedback, and you'll also receive updates when significant changes are made, new chapters as they're written, and the final ebook bundle once it's available.
+
+Facebook, Twitter, LinkedIn, Google+, and other social web properties generate a wealth of valuable social data, but how can you tap into this data and discover who’s connecting with whom, which insights are lurking just beneath the surface, and what people are talking about? This book shows you how to answer these questions and many more. Each chapter combines popular and useful social web data with analysis techniques and visualization to help you find the needles in the social haystack that you've been looking for—as well as many you probably didn't even know existed. 
+
+In this expanded and thoroughly revised second edition you’ll learn how to:
+
+* Navigate the most popular social web APIs to access, collect, analyze, and visualize social web data
+* Employ IPython Notebook and other easy to use Python packages such as the Natural Language Toolkit, NetworkX, and Matplotlib to efficiently sift through social web data as part of an experimentally-driven approach to discovering insights in social web data
+* Apply advanced text-mining techniques such as TF-IDF, cosine similarity, collocation analysis, document summarization, and clique detection to human language data that you'll encounter all over the web
+* Bootstrap interest graphs by discovering latent affinities between people, programming languages, and coding projects from GitHub data
+* Visualize social web data with D3, a state-of-the-art HTML5 and JavaScript toolkit
+
+The book's source code is maintained in a GitHub repository maintained by the author and can be deployed as turn-key virtual machine with each chapter's source code presented in an interactive and easy to use IPython Notebook format. No complex third-party installations or advanced Python knowledge is required to get the most out of this book.
 
 ## The _Mining the Social Web_ Virtual Machine Experience
 
