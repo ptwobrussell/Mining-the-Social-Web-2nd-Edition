@@ -25,6 +25,10 @@ sudo apt-get install -y git
 # Checkout code using git to the home directory as mtsw2e.
 git clone https://github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition.git mtsw2e
 
+# Change ownership of mtsw2e to vagrant:vagrant to avoid unnecessarily needing to sudo
+# to do things like launch notebooks and be able to save them
+sudo chown -R vagrant:vagrant mtsw2e
+
 # Use the mtsw2e-requirements.txt that is included with the source code
 # to install all Python dependencies. A couple of them need to be handled specially...
 
