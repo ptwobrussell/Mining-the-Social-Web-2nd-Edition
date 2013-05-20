@@ -2,3 +2,4 @@
 Thumbs.db
 *.pyc
 out
+.ipynb_checkpoints
