@@ -29,12 +29,19 @@ git clone https://github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition.git 
 # to install all Python dependencies. A couple of them need to be handled specially...
 
 cd mtsw2e
+
 # matplotlib won't install any other way right now unless you install numpy first.
 # See http://stackoverflow.com/questions/11797688/matplotlib-requirements-with-pip-install-in-virtualenv
 pip install numpy==1.7.1 
+
 # Also need to guarantee that jpype is installed prior to boilerpipe, so just do it here
-pip install git+git://github.com/ptwobrussell/jpype.git#egg=jpype-github
-pip install git+git://github.com/ptwobrussell/python-boilerpipe.git#egg=boilerpipe-github
+pip install git+git://github.com/ptwobrussell/jpype.git#egg=jpype-ptwobrussell-github
+pip install git+git://github.com/ptwobrussell/python-boilerpipe.git#egg=boilerpipe-ptwobrussell-github
+
+# Relying on a fix that's in IPython master branch and not yet in a release (#2791), so we also
+# need to install IPython Notebook itself until 13.3, 1.0 or some other version includes it
+pip install git+git://github.com/ptwobrussell/ipython.git#egg=ipython-ptwobrussell-github
+
 pip install -r mtsw2e-requirements.txt
 
 # Start the IPython Notebook server
