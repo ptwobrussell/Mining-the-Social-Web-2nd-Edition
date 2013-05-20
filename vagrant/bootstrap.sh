@@ -1,52 +1,69 @@
 #!/usr/bin/env bash
 
-# Update
-sudo apt-get update
+# Only setup the environment the first time. No need to do 
+# all of these things if someone halts the VM and then brings
+# it back up.
 
-# A recent JDK is required for one of the dependencies
-sudo apt-get install -y openjdk-6-jdk
+if [ ! -d mtsw2e ]; then
 
-# These dependencies are required for matplotlib to build
-sudo apt-get install -y libfreetype6-dev
-sudo apt-get install -y libpng-dev
+    # Update
+    sudo apt-get update
 
-# The lucid64 box is already running Python 2.7, so just install pip
-sudo apt-get install -y python-pip python-dev build-essential
-sudo pip install --upgrade pip
+    # A recent JDK is required for one of the dependencies
+    sudo apt-get install -y openjdk-6-jdk
 
-# Install a necessary dependency for "pip install readline" to
-# later succeed
-sudo apt-get install -y libncurses5-dev
+    # These dependencies are required for matplotlib to build
+    sudo apt-get install -y libfreetype6-dev
+    sudo apt-get install -y libpng-dev
 
-# Install git and vim
-sudo apt-get install -y vim
-sudo apt-get install -y git
+    # The lucid64 box is already running Python 2.7, so just install pip
+    sudo apt-get install -y python-pip python-dev build-essential
+    sudo pip install --upgrade pip
 
-# Checkout code using git to the home directory as mtsw2e.
-git clone https://github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition.git mtsw2e
+    # Install a necessary dependency for "pip install readline" to
+    # later succeed
+    sudo apt-get install -y libncurses5-dev
 
-# Change ownership of mtsw2e to vagrant:vagrant to avoid unnecessarily needing to sudo
-# to do things like launch notebooks and be able to save them
-sudo chown -R vagrant:vagrant mtsw2e
+    # Install git and vim
+    sudo apt-get install -y vim
+    sudo apt-get install -y git
 
-# Use the mtsw2e-requirements.txt that is included with the source code
-# to install all Python dependencies. A couple of them need to be handled specially...
+    # Checkout code using git to the home directory as mtsw2e.
+    git clone https://github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition.git mtsw2e
 
-cd mtsw2e
+    # Change ownership of mtsw2e to vagrant:vagrant to avoid unnecessarily needing to sudo
+    # to do things like launch notebooks and be able to save them
+    sudo chown -R vagrant:vagrant mtsw2e
 
-# matplotlib won't install any other way right now unless you install numpy first.
-# See http://stackoverflow.com/questions/11797688/matplotlib-requirements-with-pip-install-in-virtualenv
-pip install numpy==1.7.1 
+    # Use the mtsw2e-requirements.txt that is included with the source code
+    # to install all Python dependencies. A couple of them need to be handled specially...
 
-# Also need to guarantee that jpype is installed prior to boilerpipe, so just do it here
-pip install git+git://github.com/ptwobrussell/jpype.git#egg=jpype-ptwobrussell-github
-pip install git+git://github.com/ptwobrussell/python-boilerpipe.git#egg=boilerpipe-ptwobrussell-github
+    cd mtsw2e
 
-# Relying on a fix that's in IPython master branch and not yet in a release (#2791), so we also
-# need to install IPython Notebook itself until 13.3, 1.0 or some other version includes it
-pip install git+git://github.com/ptwobrussell/ipython.git#egg=ipython-ptwobrussell-github
+    # matplotlib won't install any other way right now unless you install numpy first.
+    # See http://stackoverflow.com/questions/11797688/matplotlib-requirements-with-pip-install-in-virtualenv
+    pip install numpy==1.7.1 
 
-pip install -r mtsw2e-requirements.txt
+    # Also need to guarantee that jpype is installed prior to boilerpipe, so just do it here
+    pip install git+git://github.com/ptwobrussell/jpype.git#egg=jpype-ptwobrussell-github
+    pip install git+git://github.com/ptwobrussell/python-boilerpipe.git#egg=boilerpipe-ptwobrussell-github
+
+    # Relying on a fix that's in IPython master branch and not yet in a release (#2791), so we also
+    # need to install IPython Notebook itself until 13.3, 1.0 or some other version includes it
+    pip install git+git://github.com/ptwobrussell/ipython.git#egg=ipython-ptwobrussell-github
+
+    pip install -r mtsw2e-requirements.txt
+else
+    cd mtsw2e
+    # Could optionally update the repository here with the following command (at the 
+    # potential risk of introducing merge conflicts) with this command
+    # git pull origin
+
+    # For now, just log a message to the user
+    echo "*********************************************************************"
+    echo "Using pre-existing GitHub repository. Use 'git pull origin' to update"
+    echo "*********************************************************************"
+fi
 
 # Start the IPython Notebook server
-ipython notebook --ip='0.0.0.0' --pylab=inline
+ipython notebook --ip='0.0.0.0' --pylab=inline --no-browser &> ipython_notebook.nohup.out &
