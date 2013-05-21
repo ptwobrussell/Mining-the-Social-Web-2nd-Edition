@@ -31,9 +31,9 @@ The book's source code is maintained here in this GitHub repository by its autho
 
 ## Preview the IPython Notebooks
 
-_Chapters that aren't hyperlinked yet will be available as soon as that content is available in the ebook through [O'Reilly Media's Early Access](http://bit.ly/135dHfs). All source code is estimated to appear in this repository by mid-June 2013.
+Chapters that aren't hyperlinked yet will be available as soon as that content is available in the ebook through [O'Reilly Media's Early Access](http://bit.ly/135dHfs). All source code is estimated to appear in this repository by mid-June 2013.
 
-**Part I**
+### Part I
 * [Chapter 0](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter0.ipynb) - Welcome!
 * [Chapter 1](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter1.ipynb) - Mining the Twitterverse: Exploring Trending Topics, Discovering What People Are Talking About, and More
 * [Chapter 2](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter2.ipynb) - Mining Facebook's Social Graph: Analyzing Fan Pages, Examining Friendships, and More
@@ -44,7 +44,7 @@ _Chapters that aren't hyperlinked yet will be available as soon as that content 
 * Chapter 7 - Mining GitHub Social Coding Projects: Inspecting Software Collaboration Habits, Building Interest Graphs, and More
 * Chapter 8 - Mining the Semantically Marked-Up Web: A Cocktail Discussion
 
-**Part II** 
+### Part II 
 * Recipes for Mining Twitter
 
 ## The _Mining the Social Web_ Virtual Machine Experience
