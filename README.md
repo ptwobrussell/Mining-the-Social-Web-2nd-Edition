@@ -9,7 +9,7 @@ _Mining the Social Web, 2nd Edition_ is currently available through O'Reilly Med
 
 There's also an incredible turn-key virtual machine experience for this second edition of the book (see below) that provides you with all of the source code in a hassle-free manner so even if you're not interested in the book at this time, be sure to clone this repository and use the virtual machine to hack on the source code in ten minutes or less.
 
-Please note that the virtual machine for this book is designed to install every single dependency for you automatically and save you a lot of time, even if you are a fairly sophisticated power user. It is highly recommended that you try it out. If you choose not to use it, at least peek at the [boostrap.sh](https://github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/blob/master/vagrant/bootstrap.sh) file that it uses so that you know what you're getting yourself into and are able to work though the issues as painlessly as possible on your own system.
+_Please note that the virtual machine for this book is designed to install every single dependency for you automatically and save you a lot of time, even if you are a fairly sophisticated power user. It is highly recommended that you try it out. If you choose not to use it, at least peek at the [boostrap.sh](https://github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/blob/master/vagrant/bootstrap.sh) file that it uses so that you know what you're getting yourself into and are able to work though the issues as painlessly as possible on your own system._
 
 Whatever you choose to do, be sure to follow [@SocialWebMining](http://twitter.com/socialwebmining) on Twitter and stay connected on Facebook by liking http://facebook.com/MiningTheSocialWeb
 
