@@ -66,4 +66,5 @@ else
 fi
 
 # Start the IPython Notebook server
+cd ipynb
 ipython notebook --ip='0.0.0.0' --pylab=inline --no-browser &> ipython_notebook.nohup.out &

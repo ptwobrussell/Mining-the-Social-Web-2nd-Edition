@@ -13,18 +13,8 @@ Vagrant.configure("2") do |config|
   # doesn't already exist on the user's system.
    config.vm.box_url = "http://files.vagrantup.com/precise64.box"
 
-  # Map through port 8888 (through 8898 just in case multiple notebooks run)
+  # Map through port 8888 for IPython Notebook
   config.vm.network :forwarded_port, host: 8888, guest: 8888
-  config.vm.network :forwarded_port, host: 8889, guest: 8889
-  config.vm.network :forwarded_port, host: 8890, guest: 8890
-  config.vm.network :forwarded_port, host: 8891, guest: 8891
-  config.vm.network :forwarded_port, host: 8892, guest: 8892
-  config.vm.network :forwarded_port, host: 8893, guest: 8893
-  config.vm.network :forwarded_port, host: 8894, guest: 8894
-  config.vm.network :forwarded_port, host: 8895, guest: 8895
-  config.vm.network :forwarded_port, host: 8896, guest: 8896
-  config.vm.network :forwarded_port, host: 8897, guest: 8897
-  config.vm.network :forwarded_port, host: 8898, guest: 8898
 
   # Map through port 5000, which is what Flask uses by default
   config.vm.network :forwarded_port, host: 5000, guest: 5000
