@@ -33,7 +33,7 @@ The book's source code is maintained here in this GitHub repository by its autho
 
 The code for _Mining the Social Web_ is organized by chapter in an [IPython Notebook](http://ipython.org/notebook.html) format to maximize enjoyment of following along with examples as part of an interactive experience. Unfortunately, some of the Python dependencies for the example code can be a little bit tricky to get installed and configured, so providing a completely turn-key virtual machine to make your reading experience as simple and enjoyable as possible is in order. Even if you are a seasoned developer, you may still find some value in using this virtual machine to get started in order to save yourself some time because it's powered with [Vagrant](http://vagrantup.com/), an amazing development tool that you'll probably want to know about and arguably makes working with virtualization even easier than a native [Virtualbox](http://www.virtualbox.org/), VMWare image, etc. -- and it is probably still the fastest way to get started given some of the dependency chains with packages that can be a little more troublesome than others such as matplotlib. After all, you're more interested in following along and learning from the example code than learning how to install and manage system dependencies, right?
 
-In order to use the virtual machine, there are just a few easy steps to follow:
+In order to start the virtual machine, there are just a few easy steps to follow:
 
 * Download and install the latest copy of VirtualBox for your operating system at https://www.virtualbox.org/
 * Download and install Vagrant for your operating system at http://www.vagrantup.com/
@@ -41,11 +41,14 @@ In order to use the virtual machine, there are just a few easy steps to follow:
 * Checkout this code repository to your machine using git or with the download links at the top of the main GitHub page.
 * Navigate to the 'vagrant' directory in the checkout
 * Run the following command: <code>vagrant up</code>
- * What should happen at this point is that Vagrant will use the Vagrantfile that's provided to download a Virtualbox base image and use the commands in the bootstrap.sh script to customize it by installing dependencies that are needed and checking out the latest copy of this GitHub repository. The first time you <code>vagrant up</code>, it may take a few minutes since a base image and updates for it must be downloaded and installed.
- * When all of the dependencies are installed, it will start the [IPython Notebook](http://ipython.org/notebook.html) server automatically
-* Now, point your web browser to http://localhost:8888 and read the instructions in the 'Welcome' IPython Notebook to get started running the code!
- * Ultimately, you'll need to run the <code>vagrant ssh</code> command to login to the virtual machine and get comfortable starting/stopping IPython Notebook servers as needed, so again, it's worthwhile to take a moment to familiarize yourself with Vagrant and how to run IPython Notebook. In short, execute <code>ipython notebook --ip='0.0.0.0' --pylab=inline</code> in any directory containing a pynb file.
- * If you want to take a break from the excitement, use the <code>vagrant suspend</code> command to save the current running state of your virtual machine and stop it. To resume working again, simply issue a <code>vagrant resume</code>. Additional documentation on operating vagrant can be found [here](http://docs.vagrantup.com/v2/getting-started/teardown.html).
+
+A few additional details once the virtual machine is running:
+
+* What should happen at this point is that Vagrant will use the Vagrantfile that's provided to download a Virtualbox base image and use the commands in the bootstrap.sh script to customize it by installing dependencies that are needed and checking out the latest copy of this GitHub repository. The first time you <code>vagrant up</code>, it may take a few minutes since a base image and updates for it must be downloaded and installed.
+* When all of the dependencies are installed, it will start the [IPython Notebook](http://ipython.org/notebook.html) server automatically
+* Now, point your web browser to http://localhost:8888 and read the instructions in the Chapter0 (Welcome) IPython Notebook to get started running the code!
+* Ultimately, it would be wise to learn how to <code>vagrant ssh</code> into the virtual machine and get comfortable starting/stopping IPython Notebook servers as needed, so again, it's worthwhile to take a moment to familiarize yourself with Vagrant and how to run IPython Notebook. In short, execute <code>ipython notebook --ip='0.0.0.0' --pylab=inline --no-browser</code> in any directory containing a pynb file if you need to do this for whatever reason.
+* If you want to take a break from the excitement, use the <code>vagrant suspend</code> command to save the current running state of your virtual machine and stop it. To resume working again, simply issue a <code>vagrant resume</code>. Additional documentation on operating vagrant can be found [here](http://docs.vagrantup.com/v2/getting-started/teardown.html).
 
 Please file tickets here on GitHub if you experience any troubles whatsoever. The goal is to provide you with a completely turn-key system so that you can get the most out of Mining the Social Web -- not to divert your attention into unnecessary system configuration issues. 
 
