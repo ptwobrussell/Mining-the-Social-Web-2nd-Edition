@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+		"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<title>Clustered Contacts</title>
+    <link rel="stylesheet" 
+        href="http://ajax.googleapis.com/ajax/libs/dojo/1.5/dojo/resources/dojo.css">
+    <link rel="stylesheet" 
+        href="http://ajax.googleapis.com/ajax/libs/dojo/1.5/dijit/themes/claro/claro.css">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/dojo/1.5/dojo/dojo.xd.js" 
+        type="text/javascript" djConfig="parseOnLoad:true"></script>
+
+	<script language="JavaScript" type="text/javascript">
+		dojo.require("dojo.data.ItemFileReadStore");
+		dojo.require("dijit.Tree");
+		dojo.require("dojo.parser");
+	</script>
+
+    <script language="JavaScript" type="text/javascript">
+        var data = %s; //substituted by Python by XXX
+    </script>
+
+</head>
+<body class="claro">
+	<div dojoType="dojo.data.ItemFileReadStore" jsId="jobsStore"
+		data="data"></div>
+
+	<div dojoType="dijit.Tree" id="mytree" store="jobsStore"
+		label="Clustered Contacts" openOnClick="true">
+	</div>
+</body>
+</html>

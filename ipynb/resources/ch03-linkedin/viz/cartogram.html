@@ -50,16 +50,19 @@ d3.json("states-freqs.json", function(error, sf) {
 d3.json("us-states-centroids-simple.json", function(error, states) {
       var nodes = [];
       for (s in states) {
-        var point = projection(states[s]);
-        var value = statesToFreqs[s]; //Math.random();
-        var node = {
-            x : point[0], y : point[1],
-            x0 : point[0], y0 : point[1],
-            r : radius(value),
-            value : value,
-            name : s
-        };
-        nodes.push(node);
+        try {
+          console.log(states[s]);
+          var point = projection(states[s]);
+          var value = statesToFreqs[s];
+          var node = {
+              x : point[0], y : point[1],
+              x0 : point[0], y0 : point[1],
+              r : radius(value),
+              value : value,
+              name : s
+          };
+          nodes.push(node);
+        } catch (e) { /* pass */}
       }
 
   force

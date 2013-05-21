@@ -38,7 +38,7 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(40,0)");
 
-d3.json('data.json', function(error, root) {
+d3.json('d3-data.json', function(error, root) {
   var nodes = cluster.nodes(root),
       links = cluster.links(nodes);
 
