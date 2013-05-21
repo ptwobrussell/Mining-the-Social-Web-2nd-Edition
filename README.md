@@ -29,6 +29,24 @@ In this expanded and thoroughly revised second edition you’ll learn how to:
 
 The book's source code is maintained here in this GitHub repository by its author and can be deployed as turn-key virtual machine with each chapter's source code presented in an interactive and easy to use IPython Notebook format. No complex third-party installations or advanced Python knowledge is required to get the most out of this book.
 
+## Preview the IPython Notebooks
+
+_Chapters that aren't hyperlinked yet will be available as soon as that content is available in the ebook through [O'Reilly Media's Early Access](http://bit.ly/135dHfs). All source code is estimated to appear in this repository by mid-June 2013.
+
+**Part I**
+* [Chapter 0](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter0.ipynb) - Welcome!
+* [Chapter 1](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter1.ipynb) - Mining the Twitterverse: Exploring Trending Topics, Discovering What People Are Talking About, and More
+* [Chapter 2](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter2.ipynb) - Mining Facebook's Social Graph: Analyzing Fan Pages, Examining Friendships, and More
+* [Chapter 3](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter3.ipynb) - Mining Your LinkedIn Professional Network: Faceting Job Titles, Clustering Colleagues, and More
+* [Chapter 4](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter4.ipynb) - Mining Google+ Activities: Computing Document Similarity, Extracting Collocations, and More
+* [Chapter 5](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter5.ipynb) - Mining Web Pages: Using Natural Language Processing to Understand Human Language, Summarize Blog Posts and More
+* Chapter 6 - Mining Mailboxes: Analyzing Who's Talking To Whom About What, How Often, and More
+* Chapter 7 - Mining GitHub Social Coding Projects: Inspecting Software Collaboration Habits, Building Interest Graphs, and More
+* Chapter 8 - Mining the Semantically Marked-Up Web: A Cocktail Discussion
+
+**Part II** 
+* Recipes for Mining Twitter
+
 ## The _Mining the Social Web_ Virtual Machine Experience
 
 The code for _Mining the Social Web_ is organized by chapter in an [IPython Notebook](http://ipython.org/notebook.html) format to maximize enjoyment of following along with examples as part of an interactive experience. Unfortunately, some of the Python dependencies for the example code can be a little bit tricky to get installed and configured, so providing a completely turn-key virtual machine to make your reading experience as simple and enjoyable as possible is in order. Even if you are a seasoned developer, you may still find some value in using this virtual machine to get started in order to save yourself some time because it's powered with [Vagrant](http://vagrantup.com/), an amazing development tool that you'll probably want to know about and arguably makes working with virtualization even easier than a native [Virtualbox](http://www.virtualbox.org/), VMWare image, etc. -- and it is probably still the fastest way to get started given some of the dependency chains with packages that can be a little more troublesome than others such as matplotlib. After all, you're more interested in following along and learning from the example code than learning how to install and manage system dependencies, right?
