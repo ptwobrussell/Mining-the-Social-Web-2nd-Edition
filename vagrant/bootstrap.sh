@@ -54,8 +54,8 @@ if [ ! -d mtsw2e ]; then
 
     pip install -r mtsw2e-requirements.txt
 
-    # Downloading nltk stopwords for Chapter 4
-    python -m nltk.downloader stopwords
+    # Downloading nltk stopwords for Chapters 4 & 5
+    python -m nltk.downloader stopwords punkt
 else
     cd mtsw2e
     # Could optionally update the repository here with the following command (at the 
