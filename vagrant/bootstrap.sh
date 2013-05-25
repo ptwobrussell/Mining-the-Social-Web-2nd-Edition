@@ -53,6 +53,9 @@ if [ ! -d mtsw2e ]; then
     pip install git+git://github.com/ptwobrussell/ipython.git#egg=ipython-ptwobrussell-github
 
     pip install -r mtsw2e-requirements.txt
+
+    # Downloading nltk stopwords for Chapter 4
+    python -m nltk.downloader stopwords
 else
     cd mtsw2e
     # Could optionally update the repository here with the following command (at the 
@@ -67,4 +70,5 @@ fi
 
 # Start the IPython Notebook server
 cd ipynb
-ipython notebook --ip='0.0.0.0' --pylab=inline --no-browser &> ipython_notebook.nohup.out &
+# Running IPython notebook as vagrant user 
+sudo -u vagrant ipython notebook --ip='0.0.0.0' --pylab=inline --no-browser &> ipython_notebook.nohup.out &
