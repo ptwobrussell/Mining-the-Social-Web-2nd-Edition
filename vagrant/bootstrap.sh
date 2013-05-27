@@ -28,11 +28,9 @@ if [ ! -d mtsw2e ]; then
     sudo apt-get install -y vim
     sudo apt-get install -y git
 
-    # Install python-tk for visualizations
-    sudo apt-get install -y python-tk
-
     # Checkout code using git to the home directory as mtsw2e.
-    git clone https://github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition.git mtsw2e
+    git clone https://github.com/jwsy/Mining-the-Social-Web-2nd-Edition.git mtsw2e
+    #git clone https://github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition.git mtsw2e
 
     # Change ownership of mtsw2e to vagrant:vagrant to avoid unnecessarily needing to sudo
     # to do things like launch notebooks and be able to save them
