@@ -69,5 +69,5 @@ fi
 
 # Start the IPython Notebook server
 cd ipynb
-# Running IPython notebook as vagrant user 
-sudo -u vagrant ipython notebook --ip='0.0.0.0' --pylab=inline --no-browser &> ipython_notebook.nohup.out &
+# Running IPython notebook 
+ipython notebook --ip='0.0.0.0' --pylab=inline --no-browser &> ipython_notebook.nohup.out &
