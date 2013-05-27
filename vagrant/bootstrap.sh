@@ -18,8 +18,9 @@ if [ ! -d mtsw2e ]; then
     apt-get install -y libpng-dev
 
     # The lucid64 box is already running Python 2.7, so just install pip
+    # pip needs to be installed as sudo or the python packages don't work
     apt-get install -y python-pip python-dev build-essential
-    pip install --upgrade pip
+    sudo pip install --upgrade pip
 
     # Install a necessary dependency for "pip install readline" to
     # later succeed
@@ -38,12 +39,11 @@ if [ ! -d mtsw2e ]; then
 
     # Use the mtsw2e-requirements.txt that is included with the source code
     # to install all Python dependencies. A couple of them need to be handled specially...
-
     cd mtsw2e
 
     # matplotlib won't install any other way right now unless you install numpy first.
     # See http://stackoverflow.com/questions/11797688/matplotlib-requirements-with-pip-install-in-virtualenv
-    pip install numpy==1.7.1 
+    pip install numpy==1.7.1
 
     # Also need to guarantee that jpype is installed prior to boilerpipe, so just do it here
     pip install git+git://github.com/ptwobrussell/jpype.git#egg=jpype-ptwobrussell-github
@@ -55,8 +55,6 @@ if [ ! -d mtsw2e ]; then
 
     pip install -r mtsw2e-requirements.txt
 
-    # Downloading nltk stopwords for Chapters 4 & 5
-    python -m nltk.downloader stopwords punkt maxent_treebank_pos_tagger maxent_ne_chunker words
 else
     cd mtsw2e
     # Could optionally update the repository here with the following command (at the 
