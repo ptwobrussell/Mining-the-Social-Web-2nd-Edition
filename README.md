@@ -9,7 +9,7 @@ _Mining the Social Web, 2nd Edition_ is currently available through O'Reilly Med
 
 There's an incredible turn-key virtual machine experience for this second edition of the book (see complete details below) that provides you with the ability to explore and run all of the source code in a hassle-free manner. All that you have to do is follow a few simple steps to get the virtual machine installed, and you'll be off to the races. The estimated burden for setting all of this up is about 15 minutes, and it is strongly recommended that you first take advantage of use the virtual machine before attempting to run the samples on your own.
 
-_Please note that the virtual machine for this book is designed to install every single dependency for you automatically and save you a lot of time, even if you are a fairly sophisticated power user. Please try it out.
+_Note that the virtual machine for this book is designed to install every single dependency for you automatically and save you a lot of time, even if you are a fairly sophisticated power user. Please try it out._
 
 If you experience any problems at all, file an issue here on GitHub. Be sure to also follow [@SocialWebMining](http://twitter.com/socialwebmining) on Twitter and like http://facebook.com/MiningTheSocialWeb on Facebook.
 
