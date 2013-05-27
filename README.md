@@ -7,13 +7,15 @@ The official online compendium for Mining the Social Web, 2nd Edition (O'Reilly,
 
 _Mining the Social Web, 2nd Edition_ is currently available through O'Reilly Media's Early Access and Rough Cuts programs. The final version of the book will not be complete until the September/October timeframe, but in the meanwhile, you can [get the latest source code here and pre-order a copy of the ebook directly from O'Reilly](http://bit.ly/135dHfs). Pre-ordering through O'Reilly's Early Access program contains a number of great benefits including regular updates as the final manuscript of the book is completed as well as continual updates to the book for life! (And for a book that's built on social web APIs, rest assured that API changes will occasionally require the text of the book and examples to be updated.)
 
-There's also an incredible turn-key virtual machine experience for this second edition of the book (see below) that provides you with all of the source code in a hassle-free manner so even if you're not interested in the book at this time, be sure to clone this repository and use the virtual machine to hack on the source code in ten minutes or less.
+There's an incredible turn-key virtual machine experience for this second edition of the book (see complete details below) that provides you with the ability to explore and run all of the source code in a hassle-free manner. All that you have to do is follow a few simple steps to get the virtual machine installed, and you'll be off to the races. The estimated burden for setting all of this up is about 15 minutes, and it is strongly recommended that you first take advantage of use the virtual machine before attempting to run the samples on your own.
 
-_Please note that the virtual machine for this book is designed to install every single dependency for you automatically and save you a lot of time, even if you are a fairly sophisticated power user. It is highly recommended that you try it out. If you choose not to use it, at least peek at the [boostrap.sh](https://github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/blob/master/vagrant/bootstrap.sh) file that it uses so that you know what you're getting yourself into and are able to work though the issues as painlessly as possible on your own system._
+_Please note that the virtual machine for this book is designed to install every single dependency for you automatically and save you a lot of time, even if you are a fairly sophisticated power user. Please try it out.
 
-Whatever you choose to do, be sure to follow [@SocialWebMining](http://twitter.com/socialwebmining) on Twitter and stay connected on Facebook by liking http://facebook.com/MiningTheSocialWeb
+If you experience any problems at all, file an issue here on GitHub. Be sure to also follow [@SocialWebMining](http://twitter.com/socialwebmining) on Twitter and like http://facebook.com/MiningTheSocialWeb on Facebook.
 
 ## Product Description for the Book
+
+The source code in this repository is free for your use whether or not you have a copy of the book, but it does generally assume that you are following along with the book where some valuable explanations and extended discussion of the source code occurs. The book is probably your single best source of support for questions you will have about the code or things that it does. Its product description from the publisher follows:
 
 With this Early Access edition of Mining the Social Web (2nd Ed), you'll get access the author's raw and unedited content as he finishes writing so that you can take advantage of this powerful content long before the official release. You'll be able to influence and shape the final manuscript of the book by leaving the author direct feedback, and you'll also receive updates when significant changes are made, new chapters as they're written, and the final ebook bundle once it's available.
 
@@ -31,7 +33,7 @@ The book's source code is maintained here in this GitHub repository by its autho
 
 ## Preview the IPython Notebooks
 
-Chapters that aren't hyperlinked yet will be available as soon as that content is available in the ebook through [O'Reilly Media's Early Access](http://bit.ly/135dHfs). All source code is estimated to appear in this repository by mid-June 2013.
+This edition of Mining the Social Web extensively uses [IPython Notebook](http://ipython.org/notebook.html) to facilitate the learning and development process, and the best way to preview the source code is with the links below. Chapters that aren't hyperlinked yet will be available as soon as that content is available in the ebook through [O'Reilly Media's Early Access](http://bit.ly/135dHfs). All source code is estimated to appear in this repository by mid-June 2013.
 
 ### Part I
 * [Chapter 0](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter0.ipynb) - Welcome!
@@ -67,6 +69,7 @@ A few additional details once the virtual machine is running:
 * Now, point your web browser to http://localhost:8888 and read the instructions in the Chapter0 (Welcome) IPython Notebook to get started running the code!
 * Ultimately, it would be wise to learn how to <code>vagrant ssh</code> into the virtual machine and get comfortable starting/stopping IPython Notebook servers as needed, so again, it's worthwhile to take a moment to familiarize yourself with Vagrant and how to run IPython Notebook. In short, execute <code>ipython notebook --ip='0.0.0.0' --pylab=inline --no-browser</code> in any directory containing a pynb file if you need to do this for whatever reason.
 * If you want to take a break from the excitement, use the <code>vagrant suspend</code> command to save the current running state of your virtual machine and stop it. To resume working again, simply issue a <code>vagrant resume</code>. Additional documentation on operating vagrant can be found [here](http://docs.vagrantup.com/v2/getting-started/teardown.html).
+* If you still aren't convinced that the virtual machine will save you time, at least do yourself the favor of reviewing the [bootstrap.sh](https://github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/blob/master/vagrant/bootstrap.sh) file that describes the steps required to get a good environment working with a minimal Linux base image.
 
 Please file tickets here on GitHub if you experience any troubles whatsoever. The goal is to provide you with a completely turn-key system so that you can get the most out of Mining the Social Web -- not to divert your attention into unnecessary system configuration issues. 
 
