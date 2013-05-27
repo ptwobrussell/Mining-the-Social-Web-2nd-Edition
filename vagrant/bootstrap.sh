@@ -55,7 +55,7 @@ if [ ! -d mtsw2e ]; then
     pip install -r mtsw2e-requirements.txt
 
     # Downloading nltk stopwords for Chapters 4 & 5
-    python -m nltk.downloader stopwords punkt
+    python -m nltk.downloader stopwords punkt maxent_treebank_pos_tagger maxent_ne_chunker words
 else
     cd mtsw2e
     # Could optionally update the repository here with the following command (at the 
