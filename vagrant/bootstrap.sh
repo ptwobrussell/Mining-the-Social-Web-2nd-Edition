@@ -28,6 +28,9 @@ if [ ! -d mtsw2e ]; then
     sudo apt-get install -y vim
     sudo apt-get install -y git
 
+    # Install python-tk for visualizations
+    sudo apt-get install -y python-tk
+
     # Checkout code using git to the home directory as mtsw2e.
     git clone https://github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition.git mtsw2e
 
@@ -55,7 +58,7 @@ if [ ! -d mtsw2e ]; then
     pip install -r mtsw2e-requirements.txt
 
     # Downloading nltk stopwords for Chapters 4 & 5
-    python -m nltk.downloader stopwords punkt
+    python -m nltk.downloader stopwords punkt maxent_treebank_pos_tagger maxent_ne_chunker words
 else
     cd mtsw2e
     # Could optionally update the repository here with the following command (at the 
