@@ -18,10 +18,13 @@ nltk==2.0.4
 prettytable==0.7.1
 pymongo==2.4.2
 python-gflags==2.0
-python-linkedin==2.0
+# Temporarily work from https://github.com/ptwobrussell/python-linkedin.git till oustanding issues are resolved.
+# See bootstrap.sh for more details
+#python-linkedin==2.0
 pyzmq==13.0.0
 readline==6.2.4.1
-requests==1.1.0
+requests==1.2.3
+requests-oauthlib==0.3.2
 tornado==2.4.1
 twitter==1.9.2
 wsgiref==0.1.2

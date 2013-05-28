@@ -53,6 +53,11 @@ if [ ! -d mtsw2e ]; then
     # need to install IPython Notebook itself until 13.3, 1.0 or some other version includes it
     pip install git+git://github.com/ptwobrussell/ipython.git#egg=ipython-ptwobrussell-github
 
+
+    # Workaround for https://github.com/ozgur/python-linkedin/issues/11.
+    # See also https://github.com/ozgur/python-linkedin/pull/12
+    pip install git+git://github.com/ptwobrussell/python-linkedin.git#egg=python-linkedin-ptwobrussell-github
+
     pip install -r mtsw2e-requirements.txt
 
 else
