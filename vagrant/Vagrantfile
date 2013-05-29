@@ -25,7 +25,7 @@ Vagrant.configure("2") do |config|
   # e.g. any files copied into the "share" folder in this same
   # directory where the Vagrantfile is located are available
   # on the VM through "/home/vagrant/share/"
-  config.vm.synced_folder "share/", "/home/vagrant/share/"
+  config.vm.synced_folder "../", "/home/vagrant/share/"
 
   # Bootstrap
   config.vm.provision :shell, :path => "bootstrap.sh"

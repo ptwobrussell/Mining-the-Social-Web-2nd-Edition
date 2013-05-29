@@ -5,7 +5,7 @@
 # it back up. Note that this provisioning shell script is 
 # run as root, so there's no need to sudo.
 
-if [ ! -d mtsw2e ]; then
+if [ ! -f bootstrap_complete.txt ]; then
 
     # Update
     apt-get update
@@ -26,20 +26,16 @@ if [ ! -d mtsw2e ]; then
     # later succeed
     apt-get install -y libncurses5-dev
 
-    # Install git and vim
+    # Install git and vim - not strictly necessary but possibly handy to have
     apt-get install -y vim
     apt-get install -y git
 
-    # Checkout code using git to the home directory as mtsw2e.
-    git clone https://github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition.git mtsw2e
-
-    # Change ownership of mtsw2e to vagrant:vagrant to avoid unnecessarily needing to sudo
-    # to do things like launch notebooks and be able to save them
-    chown -R vagrant:vagrant mtsw2e
+    # Move into the shared folder, which is mapped in Vagrantfile as the GitHub checkout
+    # directory. It's relative path from here is ../
+    cd /home/vagrant/share
 
     # Use the mtsw2e-requirements.txt that is included with the source code
-    # to install all Python dependencies. A couple of them need to be handled specially...
-    cd mtsw2e
+    # to install all Python dependencies. A few things need to be handled carefully though
 
     # matplotlib won't install any other way right now unless you install numpy first.
     # See http://stackoverflow.com/questions/11797688/matplotlib-requirements-with-pip-install-in-virtualenv
@@ -53,26 +49,18 @@ if [ ! -d mtsw2e ]; then
     # need to install IPython Notebook itself until 13.3, 1.0 or some other version includes it
     pip install git+git://github.com/ptwobrussell/ipython.git#egg=ipython-ptwobrussell-github
 
-
     # Workaround for https://github.com/ozgur/python-linkedin/issues/11.
     # See also https://github.com/ozgur/python-linkedin/pull/12
     pip install git+git://github.com/ptwobrussell/python-linkedin.git#egg=python-linkedin-ptwobrussell-github
 
     pip install -r mtsw2e-requirements.txt
 
-else
-    cd mtsw2e
-    # Could optionally update the repository here with the following command (at the 
-    # potential risk of introducing merge conflicts) with this command
-    # git pull origin
-
-    # For now, just log a message to the user
-    echo "*********************************************************************"
-    echo "Using pre-existing GitHub repository. Use 'git pull origin' to update"
-    echo "*********************************************************************"
+    # Create a state file so that we don't do all of this again the next time the machine starts up from a halted state
+    echo "If you delete this file, the Vagrant box will re-install all of its dependencies from a halted state" >>  bootstrap_complete.txt
 fi
-
+    
 # Start the IPython Notebook server
-cd ipynb
+cd /home/vagrant/share/ipynb
+
 # Running IPython notebook 
 ipython notebook --ip='0.0.0.0' --pylab=inline --no-browser &> ipython_notebook.nohup.out &
