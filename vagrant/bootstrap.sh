@@ -5,7 +5,7 @@
 # it back up. Note that this provisioning shell script is 
 # run as root, so there's no need to sudo.
 
-if [ ! -f bootstrap_complete.txt ]; then
+if [ ! -f vagrant/bootstrap_complete.txt ]; then
 
     # Update
     apt-get update
@@ -56,7 +56,7 @@ if [ ! -f bootstrap_complete.txt ]; then
     pip install -r mtsw2e-requirements.txt
 
     # Create a state file so that we don't do all of this again the next time the machine starts up from a halted state
-    echo "If you delete this file, the Vagrant box will re-install all of its dependencies from a halted state" >>  bootstrap_complete.txt
+    echo "If you delete this file, the Vagrant box will re-install all of its dependencies from a halted state" >>  vagrant/bootstrap_complete.txt
 fi
     
 # Start the IPython Notebook server
