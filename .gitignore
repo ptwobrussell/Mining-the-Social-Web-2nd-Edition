@@ -3,3 +3,6 @@ Thumbs.db
 *.pyc
 out
 .ipynb_checkpoints
+vagrant/bootstrap_complete.txt
+ipynb/ipython_notebook.nohup.out
+vagrant/.vagrant/
