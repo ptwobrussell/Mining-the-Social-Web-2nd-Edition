@@ -5,7 +5,7 @@
 # it back up. Note that this provisioning shell script is 
 # run as root, so there's no need to sudo.
 
-if [ ! -f vagrant/bootstrap_complete.txt ]; then
+if [ ! -f /home/vagrant/share/vagrant/bootstrap_complete.txt ]; then
 
     # Update
     apt-get update
