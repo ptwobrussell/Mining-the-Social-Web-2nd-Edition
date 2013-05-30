@@ -55,6 +55,9 @@ if [ ! -f /home/vagrant/share/vagrant/bootstrap_complete.txt ]; then
 
     pip install -r mtsw2e-requirements.txt
 
+    # Install a few ancillary packages for NLTK in a central location. See http://nltk.org/data.html
+    python -m nltk.downloader -d /usr/share/nltk_data punkt maxent_treebank_pos_tagger maxent_ne_chunker words stopwords
+
     # Create a state file so that we don't do all of this again the next time the machine starts up from a halted state
     echo "If you delete this file, the Vagrant box will re-install all of its dependencies from a halted state" >>  vagrant/bootstrap_complete.txt
 fi
