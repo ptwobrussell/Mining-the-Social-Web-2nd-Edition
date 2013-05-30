@@ -54,12 +54,12 @@ d3.json("matrix.json", function(data) {
 
   // Convert links to matrix; count character occurrences.
   data.links.forEach(function(link) {
-    matrix[link.source][link.target].z += link.value;
-    matrix[link.target][link.source].z += link.value;
-    matrix[link.source][link.source].z += link.value;
-    matrix[link.target][link.target].z += link.value;
-    nodes[link.source].count += link.value;
-    nodes[link.target].count += link.value;
+    matrix[link.source][link.target].z += link.score;
+    matrix[link.target][link.source].z += link.score;
+    matrix[link.source][link.source].z += link.score;
+    matrix[link.target][link.target].z += link.score;
+    nodes[link.source].count += link.score;
+    nodes[link.target].count += link.score;
   });
 
   //x.domain(d3.range(n).sort(function(a, b) { return d3.ascending(nodes[a].title, nodes[b].title); }));
