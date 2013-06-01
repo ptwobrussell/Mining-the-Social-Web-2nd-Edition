@@ -28,3 +28,4 @@ requests-oauthlib==0.3.2
 tornado==2.4.1
 twitter==1.9.2
 wsgiref==0.1.2
+envoy==0.0.2
