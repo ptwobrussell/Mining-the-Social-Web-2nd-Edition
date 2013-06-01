@@ -7,8 +7,20 @@
 
 if [ ! -f /home/vagrant/share/vagrant/bootstrap_complete.txt ]; then
 
+    # Set some package configs for MongoDB before updating...
+    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
+    echo "deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen" > 10gen.list
+    mv 10gen.list /etc/apt/sources.list.d/
+
     # Update
     apt-get update
+
+    # Install MongoDB. See http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/
+    apt-get install -y mongodb-10gen=2.4.3
+    echo "mongodb-10gen hold" | dpkg --set-selections
+    # Add a parameter that enables a full text search, a beta feature for 2.4 and restart
+    echo "setParameter=textSearchEnabled=true" >> /etc/mongodb.conf
+    service mongodb restart
 
     # A recent JDK is required for one of the dependencies
     apt-get install -y openjdk-6-jdk
@@ -61,7 +73,10 @@ if [ ! -f /home/vagrant/share/vagrant/bootstrap_complete.txt ]; then
     # Create a state file so that we don't do all of this again the next time the machine starts up from a halted state
     echo "If you delete this file, the Vagrant box will re-install all of its dependencies from a halted state" >>  vagrant/bootstrap_complete.txt
 fi
-    
+
+# Start MongoDB
+service mongodb start
+
 # Start the IPython Notebook server
 cd /home/vagrant/share/ipynb
 
