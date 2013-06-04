@@ -74,6 +74,9 @@ if [ ! -f /home/vagrant/share/vagrant/bootstrap_complete.txt ]; then
     echo "If you delete this file, the Vagrant box will re-install all of its dependencies from a halted state" >>  vagrant/bootstrap_complete.txt
 fi
 
+# Start MongoDB
+service mongodb start
+
 # Start the IPython Notebook server
 cd /home/vagrant/share/ipynb
 
