@@ -42,7 +42,7 @@ This edition of Mining the Social Web extensively uses [IPython Notebook](http:/
 * [Chapter 3](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter3.ipynb) - Mining Your LinkedIn Professional Network: Faceting Job Titles, Clustering Colleagues, and More
 * [Chapter 4](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter4.ipynb) - Mining Google+ Activities: Computing Document Similarity, Extracting Collocations, and More
 * [Chapter 5](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter5.ipynb) - Mining Web Pages: Using Natural Language Processing to Understand Human Language, Summarize Blog Posts and More
-* Chapter 6 - Mining Mailboxes: Analyzing Who's Talking To Whom About What, How Often, and More
+* [Chapter 6](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter6.ipynb) - Mining Mailboxes: Analyzing Who's Talking To Whom About What, How Often, and More
 * Chapter 7 - Mining GitHub Social Coding Projects: Inspecting Software Collaboration Habits, Building Interest Graphs, and More
 * Chapter 8 - Mining the Semantically Marked-Up Web: A Cocktail Discussion
 
