@@ -7,6 +7,7 @@ Werkzeug==0.8.3
 beautifulsoup4==4.1.3
 chardet==2.1.1
 cluster==1.1.2
+envoy==0.0.2
 facebook-sdk==0.4.0
 feedparser==5.1.3
 geopy==0.95.1
@@ -15,8 +16,10 @@ httplib2==0.8
 matplotlib==1.2.1
 networkx==1.7
 nltk==2.0.4
+oauthlib==0.4.1
 prettytable==0.7.1
-pymongo==2.4.2
+pymongo==2.5.1
+python-dateutil==2.1
 python-gflags==2.0
 # Temporarily work from https://github.com/ptwobrussell/python-linkedin.git till oustanding issues are resolved.
 # See bootstrap.sh for more details
@@ -28,4 +31,4 @@ requests-oauthlib==0.3.2
 tornado==2.4.1
 twitter==1.9.2
 wsgiref==0.1.2
-envoy==0.0.2
+oauth2==1.5.211
