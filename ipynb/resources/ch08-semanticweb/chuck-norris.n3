@@ -1,0 +1,23 @@
+#Assign a namespace for logic predicates
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+
+#Assign a namespace for the vocabulary defined in this document
+@prefix : <MiningTheSocialWeb#> .
+
+#Socrates is a man
+:Socrates a :Man.
+
+@forAll :x . 
+
+#All men are mortal: Man(x) => Mortal(x)
+{ :x a :Man } log:implies { :x a :Mortal } . 
+
+#Only gods live at Mt Olympus: Lives(x, MtOlympus) <=> God(x)
+{ :x :lives :MtOlympus } log:implies { :x a :god } . 
+{ :x a :god } log:implies { :x :lives :MtOlympus } . 
+
+#All mortals drink whisky: Mortal(x) => Drinks(x, whisky)
+{ :x a :Man } log:implies { :x :drinks :whisky } . 
+
+#Chuck Norris lives at Mt Olympus: Lives(ChuckNorris, MtOlympus)
+:ChuckNorris :lives :MtOlympus .
