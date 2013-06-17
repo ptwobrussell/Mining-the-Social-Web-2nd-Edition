@@ -35,7 +35,5 @@ oauth2==1.5.211
 SPARQLWrapper==1.5.2
 html5lib==1.0b1
 isodate==0.4.9
-pyparsing==1.5.7
-rdflib==4.0.1
 six==1.3.0
 twitter-text-py==2.0.0
