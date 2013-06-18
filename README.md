@@ -62,6 +62,8 @@ In order to start the virtual machine, there are just a few easy steps to follow
 * Navigate to the 'vagrant' directory in the checkout
 * Run the following command: <code>vagrant up</code>
 
+You may benefit from watching this [short ~4 minute screencast](https://www.youtube.com/watch?v=0m0PI9TGf3w) that summarizes the steps involved in getting started.
+
 A few additional details once the virtual machine is running:
 
 * What should happen at this point is that Vagrant will use the Vagrantfile that's provided to download a Virtualbox base image and use the commands in the bootstrap.sh script to customize it by installing dependencies that are needed and checking out the latest copy of this GitHub repository. The first time you <code>vagrant up</code>, it may take a few minutes since a base image and updates for it must be downloaded and installed.
