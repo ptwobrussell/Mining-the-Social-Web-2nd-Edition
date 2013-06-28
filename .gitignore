@@ -7,3 +7,5 @@ vagrant/bootstrap_complete.txt
 ipynb/ipython_notebook.nohup.out
 vagrant/.vagrant/
 twitter.oauth_access
+.vagrant
+Berksfile.lock

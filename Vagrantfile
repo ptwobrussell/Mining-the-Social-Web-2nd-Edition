@@ -2,16 +2,13 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-  # All Vagrant configuration is done here. The most common configuration
-  # options are documented and commented below. For a complete reference,
-  # please see the online documentation at vagrantup.com.
-
-  # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "precise64"
+  config.vm.box_url = "http://files.vagrantup.com/precise64.box"
+  config.ssh.forward_agent = true
 
-  # The url from where the 'config.vm.box' box will be fetched if it
-  # doesn't already exist on the user's system.
-   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
+  # Berkshelf
+  config.berkshelf.enabled = true
+  config.berkshelf.berksfile_path = File.join(File.dirname(__FILE__), "deploy", "Berksfile")
 
   # Map through port 8888 for IPython Notebook
   config.vm.network :forwarded_port, host: 8888, guest: 8888
@@ -25,15 +22,13 @@ Vagrant.configure("2") do |config|
   config.vm.network :forwarded_port, host: 27019, guest: 27019
   config.vm.network :forwarded_port, host: 28017, guest: 28017
 
-  # Setup a shared folder to make it simple to access data
-  # that's on the host machine from the IPython Notebook 
-  # server that's running on the guest VM without needing to ssh
-  # e.g. any files copied into the "share" folder in this same
-  # directory where the Vagrantfile is located are available
-  # on the VM through "/home/vagrant/share/"
-  config.vm.synced_folder "../", "/home/vagrant/share/"
-
-  # Bootstrap
-  config.vm.provision :shell, :path => "bootstrap.sh"
-
+  config.vm.provision :chef_solo do |chef|
+    chef.log_level = :debug
+    chef.json = {
+      :answer => "42",
+    }
+    chef.run_list = [
+      "recipe[mtsw2e::default]"
+    ]
+  end
 end
