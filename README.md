@@ -62,7 +62,7 @@ In order to start the virtual machine, there are just a few easy steps to follow
 * Navigate to the 'vagrant' directory in the checkout
 * Run the following command: <code>vagrant up</code>
 
-You may benefit from watching this [short ~4 minute screencast](https://www.youtube.com/watch?v=0m0PI9TGf3w) that summarizes the steps involved in getting started.
+**You may benefit from watching this [short ~4 minute screencast](https://www.youtube.com/watch?v=0m0PI9TGf3w) that summarizes the steps involved in getting started.**
 
 A few additional details once the virtual machine is running:
 
