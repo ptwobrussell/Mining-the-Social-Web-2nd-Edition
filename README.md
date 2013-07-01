@@ -49,6 +49,9 @@ This edition of Mining the Social Web extensively uses [IPython Notebook](http:/
 ### Part II 
 * [Chapter 9](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter9.ipynb) - Twitter Recipes
 
+### Appendices
+* [Appendix B](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/_AppendixB.ipynb) - OAuth Primer
+
 ## The _Mining the Social Web_ Virtual Machine Experience
 
 The code for _Mining the Social Web_ is organized by chapter in an [IPython Notebook](http://ipython.org/notebook.html) format to maximize enjoyment of following along with examples as part of an interactive experience. Unfortunately, some of the Python dependencies for the example code can be a little bit tricky to get installed and configured, so providing a completely turn-key virtual machine to make your reading experience as simple and enjoyable as possible is in order. Even if you are a seasoned developer, you may still find some value in using this virtual machine to get started in order to save yourself some time because it's powered with [Vagrant](http://vagrantup.com/), an amazing development tool that you'll probably want to know about and arguably makes working with virtualization even easier than a native [Virtualbox](http://www.virtualbox.org/), VMWare image, etc. -- and it is probably still the fastest way to get started given some of the dependency chains with packages that can be a little more troublesome than others such as matplotlib. After all, you're more interested in following along and learning from the example code than learning how to install and manage system dependencies, right?
