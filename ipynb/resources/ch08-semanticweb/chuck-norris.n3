@@ -2,7 +2,7 @@
 @prefix log: <http://www.w3.org/2000/10/swap/log#> .
 
 #Assign a namespace for the vocabulary defined in this document
-@prefix : <MiningTheSocialWeb#> .
+@prefix : <http://example.com/MiningTheSocialWeb#> .
 
 #Socrates is a man
 :Socrates a :Man.
