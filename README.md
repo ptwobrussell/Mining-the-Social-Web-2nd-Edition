@@ -36,21 +36,21 @@ The book's source code is maintained here in this GitHub repository by its autho
 This edition of Mining the Social Web extensively uses [IPython Notebook](http://ipython.org/notebook.html) to facilitate the learning and development process, and the best way to preview the source code is with the links below. Chapters that aren't hyperlinked yet will be available as soon as that content is available in the ebook through [O'Reilly Media's Early Access](http://bit.ly/135dHfs). All source code is estimated to appear in this repository by mid-June 2013.
 
 ### Part I
-* [Chapter 0](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter0.ipynb) - Welcome!
-* [Chapter 1](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter1.ipynb) - Mining the Twitterverse: Exploring Trending Topics, Discovering What People Are Talking About, and More
-* [Chapter 2](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter2.ipynb) - Mining Facebook's Social Graph: Analyzing Fan Pages, Examining Friendships, and More
-* [Chapter 3](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter3.ipynb) - Mining Your LinkedIn Professional Network: Faceting Job Titles, Clustering Colleagues, and More
-* [Chapter 4](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter4.ipynb) - Mining Google+ Activities: Computing Document Similarity, Extracting Collocations, and More
-* [Chapter 5](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter5.ipynb) - Mining Web Pages: Using Natural Language Processing to Understand Human Language, Summarize Blog Posts and More
-* [Chapter 6](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter6.ipynb) - Mining Mailboxes: Analyzing Who's Talking To Whom About What, How Often, and More
-* Chapter 7 - Mining GitHub Social Coding Projects: Inspecting Software Collaboration Habits, Building Interest Graphs, and More
-* [Chapter 8](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter8.ipynb) - Mining the Semantically Marked-Up Web: Extracting Microformats, Inferencing Over RDF, and More
-
+* [Chapter 0 - Preface](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter 0 - Preface.ipynb)
+* [Chapter 1 - Mining Twitter](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter 1 - Mining Twitter.ipynb): Exploring Trending Topics, Discovering What People Are Talking About, and More
+* [Chapter 2 - Mining Facebook](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter 2 - Mining Facebook.ipynb): Analyzing Fan Pages, Examining Friendships, and More
+* [Chapter 3 - Mining LinkedIn](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter 3 - Mining LinkedIn.ipynb): Faceting Job Titles, Clustering Colleagues, and More
+* [Chapter 4 - Mining Google+](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter 4 - Mining Google+.ipynb): Computing Document Similarity, Extracting Collocations, and More
+* [Chapter 5 - Mining Web Pages](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter 5 - Mining Web Pages.ipynb): Using Natural Language Processing to Understand Human Language, Summarize Blog Posts and More
+* [Chapter 6 - Mining Mailboxes](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter 6 - Mining Mailboxes.ipynb): Analyzing Who's Talking To Whom About What, How Often, and More
+* [Chapter 7 - Mining GitHub](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter 7 - Mining GitHub.ipynb): Inspecting Software Collaboration Habits, Building Interest Graphs, and More
+* [Chapter 8 - Mining the Semantically Marked-Up Web](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter 8 - Mining the Semantically Marked-Up Web.ipynb): Extracting Microformats, Inferencing Over RDF, and More
 ### Part II 
-* [Chapter 9](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter9.ipynb) - Twitter Recipes
-
+* [Chapter 9 - Twitter Cookbook](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter 9 - Twitter Cookbook.ipynb)
 ### Appendices
-* [Appendix B](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/_AppendixB.ipynb) - OAuth Primer
+* [Appendix A - Virtual Machine Experience](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/_Appendix A - Virtual Machine Experience.ipynb)
+* [Appendix B - OAuth Primer](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/_Appendix B - OAuth Primer.ipynb)
+* [Appendix C - Python & IPython Notebook Tips](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/_Appendix C - Python & IPython Notebook Tips.ipynb)
 
 ## The _Mining the Social Web_ Virtual Machine Experience
 
