@@ -61,13 +61,16 @@ end
 execute "install_requirements" do
   command "pip install -r /vagrant/mtsw2e-requirements.txt"
   # action :nothing
-  notifies :run, "execute[download_nltk_data]"
 end
 
 # Install a few ancillary packages for NLTK in a central location. See http://nltk.org/data.html
-execute "download_nltk_data" do
-  command "python -m nltk.downloader -d /usr/share/nltk_data punkt maxent_treebank_pos_tagger maxent_ne_chunker words stopwords"
-  action :nothing
+%|punkt maxent_treebank_pos_tagger maxent_ne_chunker words stopwords|.each do |data|
+  execute "download_nltk_#{data}" do
+    command "python -m nltk.downloader -d /usr/share/nltk_data #{data}"
+    not_if do
+      ::File.exists?("/usr/share/nltk_data/#{data}")
+    end
+  end
 end
 
 runit_service "ipython" do

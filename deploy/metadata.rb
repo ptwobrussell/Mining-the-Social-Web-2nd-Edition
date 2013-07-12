@@ -8,5 +8,6 @@ version          "0.2.0"
 depends "apt"
 depends "runit"
 depends "python"
+depends "build-essential"
 
 supports "ubuntu"

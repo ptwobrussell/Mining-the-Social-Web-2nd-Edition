@@ -1,8 +1,0 @@
-site :opscode
-
-metadata
-
-cookbook "runit", "1.0.4"
-cookbook "python", "~> 1.3.4"
-cookbook "build-essential", "~> 1.4.0"
-cookbook "mongodb", git: "git://github.com/edelight/chef-mongodb.git"

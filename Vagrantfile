@@ -8,7 +8,6 @@ Vagrant.configure("2") do |config|
 
   # Berkshelf
   config.berkshelf.enabled = true
-  config.berkshelf.berksfile_path = File.join(File.dirname(__FILE__), "deploy", "Berksfile")
 
   # Map through port 8888 for IPython Notebook
   config.vm.network :forwarded_port, host: 8888, guest: 8888
