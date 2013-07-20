@@ -1,7 +1,7 @@
 BeautifulSoup==3.2.1
 Flask==0.9
 Jinja2==2.6
-PyGithub==1.12.2
+PyGithub==1.17.0
 PyYAML==3.10
 Werkzeug==0.8.3
 beautifulsoup4==4.1.3
