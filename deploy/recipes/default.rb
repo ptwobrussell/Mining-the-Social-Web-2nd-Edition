@@ -8,13 +8,13 @@ include_recipe "mongodb::10gen_repo"
 package "mongodb-10gen"
 
 service "mongodb" do
-  action :enable
+  action [:enable, :start]
 end
 
 execute "mongodb_textsearch" do
-  command "echo 'setParameter=textSearchEnabled=true' >> /etc/mongodb.conf"
+  command "echo 'setParameter = textSearchEnabled=true' >> /etc/mongodb.conf"
   not_if "grep textSearchEnabled /etc/mongodb.conf"
-  notifies :reload, "service[mongodb]"
+  notifies :restart, "service[mongodb]", :immediately
 end
 
 dependencies = [
@@ -35,7 +35,8 @@ packages = [
   "numpy==1.7.1",
 
   # Also need to guarantee that jpype is installed prior to boilerpipe, so just do it here
-  "-e git+git://github.com/ptwobrussell/jpype.git#egg=jpype-ptwobrussell-github",
+  # currently 'jpype' can't be installed with pip editable option (-e)
+  "git+git://github.com/ptwobrussell/jpype.git#egg=jpype-ptwobrussell-github",
   "-e git+git://github.com/ptwobrussell/python-boilerpipe.git#egg=boilerpipe-ptwobrussell-github",
 
   # Relying on a fix that's in IPython master branch and not yet in a release (#2791), so we also
