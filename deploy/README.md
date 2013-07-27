@@ -9,14 +9,14 @@ This directory contains the [chef](http://www.opscode.com/chef/) recipe for prov
 You'll need to install the following software to use the _Mining the Social Web_ virtual machine:
 
 * [Virtualbox](https://www.virtualbox.org/) - Download the latest version for your operating system.
-* [Vagrant](http://www.vagrantup.com/) We require version 1.1.2+ or later.
-* [vagrant-berkshelf](https://github.com/riotgames/vagrant-berkshelf) Once Vagrant is installed, you can type <code>vagrant plugin install vagrant-berkshelf</code> to install this Vagrant plugin.
+* [Vagrant](http://www.vagrantup.com/) - We require version 1.1.2+ or later.
+* [vagrant-berkshelf](https://github.com/riotgames/vagrant-berkshelf) - Once Vagrant is installed, you can type <code>vagrant plugin install vagrant-berkshelf</code> to install this Vagrant plugin.
 
 Then, simply execute the following command and wait 10-15 minutes while a Virtualbox image downloads and configures itself:
 
 ```
 $ vagrant up
-``
+```
 
 You may need to respond to a couple of prompts to initiate the download. Don't be alarmed by any terminal output that you see which may involve some compiler warnings.
 
