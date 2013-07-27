@@ -43,8 +43,6 @@ The code for _Mining the Social Web_ is organized by chapter in an [IPython Note
 
 You're more interested in following along and learning from the example code than learning how to install and manage system dependencies, right? Just follow the instructions described in  [Appendix A - Virtual Machine Experience](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/_Appendix A - Virtual Machine Experience.ipynb) and streamline you troubles.
 
-You may also enjoy this [short ~4 minute screencast](https://www.youtube.com/watch?v=0m0PI9TGf3w) that summarizes the steps involved in getting started.
-
 ## "Premium Support"
 
 The source code in this repository is free for your use however you'd like. If you'd like to complete a more rigorous study about social web mining much like you would experience by following along with a textbook in a classroom, however, you should consider picking up a copy of [Mining the Social Web](http://bit.ly/135dHfs) and follow along. _Think of the book as offering a form of "premium support" for this open source project._ The publisher's description of the book follows for your convenience:
