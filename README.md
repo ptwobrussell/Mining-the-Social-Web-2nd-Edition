@@ -13,6 +13,20 @@ _Note that the virtual machine for this book is designed to install every single
 
 If you experience any problems at all, file an issue here on GitHub. Be sure to also follow [@SocialWebMining](http://twitter.com/socialwebmining) on Twitter and like http://facebook.com/MiningTheSocialWeb on Facebook.
 
+## Important Note to Virtual Machine Users - 26 July 2013
+
+A significant pull request was merged in on July 26, 2013 around 9pm (CST) that provides an enhancement to the way the book's Vagrant-based virtual machine is configured. If you were an adopter of the book's virtual machine on or before 26 July 2013, you will probably want to do complete the following steps to get in a good spot for moving forward with the code. Hopefully, there will be no more disruptive changes like this one:
+
+* Save any work in IPython Notebook that you don't want to lose by copying the ipynb file to another location
+* `git pull` - Update your repository's code
+* `vagrant destroy` - Kill the existing virtual machine
+* `vagrant plugin install vagrant-berkshelf` - Install a required Vagrant plugin
+* `vagrant up` - Re-bootstrap your virtual machine with Chef-based configuration management. The first bootstrap takes ~20 minutes, which is significantly faster than the previous bootstrapping approach.
+
+This notice will be removed around September 1, after enough folks have had a chance to review it.
+
+Enjoy!
+
 ## Preview the IPython Notebooks
 
 This edition of Mining the Social Web extensively uses [IPython Notebook](http://ipython.org/notebook.html) to facilitate the learning and development process, and the best way to preview the source code is with the links below. Chapters that aren't hyperlinked yet will be available as soon as that content is available in the ebook through [O'Reilly Media's Early Access](http://bit.ly/135dHfs). All source code is estimated to appear in this repository by mid-July 2013.
