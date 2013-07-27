@@ -21,7 +21,7 @@ One of the more important wiki pages that you may want to bookmark is the [Advis
 
 ## Preview the IPython Notebooks
 
-This edition of _Mining the Social Web_ extensively uses [IPython Notebook](http://ipython.org/notebook.html) to facilitate the learning and development process, and the best way to preview the source code is with the links below. Chapters that aren't hyperlinked yet will be available as soon as that content is available in the ebook through [O'Reilly Media's Early Access](http://bit.ly/135dHfs). All source code is estimated to appear in this repository by mid-July 2013.
+This edition of _Mining the Social Web_ extensively uses [IPython Notebook](http://ipython.org/notebook.html) to facilitate the learning and development process. If you're interested in what the example code for any particular chapter does, the best way to preview it is with the links below. When you're ready to develop, pull the source for this GitHub repository and follow the instructions for installing the virtual machine to get started.
 
 * [Chapter 0 - Preface](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter 0 - Preface.ipynb)
 * [Chapter 1 - Mining Twitter: Exploring Trending Topics, Discovering What People Are Talking About, and More](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter 1 - Mining Twitter.ipynb)
