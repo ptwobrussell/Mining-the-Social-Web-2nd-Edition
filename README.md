@@ -45,9 +45,9 @@ You're more interested in following along and learning from the example code tha
 
 You may also enjoy this [short ~4 minute screencast](https://www.youtube.com/watch?v=0m0PI9TGf3w) that summarizes the steps involved in getting started.
 
-## Product Description for _Mining the Social Web (2nd Edition)_
+## "Premium Support"
 
-The source code in this repository is free for your use whether or not you have a copy of the book, but it does generally assume that you are following along with the book where some valuable explanations and extended discussion of the source code occurs. The book is probably your single best source of support for questions you will have about the code or things that it does. Its product description from the publisher follows:
+The source code in this repository is free for your use however you'd like. If you'd like to complete a more rigorous study about social web mining much like you would experience by following along with a textbook in a classroom, however, you should consider picking up a copy of [Mining the Social Web](http://bit.ly/135dHfs) and follow along. _Think of the book as offering a form of "premium support" for this open source project._ The publisher's description of the book follows for your convenience:
 
 With this Early Access edition of Mining the Social Web (2nd Ed), you'll get access the author's raw and unedited content as he finishes writing so that you can take advantage of this powerful content long before the official release. You'll be able to influence and shape the final manuscript of the book by leaving the author direct feedback, and you'll also receive updates when significant changes are made, new chapters as they're written, and the final ebook bundle once it's available.
 
