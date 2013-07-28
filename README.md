@@ -39,7 +39,7 @@ The code for _Mining the Social Web_ is organized by chapter in an [IPython Note
 
 ## Quick Start Guide
 
-The recommended way of getting started with the example code is by taking advantage of the Vagrant-powered virtual machine. After all, you're more interested in following along and learning from the examples than installing and managing all of the system dependencies just to get to that point, right? 
+The recommended way of getting started with the example code is by taking advantage of the Vagrant-powered virtual machine as illusrated in [this short screencast](https://www.youtube.com/watch?v=BTyKPMfi_JQ). After all, you're more interested in following along and learning from the examples than installing and managing all of the system dependencies just to get to that point, right? 
 
 [Appendix A - Virtual Machine Experience](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/_Appendix A - Virtual Machine Experience.ipynb) provides clear step-by-step instructions for installing the virtual machine and is intended to serve as a quick start guide.
 
