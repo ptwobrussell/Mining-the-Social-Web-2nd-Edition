@@ -1,0 +1,15 @@
+metadata.json
+.vagrant
+.kitchen
+Berksfile.lock
+*~
+*#
+.#*
+\#*#
+.*.sw[a-z]
+*.un~
+/cookbooks
+# Bundler
+Gemfile.lock
+bin/*
+.bundle/*
