@@ -6,9 +6,6 @@ Vagrant.configure("2") do |config|
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
   config.ssh.forward_agent = true
 
-  # Berkshelf
-  config.berkshelf.enabled = true
-
   # Map through port 8888 for IPython Notebook
   config.vm.network :forwarded_port, host: 8888, guest: 8888
 
@@ -23,6 +20,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision :chef_solo do |chef|
     chef.log_level = :debug
+    chef.cookbooks_path = "deploy/cookbooks"
     chef.json = {
       :answer => "42",
     }

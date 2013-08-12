@@ -1,0 +1,4 @@
+cookbook "runit" do
+  configuration "default"
+  configuration "service"
+end

@@ -2,10 +2,29 @@
 include_recipe "apt"
 include_recipe "runit"
 include_recipe "python"
-include_recipe "build-essential"
-include_recipe "mongodb::10gen_repo"
 
-package "mongodb-10gen"
+apt_repository "mongodb-10gen" do
+  uri "http://downloads-distro.mongodb.org/repo/ubuntu-upstart"
+  distribution "dist"
+  components ["10gen"]
+  keyserver "keyserver.ubuntu.com"
+  key "7F0CEB10"
+  action :add
+end
+
+dependencies = [
+  "mongodb-10gen",                            # Mongodb from 10gen
+  "openjdk-6-jdk",                            # required by one of the dependencies
+  "libfreetype6-dev", "libpng-dev",           # Matplotlib dependencies
+  "libncurses5-dev", "vim", "git-core",
+  "build-essential",
+]
+
+dependencies.each do |pkg|
+  package pkg do
+    action :install
+  end
+end
 
 service "mongodb" do
   action [:enable, :start]
@@ -15,18 +34,6 @@ execute "mongodb_textsearch" do
   command "echo 'setParameter = textSearchEnabled=true' >> /etc/mongodb.conf"
   not_if "grep textSearchEnabled /etc/mongodb.conf"
   notifies :restart, "service[mongodb]", :immediately
-end
-
-dependencies = [
-  "openjdk-6-jdk",                            # required by one of the dependencies
-  "libfreetype6-dev", "libpng-dev",           # Matplotlib dependencies
-  "libncurses5-dev", "vim", "git-core",
-]
-
-dependencies.each do |pkg|
-  package pkg do
-    action :install
-  end
 end
 
 packages = [
