@@ -41,19 +41,6 @@ packages = [
   # http://stackoverflow.com/q/11797688
   "numpy==1.7.1",
 
-  # Also need to guarantee that jpype is installed prior to boilerpipe, so just do it here
-  # currently 'jpype' can't be installed with pip editable option (-e)
-  "git+git://github.com/ptwobrussell/jpype.git#egg=jpype-ptwobrussell-github",
-  "-e git+git://github.com/ptwobrussell/python-boilerpipe.git#egg=boilerpipe-ptwobrussell-github",
-
-  # Relying on a fix that's in IPython master branch and not yet in a release (#2791), so we also
-  # need to install IPython Notebook itself until 13.3, 1.0 or some other version includes it
-  "-e git+git://github.com/ptwobrussell/ipython.git#egg=ipython-ptwobrussell-github",
-
-  # Workaround for https://github.com/ozgur/python-linkedin/issues/11.
-  # See also https://github.com/ozgur/python-linkedin/pull/12
-  "-e git+git://github.com/ptwobrussell/python-linkedin.git#egg=python-linkedin-ptwobrussell-github",
-
   # Install FuXi per https://code.google.com/p/fuxi/wiki/Installation_Testing
   "http://cheeseshop.python.org/packages/source/p/pyparsing/pyparsing-1.5.5.tar.gz",
   "https://fuxi.googlecode.com/hg/layercake-python.tar.bz2",

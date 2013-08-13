@@ -31,3 +31,7 @@ twitter==1.9.2
 wsgiref==0.1.2
 oauth2==1.5.211
 twitter-text-py==2.0.0
+JPype1==0.5.4.4
+charade==1.0.3
+boilerpipe==1.2.0.0
+ipython==1.0.0
