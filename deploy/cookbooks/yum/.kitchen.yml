@@ -1,0 +1,22 @@
+---
+driver_plugin: vagrant
+platforms:
+- name: centos-6.4
+  driver_config:
+    box: opscode-centos-6.4
+    box_url: https://opscode-vm.s3.amazonaws.com/vagrant/opscode_centos-6.4_provisionerless.box
+    require_chef_omnibus: true
+  run_list:
+- name: centos-5.9
+  driver_config:
+    box: opscode-centos-5.9
+    box_url: https://opscode-vm.s3.amazonaws.com/vagrant/opscode_centos-5.9_provisionerless.box
+    require_chef_omnibus: true
+  run_list:
+
+suites:
+- name: test
+  run_list:
+  - recipe[minitest-handler]
+  - recipe[yum::test]
+  attributes: {}

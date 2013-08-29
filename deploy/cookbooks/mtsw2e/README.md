@@ -1,33 +1,30 @@
 # Description
 
-This Chef recipe installs and configures all the dependencies for running all the notebooks from the book [Mining the Social Web (2nd Edition)][http://bit.ly/135dHfs].
+<<<<<<< HEAD
+This [Chef](http://www.opscode.com/chef/) recipe installs and configures all the dependencies for running all of the IPython Notebooks for [Mining the Social Web][http://miningthesocialweb.com].
 
-This directory contains the [chef](http://www.opscode.com/chef/) recipe for provisioning a Virtualbox that takes care of installing all dependencies with Vagrant.
+See [Appendix A](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/_Appendix%20A%20-%20Virtual%20Machine%20Experience.ipynb) for details on getting started.
 
-## Quick Start Instructions with Vagrant
+## Using With Chef-Solo
 
-You'll need to install the following software to use the _Mining the Social Web_ virtual machine:
+Create a file called mtsw2e.json containing the following:
+`
+{
+  "run_list": [ "recipe[mtsw2e::default]" ]
+ }
+`
 
-* [Virtualbox](https://www.virtualbox.org/) - Download the latest version for your operating system.
-* [Vagrant](http://www.vagrantup.com/) - We require version 1.1.2+ or later.
-* [vagrant-berkshelf](https://github.com/riotgames/vagrant-berkshelf) - Once Vagrant is installed, you can type <code>vagrant plugin install vagrant-berkshelf</code> to install this Vagrant plugin.
-
-Then, simply execute the following command and wait 10-15 minutes while a Virtualbox image downloads and configures itself:
-
-```
-$ vagrant up
-```
-
-You may need to respond to a couple of prompts to initiate the download. Don't be alarmed by any terminal output that you see which may involve some compiler warnings.
-
-## Using With Chef
-
-Add `mtsw2e::default` to your `run_list` if you know what you are doing. (Currently does not have any attribute.)
+Create a file called mtsw2e.rb containing the following:
+`    
+file_cache_path "/vagrant/deploy/chef-solo"
+cookbook_path "/vagrant/deploy/cookbooks"
+log_level :debug
+`
 
 ## Help
 
-If you have problems running this recipe, please [file a ticket at GitHub](https://github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/issues) or contact Mario Rodas (rodasmario2 [at] gmail [dot] com).
+If you have problems running this recipe, please [file a ticket at GitHub](https://github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/issues)
 
 ## Credits
 
-Many thanks to Mario Rodas who originally wrote this recipe
+Many thanks to Mario Rodas (@marsam on GitHub) who originally wrote this recipe

@@ -59,7 +59,7 @@ execute "install_requirements" do
 end
 
 # Install a few ancillary packages for NLTK in a central location. See http://nltk.org/data.html
-%|punkt maxent_treebank_pos_tagger maxent_ne_chunker words stopwords|.each do |data|
+"punkt maxent_treebank_pos_tagger maxent_ne_chunker words stopwords".each_line do |data|
   execute "download_nltk_#{data}" do
     command "python -m nltk.downloader -d /usr/share/nltk_data #{data}"
     not_if do
