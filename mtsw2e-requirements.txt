@@ -34,4 +34,4 @@ twitter-text-py==2.0.0
 JPype1==0.5.4.4
 charade==1.0.3
 boilerpipe==1.2.0.0
-ipython==1.0.0
+ipython==1.1.0
