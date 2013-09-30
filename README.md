@@ -3,15 +3,15 @@ Mining the Social Web (2nd Edition)
 
 ## Summary
 
-The official online compendium for Mining the Social Web, 2nd Edition (O'Reilly, 2013)
+_Mining the Social Web, 2nd Edition_ is available through O'Reilly Media, Amazon, and other fine book retailers. [Purchasing the ebook directly from O'Reilly](http://bit.ly/135dHfs) offers a number of great benefits, including a variety of digital formats and continual updates to the text of book for life! Better yet, if you choose to use O'Reilly's DropBox or Google Drive synchronization, your ebooks will automatically update every time there's an update. In other words, you'll always have the latest version of the book if you purchase the ebook through O'Reilly, which is why it's the recommended option in comparison to a paper copy or other electronic version.
 
-_Mining the Social Web, 2nd Edition_ is currently available through O'Reilly Media's Early Access and Rough Cuts programs. The final version of the book will not be complete until the September/October timeframe, but in the meanwhile, you can get the latest source code here [and get an Early Access copy of the ebook directly from O'Reilly](http://bit.ly/135dHfs). Pre-ordering through O'Reilly's Early Access program contains a number of great benefits including regular updates as the final manuscript of the book is completed as well as continual updates to the book for life! (And for a book that's built on social web APIs, rest assured that API changes will occasionally require the text of the book and examples to be updated.)
-
-There's an incredible turn-key virtual machine experience for this second edition of the book that provides you with a powerful social web mining toolbox. This toolbox provides the ability to explore and run all of the source code in a hassle-free manner. All that you have to do is [follow a few simple steps](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/_Appendix A - Virtual Machine Experience.ipynb) to get the virtual machine installed, and you'll be running the example code in as little as 20-30 minutes. (And by the way, most of that time is waiting for files to download.)
+There's an incredible turn-key virtual machine experience for this second edition of the book that provides you with a powerful social web mining toolbox. This toolbox provides the ability to explore and run all of the source code in a hassle-free manner. All that you have to do is [follow a few simple steps](https://rawgithub.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/html/_Appendix A - Virtual Machine Experience.html) to get the virtual machine installed, and you'll be running the example code in as little as 20-30 minutes. (And by the way, most of that time is waiting for files to download.)
 
 This [short screencast](https://www.youtube.com/watch?v=BTyKPMfi_JQ) demonstrates the steps involved in installing the virtual machine, which installs every single dependency for you automatically and save you a lot of time. Even sophisticated power users tend to prefer using it versus using their own environments.
 
 If you experience any problems at all with installation of the virtual machine, file an issue here on GitHub. Be sure to also follow [@SocialWebMining](http://twitter.com/socialwebmining) on Twitter and like http://facebook.com/MiningTheSocialWeb on Facebook.
+
+Be sure to also visit http://MiningTheSocialWeb.com for additional content, news, and updates about the book and code in this GitHub repository.
 
 ## Preview the IPython Notebooks
 
@@ -19,19 +19,19 @@ This edition of _Mining the Social Web_ extensively uses [IPython Notebook](http
 
 A bit.ly bundle of all of these links is also available: http://bit.ly/mtsw2e-ipynb
 
-* [Chapter 0 - Preface](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter 0 - Preface.ipynb)
-* [Chapter 1 - Mining Twitter: Exploring Trending Topics, Discovering What People Are Talking About, and More](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter 1 - Mining Twitter.ipynb)
-* [Chapter 2 - Mining Facebook: Analyzing Fan Pages, Examining Friendships, and More](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter 2 - Mining Facebook.ipynb)
-* [Chapter 3 - Mining LinkedIn: Faceting Job Titles, Clustering Colleagues, and More](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter 3 - Mining LinkedIn.ipynb)
-* [Chapter 4 - Mining Google+: Computing Document Similarity, Extracting Collocations, and More](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter 4 - Mining Google+.ipynb)
-* [Chapter 5 - Mining Web Pages: Using Natural Language Processing to Understand Human Language, Summarize Blog Posts and More](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter 5 - Mining Web Pages.ipynb)
-* [Chapter 6 - Mining Mailboxes: Analyzing Who's Talking To Whom About What, How Often, and More](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter 6 - Mining Mailboxes.ipynb)
-* [Chapter 7 - Mining GitHub: Inspecting Software Collaboration Habits, Building Interest Graphs, and More](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter 7 - Mining GitHub.ipynb)
-* [Chapter 8 - Mining the Semantically Marked-Up Web: Extracting Microformats, Inferencing Over RDF, and More](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter 8 - Mining the Semantically Marked-Up Web.ipynb)
-* [Chapter 9 - Twitter Cookbook](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/Chapter 9 - Twitter Cookbook.ipynb)
-* [Appendix A - Virtual Machine Experience](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/_Appendix A - Virtual Machine Experience.ipynb)
-* [Appendix B - OAuth Primer](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/_Appendix B - OAuth Primer.ipynb)
-* [Appendix C - Python & IPython Notebook Tips](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/_Appendix C - Python & IPython Notebook Tips.ipynb)
+* [Chapter 0 - Preface](https://rawgithub.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/html/Chapter 0 - Preface.html)
+* [Chapter 1 - Mining Twitter: Exploring Trending Topics, Discovering What People Are Talking About, and More](https://rawgithub.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/html/Chapter 1 - Mining Twitter.html)
+* [Chapter 2 - Mining Facebook: Analyzing Fan Pages, Examining Friendships, and More](https://rawgithub.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/html/Chapter 2 - Mining Facebook.html)
+* [Chapter 3 - Mining LinkedIn: Faceting Job Titles, Clustering Colleagues, and More](https://rawgithub.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/html/Chapter 3 - Mining LinkedIn.html)
+* [Chapter 4 - Mining Google+: Computing Document Similarity, Extracting Collocations, and More](https://rawgithub.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/html/Chapter 4 - Mining Google+.html)
+* [Chapter 5 - Mining Web Pages: Using Natural Language Processing to Understand Human Language, Summarize Blog Posts and More](https://rawgithub.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/html/Chapter 5 - Mining Web Pages.html)
+* [Chapter 6 - Mining Mailboxes: Analyzing Who's Talking To Whom About What, How Often, and More](https://rawgithub.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/html/Chapter 6 - Mining Mailboxes.html)
+* [Chapter 7 - Mining GitHub: Inspecting Software Collaboration Habits, Building Interest Graphs, and More](https://rawgithub.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/html/Chapter 7 - Mining GitHub.html)
+* [Chapter 8 - Mining the Semantically Marked-Up Web: Extracting Microformats, Inferencing Over RDF, and More](https://rawgithub.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/html/Chapter 8 - Mining the Semantically Marked-Up Web.html)
+* [Chapter 9 - Twitter Cookbook](https://rawgithub.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/html/Chapter 9 - Twitter Cookbook.html)
+* [Appendix A - Virtual Machine Experience](https://rawgithub.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/html/_Appendix A - Virtual Machine Experience.html)
+* [Appendix B - OAuth Primer](https://rawgithub.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/html/_Appendix B - OAuth Primer.html)
+* [Appendix C - Python & IPython Notebook Tips](https://rawgithub.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/html/_Appendix C - Python & IPython Notebook Tips.html)
 
 ## The _Mining the Social Web_ Virtual Machine
 
@@ -43,7 +43,7 @@ The code for _Mining the Social Web_ is organized by chapter in an [IPython Note
 
 The recommended way of getting started with the example code is by taking advantage of the Vagrant-powered virtual machine as illusrated in [this short screencast](https://www.youtube.com/watch?v=BTyKPMfi_JQ). After all, you're more interested in following along and learning from the examples than installing and managing all of the system dependencies just to get to that point, right? 
 
-[Appendix A - Virtual Machine Experience](http://nbviewer.ipython.org/urls/raw.github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/_Appendix A - Virtual Machine Experience.ipynb) provides clear step-by-step instructions for installing the virtual machine and is intended to serve as a quick start guide.
+[Appendix A - Virtual Machine Experience](https://rawgithub.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/html/_Appendix A - Virtual Machine Experience.html) provides clear step-by-step instructions for installing the virtual machine and is intended to serve as a quick start guide.
 
 
 ## The _Mining the Social Web_ Wiki
