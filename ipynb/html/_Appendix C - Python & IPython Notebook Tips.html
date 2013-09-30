@@ -1695,88 +1695,30 @@ init_mathjax();
 
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="mining-the-social-web-2nd-edition">Mining the Social Web, 2nd Edition</h1>
-<h2 id="chapter-3-mining-linkedin-faceting-job-titles-clustering-colleagues-and-more">Chapter 3: Mining LinkedIn: Faceting Job Titles, Clustering Colleagues, and More</h2>
+<h2 id="appendix-c-python-and-ipython-notebook-tips-tricks">Appendix C: Python and IPython Notebook Tips &amp; Tricks</h2>
 <p>This IPython Notebook provides an interactive way to follow along with and explore the numbered examples from <a href="http://bit.ly/135dHfs"><em>Mining the Social Web (2nd Edition)</em></a>. The intent behind this notebook is to reinforce the concepts from the sample code in a fun, convenient, and effective way. This notebook assumes that you are reading along with the book and have the context of the discussion as you work through these exercises.</p>
 <p>In the somewhat unlikely event that you've somehow stumbled across this notebook outside of its context on GitHub, <a href="http://bit.ly/16kGNyb">you can find the full source code repository here</a>.</p>
 <h2 id="copyright-and-licensing">Copyright and Licensing</h2>
 <p>You are free to use or adapt this notebook for any purpose you'd like. However, please respect the <a href="https://github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/blob/master/LICENSE.txt">Simplified BSD License</a> that governs its use.</p>
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="linkedin-api-access">LinkedIn API Access</h1>
-<p>LinkedIn implements OAuth 2.0 as one of its standard authentication mechanisms, but still supports OAuth 1.0a, which provides you with four credentials (&quot;API Key&quot;, &quot;Secret Key&quot;, &quot;OAuth User Token&quot;, and &quot;OAuth User Secret&quot;) that can be used to gain instant API access with no further fuss or redirections. You can create an app and retrieve these four credentials through the &quot;Developer&quot; section of your account settings as shown below or by navigating directly to https://www.linkedin.com/secure/developer.</p>
-<img src="../resources/ch03-linkedin/images/LinkedIn-app.png" width="600px">
+<h2 id="try-tinkering-around-with-python-to-test-out-ipython-notebook...">Try tinkering around with Python to test out IPython Notebook...</h2>
+<p>As you work through these notebooks, it's assumed that you'll be executing each cell in turn, because some cells will define variables that cells below them will use. Here's a very simple example to illustrate how this all works...</p>
 </div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Note that you'll need to install a third-party package called <code>python-linkedin</code> to use the code in this notebook. Installing a package directly from a GitHub repository is easy with pip in the terminal:</p>
-<code>
-pip install python-linkedin
-</code>
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example-1.-Using-LinkedIn-OAuth-credentials-to-receive-an-access-token-suitable-for-development-and-accessing-your-own-data">Example 1. Using LinkedIn OAuth credentials to receive an access token suitable for development and accessing your own data<a class="anchor-link" href="#Example-1.-Using-LinkedIn-OAuth-credentials-to-receive-an-access-token-suitable-for-development-and-accessing-your-own-data">&#182;</a></h2>
-</div>
-
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
 In&nbsp;[]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">linkedin</span> <span class="kn">import</span> <span class="n">linkedin</span> <span class="c"># pip install python-linkedin</span>
+<div class="highlight"><pre><span class="c"># Execute this cell to define this variable</span>
+<span class="c"># Either click Cell =&gt; Run from the menu or type</span>
+<span class="c"># ctrl-Enter to execute. See the Help menu for lots</span>
+<span class="c"># of useful tips. Help =&gt; IPython Help and</span>
+<span class="c"># Help =&gt; Keyboard Shortcuts are especially</span>
+<span class="c"># useful.</span>
 
-<span class="c"># Define CONSUMER_KEY, CONSUMER_SECRET,  </span>
-<span class="c"># USER_TOKEN, and USER_SECRET from the credentials </span>
-<span class="c"># provided in your LinkedIn application</span>
-
-<span class="n">CONSUMER_KEY</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
-<span class="n">CONSUMER_SECRET</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
-<span class="n">USER_TOKEN</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
-<span class="n">USER_SECRET</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
-
-<span class="n">RETURN_URL</span> <span class="o">=</span> <span class="s">&#39;&#39;</span> <span class="c"># Not required for developer authentication</span>
-
-<span class="c"># Instantiate the developer authentication class</span>
-
-<span class="n">auth</span> <span class="o">=</span> <span class="n">linkedin</span><span class="o">.</span><span class="n">LinkedInDeveloperAuthentication</span><span class="p">(</span><span class="n">CONSUMER_KEY</span><span class="p">,</span> <span class="n">CONSUMER_SECRET</span><span class="p">,</span> 
-                                <span class="n">USER_TOKEN</span><span class="p">,</span> <span class="n">USER_SECRET</span><span class="p">,</span> 
-                                <span class="n">RETURN_URL</span><span class="p">,</span> 
-                                <span class="n">permissions</span><span class="o">=</span><span class="n">linkedin</span><span class="o">.</span><span class="n">PERMISSIONS</span><span class="o">.</span><span class="n">enums</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
-
-<span class="c"># Pass it in to the app...</span>
-
-<span class="n">app</span> <span class="o">=</span> <span class="n">linkedin</span><span class="o">.</span><span class="n">LinkedInApplication</span><span class="p">(</span><span class="n">auth</span><span class="p">)</span>
-
-<span class="c"># Use the app...</span>
-
-<span class="n">app</span><span class="o">.</span><span class="n">get_profile</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example-2.-Retrieving-your-LinkedIn-connections-and-storing-them-to-disk">Example 2. Retrieving your LinkedIn connections and storing them to disk<a class="anchor-link" href="#Example-2.-Retrieving-your-LinkedIn-connections-and-storing-them-to-disk">&#182;</a></h2>
-</div>
-
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">json</span>
-
-<span class="n">connections</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">get_connections</span><span class="p">()</span>
-
-<span class="n">connections_data</span> <span class="o">=</span> <span class="s">&#39;resources/ch03-linkedin/linkedin_connections.json&#39;</span>
-
-<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">conections_data</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span>
-<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">connections</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-<span class="c"># You can reuse the data without using the API later like this...</span>
-<span class="c"># connections = json.loads(open(connections_data).read())</span>
+<span class="n">message</span> <span class="o">=</span> <span class="s">&quot;I want to mine the social web!&quot;</span>
 </pre></div>
 
 </div>
@@ -1789,9 +1731,52 @@ In&nbsp;[]:
 In&nbsp;[]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="c"># Execute this cell if you need to reload data...</span>
-<span class="kn">import</span> <span class="nn">json</span>
-<span class="n">connections</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;resources/ch03-linkedin/linkedin_connections.json&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<div class="highlight"><pre><span class="c"># The variable &#39;message is defined here. Execute this cell to see for yourself</span>
+<span class="k">print</span> <span class="n">message</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="c"># The variable &#39;message&#39; is defined here, but we&#39;ll delete it</span>
+<span class="c"># after displaying it to illustrate an important point...</span>
+<span class="k">print</span> <span class="n">message</span>
+<span class="k">del</span> <span class="n">message</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="c"># The variable message is no longer defined in this cell or two cells </span>
+<span class="c"># above anymore. Try executing this cell or that cell to see for yourself.</span>
+<span class="k">print</span> <span class="n">message</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="c"># Try typing in some code of your own!</span>
 </pre></div>
 
 </div>
@@ -1799,28 +1784,39 @@ In&nbsp;[]:
 
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Note</strong>: Should you need to revoke account access from your application or any other OAuth application, you can do so at [https://www.linkedin.com/secure/settings?userAgree=&amp;goback=%2Enas_<em>1_</em>1_<em>1](https://www.linkedin.com/secure/settings?userAgree=&amp;goback=%2Enas<em><em>1_</em>1</em></em>1)</p>
+<h2 id="python-idioms">Python Idioms</h2>
+<p>This section of the notebook introduces a few Python idioms that are used widely throughout the book that you might find very helpful to review. This section is not intended to be a Python tutorial. It is intended to highlight some of the fundamental aspects of Python that will help you to follow along with the source code, assuming you have a general programming background. Sections 1 through 8 of the <a href="http://docs.python.org/2/tutorial/">Python Tutorial</a> are what you should spend a couple of hours working through if you are looking for a gentle introduction Python as a programming language.</p>
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example-3.-Pretty-printing-your-LinkedIn-connections'-data">Example 3. Pretty-printing your LinkedIn connections' data<a class="anchor-link" href="#Example-3.-Pretty-printing-your-LinkedIn-connections'-data">&#182;</a></h2>
+<h3 id="python-data-structures-are-like-json">Python Data Structures are like JSON</h3>
+<p>If you come from a web development background, a good starting point for understanding Python data structures is to start with <a href="http://json.org">JSON</a> as a reference point. If you don't have a web development background, think of JSON as a simple but expressive specification for representing arbitrary data structures using strings, numbers, lists, and dictionaries. The following cell introduces some data structures. Execute the following cell that illustrates these fundamental data types to follow along.</p>
 </div>
-
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
 In&nbsp;[]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">prettytable</span> <span class="kn">import</span> <span class="n">PrettyTable</span> <span class="c"># pip install prettytable</span>
+<div class="highlight"><pre><span class="n">an_integer</span> <span class="o">=</span> <span class="mi">23</span>
+<span class="k">print</span> <span class="n">an_integer</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">an_integer</span><span class="p">)</span>
+<span class="k">print</span>
 
-<span class="n">pt</span> <span class="o">=</span> <span class="n">PrettyTable</span><span class="p">(</span><span class="n">field_names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;Name&#39;</span><span class="p">,</span> <span class="s">&#39;Location&#39;</span><span class="p">])</span>
-<span class="n">pt</span><span class="o">.</span><span class="n">align</span> <span class="o">=</span> <span class="s">&#39;l&#39;</span>
+<span class="n">a_float</span> <span class="o">=</span> <span class="mf">23.0</span>
+<span class="k">print</span> <span class="n">a_float</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">a_float</span><span class="p">)</span>
+<span class="k">print</span>
 
-<span class="p">[</span> <span class="n">pt</span><span class="o">.</span><span class="n">add_row</span><span class="p">((</span><span class="n">c</span><span class="p">[</span><span class="s">&#39;firstName&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">c</span><span class="p">[</span><span class="s">&#39;lastName&#39;</span><span class="p">],</span> <span class="n">c</span><span class="p">[</span><span class="s">&#39;location&#39;</span><span class="p">][</span><span class="s">&#39;name&#39;</span><span class="p">]))</span> 
-  <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">connections</span><span class="p">[</span><span class="s">&#39;values&#39;</span><span class="p">]</span>
-      <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s">&#39;location&#39;</span><span class="p">)]</span>
+<span class="n">a_string</span> <span class="o">=</span> <span class="s">&quot;string&quot;</span>
+<span class="k">print</span> <span class="n">a_string</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">a_string</span><span class="p">)</span>
+<span class="k">print</span>
 
-<span class="k">print</span> <span class="n">pt</span>
+<span class="n">a_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="k">print</span> <span class="n">a_list</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">a_list</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">a_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c"># access the first item</span>
+<span class="k">print</span>
+
+<span class="n">a_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;a&#39;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#39;b&#39;</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&#39;c&#39;</span> <span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="k">print</span> <span class="n">a_dict</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">a_dict</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">a_dict</span><span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">]</span> <span class="c"># access the item with key &#39;a&#39;</span>
 </pre></div>
 
 </div>
@@ -1828,476 +1824,38 @@ In&nbsp;[]:
 
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example-4.-Displaying-job-position-history-for-your-profile-and-a-connection's-profile">Example 4. Displaying job position history for your profile and a connection's profile<a class="anchor-link" href="#Example-4.-Displaying-job-position-history-for-your-profile-and-a-connection's-profile">&#182;</a></h2>
+<p>Assuming you've followed along with these fundamental data types, consider the possiblities for arbitrarily composing them to represent more complex structures:</p>
 </div>
-
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
 In&nbsp;[]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">json</span>
+<div class="highlight"><pre><span class="n">contacts</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s">&#39;name&#39;</span>      <span class="p">:</span> <span class="s">&#39;Bob&#39;</span><span class="p">,</span>
+      <span class="s">&#39;age&#39;</span>       <span class="p">:</span> <span class="mi">23</span><span class="p">,</span>
+      <span class="s">&#39;married&#39;</span>   <span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+      <span class="s">&#39;height&#39;</span>    <span class="p">:</span> <span class="mf">1.8</span><span class="p">,</span> <span class="c"># meters</span>
+      <span class="s">&#39;languages&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s">&#39;English&#39;</span><span class="p">,</span> <span class="s">&#39;Spanish&#39;</span><span class="p">],</span>
+      <span class="s">&#39;address&#39;</span>   <span class="p">:</span> <span class="s">&#39;123 Maple St.&#39;</span><span class="p">,</span>
+      <span class="s">&#39;phone&#39;</span>     <span class="p">:</span> <span class="s">&#39;(555) 555-5555&#39;</span>
+    <span class="p">},</span>
+    
+    <span class="p">{</span><span class="s">&#39;name&#39;</span>      <span class="p">:</span> <span class="s">&#39;Sally&#39;</span><span class="p">,</span>
+     <span class="s">&#39;age&#39;</span>       <span class="p">:</span> <span class="mi">26</span><span class="p">,</span>
+     <span class="s">&#39;married&#39;</span>   <span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+     <span class="s">&#39;height&#39;</span>    <span class="p">:</span> <span class="mf">1.5</span><span class="p">,</span> <span class="c"># meters</span>
+     <span class="s">&#39;languages&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s">&#39;English&#39;</span><span class="p">],</span>
+     <span class="s">&#39;address&#39;</span>   <span class="p">:</span> <span class="s">&#39;456 Elm St.&#39;</span><span class="p">,</span>
+     <span class="s">&#39;phone&#39;</span>     <span class="p">:</span> <span class="s">&#39;(555) 555-1234&#39;</span>
+    <span class="p">}</span>              
+<span class="p">]</span>
 
-<span class="c"># See http://developer.linkedin.com/documents/profile-fields#fullprofile</span>
-<span class="c"># for details on additional field selectors that can be passed in for</span>
-<span class="c"># retrieving additional profile information.</span>
-
-<span class="c"># Display your own positions...</span>
-
-<span class="n">my_positions</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">get_profile</span><span class="p">(</span><span class="n">selectors</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;positions&#39;</span><span class="p">])</span>
-<span class="k">print</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">my_positions</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="c"># Display positions for someone in your network...</span>
-
-<span class="c"># Get an id for a connection. We&#39;ll just pick the first one.</span>
-<span class="n">connection_id</span> <span class="o">=</span> <span class="n">connections</span><span class="p">[</span><span class="s">&#39;values&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s">&#39;id&#39;</span><span class="p">]</span>
-<span class="n">connection_positions</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">get_profile</span><span class="p">(</span><span class="n">member_id</span><span class="o">=</span><span class="n">connection_id</span><span class="p">,</span> 
-                                       <span class="n">selectors</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;positions&#39;</span><span class="p">])</span>
-<span class="k">print</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">connection_positions</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example-5.-Using-field-selector-syntax-to-request-additional-details-for-APIs">Example 5. Using field selector syntax to request additional details for APIs<a class="anchor-link" href="#Example-5.-Using-field-selector-syntax-to-request-additional-details-for-APIs">&#182;</a></h2>
-</div>
-
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="c"># See http://developer.linkedin.com/documents/understanding-field-selectors</span>
-<span class="c"># for more information on the field selector syntax</span>
-
-<span class="n">my_positions</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">get_profile</span><span class="p">(</span><span class="n">selectors</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;positions:(company:(name,industry,id))&#39;</span><span class="p">])</span>
-<span class="k">print</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">my_positions</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example-6.-Simple-normalization-of-company-suffixes-from-address-book-data">Example 6. Simple normalization of company suffixes from address book data<a class="anchor-link" href="#Example-6.-Simple-normalization-of-company-suffixes-from-address-book-data">&#182;</a></h2>
-</div>
-
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">csv</span>
-<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
-<span class="kn">from</span> <span class="nn">operator</span> <span class="kn">import</span> <span class="n">itemgetter</span>
-<span class="kn">from</span> <span class="nn">prettytable</span> <span class="kn">import</span> <span class="n">PrettyTable</span>
-
-<span class="c"># XXX: Place your &quot;Outlook CSV&quot; formatted file of connections from </span>
-<span class="c"># http://www.linkedin.com/people/export-settings at the following</span>
-<span class="c"># location: resources/ch03-linkedin/my_connections.csv</span>
-
-<span class="n">CSV_FILE</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s">&quot;resources&quot;</span><span class="p">,</span> <span class="s">&quot;ch03-linkedin&quot;</span><span class="p">,</span> <span class="s">&#39;my_connections.csv&#39;</span><span class="p">)</span>
-
-<span class="c"># Define a set of transforms that converts the first item</span>
-<span class="c"># to the second item. Here, we&#39;re simply handling some</span>
-<span class="c"># commonly known abbreviations, stripping off common suffixes, </span>
-<span class="c"># etc.</span>
-
-<span class="n">transforms</span> <span class="o">=</span> <span class="p">[(</span><span class="s">&#39;, Inc.&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;, Inc&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;, LLC&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;, LLP&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">),</span>
-               <span class="p">(</span><span class="s">&#39; LLC&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39; Inc.&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39; Inc&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">)]</span>
-
-<span class="n">csvReader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">CSV_FILE</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s">&#39;,&#39;</span><span class="p">,</span> <span class="n">quotechar</span><span class="o">=</span><span class="s">&#39;&quot;&#39;</span><span class="p">)</span>
-<span class="n">contacts</span> <span class="o">=</span> <span class="p">[</span><span class="n">row</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">csvReader</span><span class="p">]</span>
-<span class="n">companies</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="s">&#39;Company&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">contacts</span> <span class="k">if</span> <span class="n">c</span><span class="p">[</span><span class="s">&#39;Company&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">!=</span> <span class="s">&#39;&#39;</span><span class="p">]</span>
-
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">companies</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">transform</span> <span class="ow">in</span> <span class="n">transforms</span><span class="p">:</span>
-        <span class="n">companies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">companies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="o">*</span><span class="n">transform</span><span class="p">)</span>
-
-<span class="n">pt</span> <span class="o">=</span> <span class="n">PrettyTable</span><span class="p">(</span><span class="n">field_names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;Company&#39;</span><span class="p">,</span> <span class="s">&#39;Freq&#39;</span><span class="p">])</span>
-<span class="n">pt</span><span class="o">.</span><span class="n">align</span> <span class="o">=</span> <span class="s">&#39;l&#39;</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">companies</span><span class="p">)</span>
-<span class="p">[</span><span class="n">pt</span><span class="o">.</span><span class="n">add_row</span><span class="p">([</span><span class="n">company</span><span class="p">,</span> <span class="n">freq</span><span class="p">])</span> 
- <span class="k">for</span> <span class="p">(</span><span class="n">company</span><span class="p">,</span> <span class="n">freq</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="n">itemgetter</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> 
-     <span class="k">if</span> <span class="n">freq</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">]</span>
-<span class="k">print</span> <span class="n">pt</span>
-</pre></div>
-
-</div>
-</div>
-
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example-7.-Standardizing-common-job-titles-and-computing-their-frequencies">Example 7. Standardizing common job titles and computing their frequencies<a class="anchor-link" href="#Example-7.-Standardizing-common-job-titles-and-computing-their-frequencies">&#182;</a></h2>
-</div>
-
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">csv</span>
-<span class="kn">from</span> <span class="nn">operator</span> <span class="kn">import</span> <span class="n">itemgetter</span>
-<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
-<span class="kn">from</span> <span class="nn">prettytable</span> <span class="kn">import</span> <span class="n">PrettyTable</span>
-
-<span class="c"># XXX: Place your &quot;Outlook CSV&quot; formatted file of connections from </span>
-<span class="c"># http://www.linkedin.com/people/export-settings at the following</span>
-<span class="c"># location: resources/ch03-linkedin/my_connections.csv</span>
-
-<span class="n">CSV_FILE</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s">&quot;resources&quot;</span><span class="p">,</span> <span class="s">&quot;ch03-linkedin&quot;</span><span class="p">,</span> <span class="s">&#39;my_connections.csv&#39;</span><span class="p">)</span>
-
-<span class="n">transforms</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">(</span><span class="s">&#39;Sr.&#39;</span><span class="p">,</span> <span class="s">&#39;Senior&#39;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s">&#39;Sr&#39;</span><span class="p">,</span> <span class="s">&#39;Senior&#39;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s">&#39;Jr.&#39;</span><span class="p">,</span> <span class="s">&#39;Junior&#39;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s">&#39;Jr&#39;</span><span class="p">,</span> <span class="s">&#39;Junior&#39;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s">&#39;CEO&#39;</span><span class="p">,</span> <span class="s">&#39;Chief Executive Officer&#39;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s">&#39;COO&#39;</span><span class="p">,</span> <span class="s">&#39;Chief Operating Officer&#39;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s">&#39;CTO&#39;</span><span class="p">,</span> <span class="s">&#39;Chief Technology Officer&#39;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s">&#39;CFO&#39;</span><span class="p">,</span> <span class="s">&#39;Chief Finance Officer&#39;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s">&#39;VP&#39;</span><span class="p">,</span> <span class="s">&#39;Vice President&#39;</span><span class="p">),</span>
-    <span class="p">]</span>
-
-<span class="n">csvReader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">CSV_FILE</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s">&#39;,&#39;</span><span class="p">,</span> <span class="n">quotechar</span><span class="o">=</span><span class="s">&#39;&quot;&#39;</span><span class="p">)</span>
-<span class="n">contacts</span> <span class="o">=</span> <span class="p">[</span><span class="n">row</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">csvReader</span><span class="p">]</span>
-
-<span class="c"># Read in a list of titles and split apart</span>
-<span class="c"># any combined titles like &quot;President/CEO.&quot;</span>
-<span class="c"># Other variations could be handled as well, such</span>
-<span class="c"># as &quot;President &amp; CEO&quot;, &quot;President and CEO&quot;, etc.</span>
-
-<span class="n">titles</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">contact</span> <span class="ow">in</span> <span class="n">contacts</span><span class="p">:</span>
-    <span class="n">titles</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">t</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">contact</span><span class="p">[</span><span class="s">&#39;Job Title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">)</span>
-                  <span class="k">if</span> <span class="n">contact</span><span class="p">[</span><span class="s">&#39;Job Title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">!=</span> <span class="s">&#39;&#39;</span><span class="p">])</span>
-
-<span class="c"># Replace common/known abbreviations</span>
-
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">titles</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">transform</span> <span class="ow">in</span> <span class="n">transforms</span><span class="p">:</span>
-        <span class="n">titles</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">titles</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="o">*</span><span class="n">transform</span><span class="p">)</span>
-
-<span class="c"># Print out a table of titles sorted by frequency</span>
-
-<span class="n">pt</span> <span class="o">=</span> <span class="n">PrettyTable</span><span class="p">(</span><span class="n">field_names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;Title&#39;</span><span class="p">,</span> <span class="s">&#39;Freq&#39;</span><span class="p">])</span>
-<span class="n">pt</span><span class="o">.</span><span class="n">align</span> <span class="o">=</span> <span class="s">&#39;l&#39;</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">titles</span><span class="p">)</span>
-<span class="p">[</span><span class="n">pt</span><span class="o">.</span><span class="n">add_row</span><span class="p">([</span><span class="n">title</span><span class="p">,</span> <span class="n">freq</span><span class="p">])</span> 
- <span class="k">for</span> <span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">freq</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="n">itemgetter</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> 
-     <span class="k">if</span> <span class="n">freq</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">]</span>
-<span class="k">print</span> <span class="n">pt</span>
-
-<span class="c"># Print out a table of tokens sorted by frequency</span>
-
-<span class="n">tokens</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">titles</span><span class="p">:</span>
-    <span class="n">tokens</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">t</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s">&#39;,&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">title</span><span class="o">.</span><span class="n">split</span><span class="p">()])</span>
-<span class="n">pt</span> <span class="o">=</span> <span class="n">PrettyTable</span><span class="p">(</span><span class="n">field_names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;Token&#39;</span><span class="p">,</span> <span class="s">&#39;Freq&#39;</span><span class="p">])</span>
-<span class="n">pt</span><span class="o">.</span><span class="n">align</span> <span class="o">=</span> <span class="s">&#39;l&#39;</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
-<span class="p">[</span><span class="n">pt</span><span class="o">.</span><span class="n">add_row</span><span class="p">([</span><span class="n">token</span><span class="p">,</span> <span class="n">freq</span><span class="p">])</span> 
- <span class="k">for</span> <span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">freq</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="n">itemgetter</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> 
-     <span class="k">if</span> <span class="n">freq</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">]</span>
-<span class="k">print</span> <span class="n">pt</span>
-</pre></div>
-
-</div>
-</div>
-
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example-8.-Geocoding-locations-with-Microsoft-Bing">Example 8. Geocoding locations with Microsoft Bing<a class="anchor-link" href="#Example-8.-Geocoding-locations-with-Microsoft-Bing">&#182;</a></h2>
-</div>
-
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">geopy</span> <span class="kn">import</span> <span class="n">geocoders</span>
-
-<span class="n">GEO_APP_KEY</span> <span class="o">=</span> <span class="s">&#39;&#39;</span> <span class="c"># XXX: Get this from https://www.bingmapsportal.com</span>
-<span class="n">g</span> <span class="o">=</span> <span class="n">geocoders</span><span class="o">.</span><span class="n">Bing</span><span class="p">(</span><span class="n">GEO_APP_KEY</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">g</span><span class="o">.</span><span class="n">geocode</span><span class="p">(</span><span class="s">&quot;Nashville&quot;</span><span class="p">,</span> <span class="n">exactly_one</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example-9.-Geocoding-locations-of-LinkedIn-connections-with-Microsoft-Bing">Example 9. Geocoding locations of LinkedIn connections with Microsoft Bing<a class="anchor-link" href="#Example-9.-Geocoding-locations-of-LinkedIn-connections-with-Microsoft-Bing">&#182;</a></h2>
-</div>
-
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">geopy</span> <span class="kn">import</span> <span class="n">geocoders</span>
-
-<span class="n">GEO_APP_KEY</span> <span class="o">=</span> <span class="s">&#39;&#39;</span> <span class="c"># XXX: Get this from https://www.bingmapsportal.com</span>
-<span class="n">g</span> <span class="o">=</span> <span class="n">geocoders</span><span class="o">.</span><span class="n">Bing</span><span class="p">(</span><span class="n">GEO_APP_KEY</span><span class="p">)</span>
-
-<span class="n">transforms</span> <span class="o">=</span> <span class="p">[(</span><span class="s">&#39;Greater &#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39; Area&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">)]</span>
-
-<span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">connections</span><span class="p">[</span><span class="s">&#39;values&#39;</span><span class="p">]:</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">c</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s">&#39;location&#39;</span><span class="p">):</span> <span class="k">continue</span>
-        
-    <span class="n">transformed_location</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="s">&#39;location&#39;</span><span class="p">][</span><span class="s">&#39;name&#39;</span><span class="p">]</span>
-    <span class="k">for</span> <span class="n">transform</span> <span class="ow">in</span> <span class="n">transforms</span><span class="p">:</span>
-        <span class="n">transformed_location</span> <span class="o">=</span> <span class="n">transformed_location</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="o">*</span><span class="n">transform</span><span class="p">)</span>
-    <span class="n">geo</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">geocode</span><span class="p">(</span><span class="n">transformed_location</span><span class="p">,</span> <span class="n">exactly_one</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">geo</span> <span class="o">==</span> <span class="p">[]:</span> <span class="k">continue</span>
-    <span class="n">results</span><span class="o">.</span><span class="n">update</span><span class="p">({</span> <span class="n">c</span><span class="p">[</span><span class="s">&#39;location&#39;</span><span class="p">][</span><span class="s">&#39;name&#39;</span><span class="p">]</span> <span class="p">:</span> <span class="n">geo</span> <span class="p">})</span>
-    
-<span class="k">print</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example-10.-Parsing-out-states-from-Bing-geocoder-results-using-a-regular-expression">Example 10. Parsing out states from Bing geocoder results using a regular expression<a class="anchor-link" href="#Example-10.-Parsing-out-states-from-Bing-geocoder-results-using-a-regular-expression">&#182;</a></h2>
-</div>
-
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">re</span>
-
-<span class="c"># Most results contain a response that can be parsed by</span>
-<span class="c"># picking out the first two consecutive upper case letters </span>
-<span class="c"># as a clue for the state</span>
-<span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s">&#39;.*([A-Z]{2}).*&#39;</span><span class="p">)</span>
-    
-<span class="k">def</span> <span class="nf">parseStateFromBingResult</span><span class="p">(</span><span class="n">r</span><span class="p">):</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-    <span class="k">if</span> <span class="n">result</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span> 
-        <span class="k">print</span> <span class="s">&quot;Unresolved match:&quot;</span><span class="p">,</span> <span class="n">r</span>
-        <span class="k">return</span> <span class="s">&quot;???&quot;</span>
-    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">groups</span><span class="p">())</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">print</span> <span class="n">result</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s">&quot;Unresolved match:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
-        <span class="k">return</span> <span class="s">&quot;???&quot;</span>
-
-    
-<span class="n">transforms</span> <span class="o">=</span> <span class="p">[(</span><span class="s">&#39;Greater &#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39; Area&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">)]</span>
-
-<span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">connections</span><span class="p">[</span><span class="s">&#39;values&#39;</span><span class="p">]:</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">c</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s">&#39;location&#39;</span><span class="p">):</span> <span class="k">continue</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">c</span><span class="p">[</span><span class="s">&#39;location&#39;</span><span class="p">][</span><span class="s">&#39;country&#39;</span><span class="p">][</span><span class="s">&#39;code&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;us&#39;</span><span class="p">:</span> <span class="k">continue</span>
-        
-    <span class="n">transformed_location</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="s">&#39;location&#39;</span><span class="p">][</span><span class="s">&#39;name&#39;</span><span class="p">]</span>
-    <span class="k">for</span> <span class="n">transform</span> <span class="ow">in</span> <span class="n">transforms</span><span class="p">:</span>
-        <span class="n">transformed_location</span> <span class="o">=</span> <span class="n">transformed_location</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="o">*</span><span class="n">transform</span><span class="p">)</span>
-    
-    <span class="n">geo</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">geocode</span><span class="p">(</span><span class="n">transformed_location</span><span class="p">,</span> <span class="n">exactly_one</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">geo</span> <span class="o">==</span> <span class="p">[]:</span> <span class="k">continue</span>
-    <span class="n">parsed_state</span> <span class="o">=</span> <span class="n">parseStateFromBingResult</span><span class="p">(</span><span class="n">geo</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">parsed_state</span> <span class="o">!=</span> <span class="s">&quot;???&quot;</span><span class="p">:</span>
-        <span class="n">results</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">c</span><span class="p">[</span><span class="s">&#39;location&#39;</span><span class="p">][</span><span class="s">&#39;name&#39;</span><span class="p">]</span> <span class="p">:</span> <span class="n">parsed_state</span><span class="p">})</span>
-    
-<span class="k">print</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Here's how to power a Cartogram visualization with the data from the &quot;results&quot; variable</strong></p>
-</div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
-<span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">display</span>
-
-<span class="c"># Load in a data structure mapping state names to codes.</span>
-<span class="c"># e.g. West Virginia is WV</span>
-<span class="n">codes</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;resources/ch03-linkedin/viz/states-codes.json&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-
-<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">([</span><span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span>
-<span class="n">states_freqs</span> <span class="o">=</span> <span class="p">{</span> <span class="n">codes</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="n">c</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="p">}</span>
-
-<span class="c"># Lace in all of the other states and provide a minimum value for each of them</span>
-<span class="n">states_freqs</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">v</span> <span class="p">:</span> <span class="mf">0.5</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">codes</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">states_freqs</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="p">})</span>
-
-<span class="c"># Write output to file</span>
-<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;resources/ch03-linkedin/viz/states-freqs.json&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span>
-<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">states_freqs</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-<span class="c"># IPython Notebook can serve files and display them into</span>
-<span class="c"># inline frames. Prepend the path with the &#39;files&#39; prefix</span>
-
-<span class="n">display</span><span class="p">(</span><span class="n">IFrame</span><span class="p">(</span><span class="s">&#39;files/resources/ch03-linkedin/viz/cartogram.html&#39;</span><span class="p">,</span> <span class="s">&#39;100%&#39;</span><span class="p">,</span> <span class="s">&#39;600px&#39;</span><span class="p">))</span>
-</pre></div>
-
-</div>
-</div>
-
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example-11.-Using-NLTK-to-compute-bigrams">Example 11. Using NLTK to compute bigrams<a class="anchor-link" href="#Example-11.-Using-NLTK-to-compute-bigrams">&#182;</a></h2>
-</div>
-
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="n">ceo_bigrams</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">bigrams</span><span class="p">(</span><span class="s">&quot;Chief Executive Officer&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(),</span> <span class="n">pad_right</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> 
-                                                              <span class="n">pad_left</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">cto_bigrams</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">bigrams</span><span class="p">(</span><span class="s">&quot;Chief Technology Officer&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(),</span> <span class="n">pad_right</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> 
-                                                               <span class="n">pad_left</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-
-<span class="k">print</span> <span class="n">ceo_bigrams</span>
-<span class="k">print</span> <span class="n">cto_bigrams</span>
-<span class="k">print</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">ceo_bigrams</span><span class="p">)</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">cto_bigrams</span><span class="p">)))</span>
-</pre></div>
-
-</div>
-</div>
-
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example-12.-Clustering-job-titles-using-a-greedy-heuristic">Example 12. Clustering job titles using a greedy heuristic<a class="anchor-link" href="#Example-12.-Clustering-job-titles-using-a-greedy-heuristic">&#182;</a></h2>
-</div>
-
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">csv</span>
-<span class="kn">from</span> <span class="nn">nltk.metrics.distance</span> <span class="kn">import</span> <span class="n">jaccard_distance</span>
-
-<span class="c"># XXX: Place your &quot;Outlook CSV&quot; formatted file of connections from </span>
-<span class="c"># http://www.linkedin.com/people/export-settings at the following</span>
-<span class="c"># location: resources/ch03-linkedin/my_connections.csv</span>
-
-<span class="n">CSV_FILE</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s">&quot;resources&quot;</span><span class="p">,</span> <span class="s">&quot;ch03-linkedin&quot;</span><span class="p">,</span> <span class="s">&#39;my_connections.csv&#39;</span><span class="p">)</span>
-
-<span class="c"># Tweak this distance threshold and try different distance calculations </span>
-<span class="c"># during experimentation</span>
-<span class="n">DISTANCE_THRESHOLD</span> <span class="o">=</span> <span class="mf">0.5</span>
-<span class="n">DISTANCE</span> <span class="o">=</span> <span class="n">jaccard_distance</span>
-
-<span class="k">def</span> <span class="nf">cluster_contacts_by_title</span><span class="p">(</span><span class="n">csv_file</span><span class="p">):</span>
-
-    <span class="n">transforms</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="p">(</span><span class="s">&#39;Sr.&#39;</span><span class="p">,</span> <span class="s">&#39;Senior&#39;</span><span class="p">),</span>
-        <span class="p">(</span><span class="s">&#39;Sr&#39;</span><span class="p">,</span> <span class="s">&#39;Senior&#39;</span><span class="p">),</span>
-        <span class="p">(</span><span class="s">&#39;Jr.&#39;</span><span class="p">,</span> <span class="s">&#39;Junior&#39;</span><span class="p">),</span>
-        <span class="p">(</span><span class="s">&#39;Jr&#39;</span><span class="p">,</span> <span class="s">&#39;Junior&#39;</span><span class="p">),</span>
-        <span class="p">(</span><span class="s">&#39;CEO&#39;</span><span class="p">,</span> <span class="s">&#39;Chief Executive Officer&#39;</span><span class="p">),</span>
-        <span class="p">(</span><span class="s">&#39;COO&#39;</span><span class="p">,</span> <span class="s">&#39;Chief Operating Officer&#39;</span><span class="p">),</span>
-        <span class="p">(</span><span class="s">&#39;CTO&#39;</span><span class="p">,</span> <span class="s">&#39;Chief Technology Officer&#39;</span><span class="p">),</span>
-        <span class="p">(</span><span class="s">&#39;CFO&#39;</span><span class="p">,</span> <span class="s">&#39;Chief Finance Officer&#39;</span><span class="p">),</span>
-        <span class="p">(</span><span class="s">&#39;VP&#39;</span><span class="p">,</span> <span class="s">&#39;Vice President&#39;</span><span class="p">),</span>
-        <span class="p">]</span>
-
-    <span class="n">separators</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;/&#39;</span><span class="p">,</span> <span class="s">&#39;and&#39;</span><span class="p">,</span> <span class="s">&#39;&amp;&#39;</span><span class="p">]</span>
-
-    <span class="n">csvReader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">csv_file</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s">&#39;,&#39;</span><span class="p">,</span> <span class="n">quotechar</span><span class="o">=</span><span class="s">&#39;&quot;&#39;</span><span class="p">)</span>
-    <span class="n">contacts</span> <span class="o">=</span> <span class="p">[</span><span class="n">row</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">csvReader</span><span class="p">]</span>
-
-    <span class="c"># Normalize and/or replace known abbreviations</span>
-    <span class="c"># and build up a list of common titles.</span>
-
-    <span class="n">all_titles</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">contacts</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">contacts</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s">&#39;Job Title&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;&#39;</span><span class="p">:</span>
-            <span class="n">contacts</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s">&#39;Job Titles&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;&#39;</span><span class="p">]</span>
-            <span class="k">continue</span>
-        <span class="n">titles</span> <span class="o">=</span> <span class="p">[</span><span class="n">contacts</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s">&#39;Job Title&#39;</span><span class="p">]]</span>
-        <span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">titles</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">separator</span> <span class="ow">in</span> <span class="n">separators</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">title</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">separator</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
-                    <span class="n">titles</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
-                    <span class="n">titles</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">title</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">title</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">separator</span><span class="p">)</span>
-                                  <span class="k">if</span> <span class="n">title</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">!=</span> <span class="s">&#39;&#39;</span><span class="p">])</span>
-
-        <span class="k">for</span> <span class="n">transform</span> <span class="ow">in</span> <span class="n">transforms</span><span class="p">:</span>
-            <span class="n">titles</span> <span class="o">=</span> <span class="p">[</span><span class="n">title</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="o">*</span><span class="n">transform</span><span class="p">)</span> <span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">titles</span><span class="p">]</span>
-        <span class="n">contacts</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s">&#39;Job Titles&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">titles</span>
-        <span class="n">all_titles</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">titles</span><span class="p">)</span>
-
-    <span class="n">all_titles</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">all_titles</span><span class="p">))</span>
-
-    <span class="n">clusters</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">for</span> <span class="n">title1</span> <span class="ow">in</span> <span class="n">all_titles</span><span class="p">:</span>
-        <span class="n">clusters</span><span class="p">[</span><span class="n">title1</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">title2</span> <span class="ow">in</span> <span class="n">all_titles</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">title2</span> <span class="ow">in</span> <span class="n">clusters</span><span class="p">[</span><span class="n">title1</span><span class="p">]</span> <span class="ow">or</span> <span class="n">clusters</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="n">title2</span><span class="p">)</span> <span class="ow">and</span> <span class="n">title1</span> \
-                <span class="ow">in</span> <span class="n">clusters</span><span class="p">[</span><span class="n">title2</span><span class="p">]:</span>
-                <span class="k">continue</span>
-            <span class="n">distance</span> <span class="o">=</span> <span class="n">DISTANCE</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">title1</span><span class="o">.</span><span class="n">split</span><span class="p">()),</span> <span class="nb">set</span><span class="p">(</span><span class="n">title2</span><span class="o">.</span><span class="n">split</span><span class="p">()))</span>
-
-            <span class="k">if</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="n">DISTANCE_THRESHOLD</span><span class="p">:</span>
-                <span class="n">clusters</span><span class="p">[</span><span class="n">title1</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">title2</span><span class="p">)</span>
-
-    <span class="c"># Flatten out clusters</span>
-
-    <span class="n">clusters</span> <span class="o">=</span> <span class="p">[</span><span class="n">clusters</span><span class="p">[</span><span class="n">title</span><span class="p">]</span> <span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">clusters</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">clusters</span><span class="p">[</span><span class="n">title</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">]</span>
-
-    <span class="c"># Round up contacts who are in these clusters and group them together</span>
-
-    <span class="n">clustered_contacts</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">for</span> <span class="n">cluster</span> <span class="ow">in</span> <span class="n">clusters</span><span class="p">:</span>
-        <span class="n">clustered_contacts</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">cluster</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">contact</span> <span class="ow">in</span> <span class="n">contacts</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">contact</span><span class="p">[</span><span class="s">&#39;Job Titles&#39;</span><span class="p">]:</span>
-                <span class="k">if</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">cluster</span><span class="p">:</span>
-                    <span class="n">clustered_contacts</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">cluster</span><span class="p">)]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">&#39;</span>
-                            <span class="o">%</span> <span class="p">(</span><span class="n">contact</span><span class="p">[</span><span class="s">&#39;First Name&#39;</span><span class="p">],</span> <span class="n">contact</span><span class="p">[</span><span class="s">&#39;Last Name&#39;</span><span class="p">]))</span>
-
-    <span class="k">return</span> <span class="n">clustered_contacts</span>
-
-
-<span class="n">clustered_contacts</span> <span class="o">=</span> <span class="n">cluster_contacts_by_title</span><span class="p">(</span><span class="n">CSV_FILE</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">clustered_contacts</span>
-<span class="k">for</span> <span class="n">titles</span> <span class="ow">in</span> <span class="n">clustered_contacts</span><span class="p">:</span>
-    <span class="n">common_titles_heading</span> <span class="o">=</span> <span class="s">&#39;Common Titles: &#39;</span> <span class="o">+</span> <span class="s">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">titles</span><span class="p">)</span>
-
-    <span class="n">descriptive_terms</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">titles</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
-    <span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">titles</span><span class="p">:</span>
-        <span class="n">descriptive_terms</span><span class="o">.</span><span class="n">intersection_update</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">title</span><span class="o">.</span><span class="n">split</span><span class="p">()))</span>
-    <span class="n">descriptive_terms_heading</span> <span class="o">=</span> <span class="s">&#39;Descriptive Terms: &#39;</span> \
-        <span class="o">+</span> <span class="s">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">descriptive_terms</span><span class="p">)</span>
-    <span class="k">print</span> <span class="n">descriptive_terms_heading</span>
-    <span class="k">print</span> <span class="s">&#39;-&#39;</span> <span class="o">*</span> <span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">descriptive_terms_heading</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">common_titles_heading</span><span class="p">))</span>
-    <span class="k">print</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">clustered_contacts</span><span class="p">[</span><span class="n">titles</span><span class="p">])</span>
+    <span class="k">print</span> <span class="s">&quot;Name:&quot;</span><span class="p">,</span> <span class="n">contact</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]</span>
+    <span class="k">print</span> <span class="s">&quot;Married:&quot;</span><span class="p">,</span> <span class="n">contact</span><span class="p">[</span><span class="s">&#39;married&#39;</span><span class="p">]</span>
     <span class="k">print</span>
 </pre></div>
 
@@ -2306,127 +1864,7 @@ In&nbsp;[]:
 
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Incorporating random sampling can improve performance of the nested loops in Example 12</strong></p>
-</div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">csv</span>
-<span class="kn">import</span> <span class="nn">random</span>
-<span class="kn">from</span> <span class="nn">nltk.metrics.distance</span> <span class="kn">import</span> <span class="n">jaccard_distance</span>
-
-<span class="c"># XXX: Place your &quot;Outlook CSV&quot; formatted file of connections from </span>
-<span class="c"># http://www.linkedin.com/people/export-settings at the following</span>
-<span class="c"># location: resources/ch03-linkedin/my_connections.csv</span>
-
-<span class="n">CSV_FILE</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s">&quot;resources&quot;</span><span class="p">,</span> <span class="s">&quot;ch03-linkedin&quot;</span><span class="p">,</span> <span class="s">&#39;my_connections.csv&#39;</span><span class="p">)</span>
-
-<span class="c"># Tweak this distance threshold and try different distance calculations </span>
-<span class="c"># during experimentation</span>
-<span class="n">DISTANCE_THRESHOLD</span> <span class="o">=</span> <span class="mf">0.5</span>
-<span class="n">DISTANCE</span> <span class="o">=</span> <span class="n">jaccard_distance</span>
-
-<span class="c"># Adjust sample size as needed to reduce the runtime of the</span>
-<span class="c"># nested loop that invokes the DISTANCE function</span>
-<span class="n">SAMPLE_SIZE</span> <span class="o">=</span> <span class="mi">500</span>
-
-<span class="k">def</span> <span class="nf">cluster_contacts_by_title</span><span class="p">(</span><span class="n">csv_file</span><span class="p">):</span>
-
-    <span class="n">transforms</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="p">(</span><span class="s">&#39;Sr.&#39;</span><span class="p">,</span> <span class="s">&#39;Senior&#39;</span><span class="p">),</span>
-        <span class="p">(</span><span class="s">&#39;Sr&#39;</span><span class="p">,</span> <span class="s">&#39;Senior&#39;</span><span class="p">),</span>
-        <span class="p">(</span><span class="s">&#39;Jr.&#39;</span><span class="p">,</span> <span class="s">&#39;Junior&#39;</span><span class="p">),</span>
-        <span class="p">(</span><span class="s">&#39;Jr&#39;</span><span class="p">,</span> <span class="s">&#39;Junior&#39;</span><span class="p">),</span>
-        <span class="p">(</span><span class="s">&#39;CEO&#39;</span><span class="p">,</span> <span class="s">&#39;Chief Executive Officer&#39;</span><span class="p">),</span>
-        <span class="p">(</span><span class="s">&#39;COO&#39;</span><span class="p">,</span> <span class="s">&#39;Chief Operating Officer&#39;</span><span class="p">),</span>
-        <span class="p">(</span><span class="s">&#39;CTO&#39;</span><span class="p">,</span> <span class="s">&#39;Chief Technology Officer&#39;</span><span class="p">),</span>
-        <span class="p">(</span><span class="s">&#39;CFO&#39;</span><span class="p">,</span> <span class="s">&#39;Chief Finance Officer&#39;</span><span class="p">),</span>
-        <span class="p">(</span><span class="s">&#39;VP&#39;</span><span class="p">,</span> <span class="s">&#39;Vice President&#39;</span><span class="p">),</span>
-        <span class="p">]</span>
-
-    <span class="n">separators</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;/&#39;</span><span class="p">,</span> <span class="s">&#39;and&#39;</span><span class="p">,</span> <span class="s">&#39;&amp;&#39;</span><span class="p">]</span>
-
-    <span class="n">csvReader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">csv_file</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s">&#39;,&#39;</span><span class="p">,</span> <span class="n">quotechar</span><span class="o">=</span><span class="s">&#39;&quot;&#39;</span><span class="p">)</span>
-    <span class="n">contacts</span> <span class="o">=</span> <span class="p">[</span><span class="n">row</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">csvReader</span><span class="p">]</span>
-
-    <span class="c"># Normalize and/or replace known abbreviations</span>
-    <span class="c"># and build up list of common titles</span>
-
-    <span class="n">all_titles</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">contacts</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">contacts</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s">&#39;Job Title&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;&#39;</span><span class="p">:</span>
-            <span class="n">contacts</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s">&#39;Job Titles&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;&#39;</span><span class="p">]</span>
-            <span class="k">continue</span>
-        <span class="n">titles</span> <span class="o">=</span> <span class="p">[</span><span class="n">contacts</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s">&#39;Job Title&#39;</span><span class="p">]]</span>
-        <span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">titles</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">separator</span> <span class="ow">in</span> <span class="n">separators</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">title</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">separator</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
-                    <span class="n">titles</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
-                    <span class="n">titles</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">title</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">title</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">separator</span><span class="p">)</span>
-                                  <span class="k">if</span> <span class="n">title</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">!=</span> <span class="s">&#39;&#39;</span><span class="p">])</span>
-
-        <span class="k">for</span> <span class="n">transform</span> <span class="ow">in</span> <span class="n">transforms</span><span class="p">:</span>
-            <span class="n">titles</span> <span class="o">=</span> <span class="p">[</span><span class="n">title</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="o">*</span><span class="n">transform</span><span class="p">)</span> <span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">titles</span><span class="p">]</span>
-        <span class="n">contacts</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s">&#39;Job Titles&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">titles</span>
-        <span class="n">all_titles</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">titles</span><span class="p">)</span>
-
-    <span class="n">all_titles</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">all_titles</span><span class="p">))</span>
-    <span class="n">clusters</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">for</span> <span class="n">title1</span> <span class="ow">in</span> <span class="n">all_titles</span><span class="p">:</span>
-        <span class="n">clusters</span><span class="p">[</span><span class="n">title1</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">SAMPLE_SIZE</span><span class="p">):</span>
-            <span class="n">title2</span> <span class="o">=</span> <span class="n">all_titles</span><span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_titles</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
-            <span class="k">if</span> <span class="n">title2</span> <span class="ow">in</span> <span class="n">clusters</span><span class="p">[</span><span class="n">title1</span><span class="p">]</span> <span class="ow">or</span> <span class="n">clusters</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="n">title2</span><span class="p">)</span> <span class="ow">and</span> <span class="n">title1</span> \
-                <span class="ow">in</span> <span class="n">clusters</span><span class="p">[</span><span class="n">title2</span><span class="p">]:</span>
-                <span class="k">continue</span>
-            <span class="n">distance</span> <span class="o">=</span> <span class="n">DISTANCE</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">title1</span><span class="o">.</span><span class="n">split</span><span class="p">()),</span> <span class="nb">set</span><span class="p">(</span><span class="n">title2</span><span class="o">.</span><span class="n">split</span><span class="p">()))</span>
-            <span class="k">if</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="n">DISTANCE_THRESHOLD</span><span class="p">:</span>
-                <span class="n">clusters</span><span class="p">[</span><span class="n">title1</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">title2</span><span class="p">)</span>
-
-    <span class="c"># Flatten out clusters</span>
-
-    <span class="n">clusters</span> <span class="o">=</span> <span class="p">[</span><span class="n">clusters</span><span class="p">[</span><span class="n">title</span><span class="p">]</span> <span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">clusters</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">clusters</span><span class="p">[</span><span class="n">title</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">]</span>
-
-    <span class="c"># Round up contacts who are in these clusters and group them together</span>
-
-    <span class="n">clustered_contacts</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">for</span> <span class="n">cluster</span> <span class="ow">in</span> <span class="n">clusters</span><span class="p">:</span>
-        <span class="n">clustered_contacts</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">cluster</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">contact</span> <span class="ow">in</span> <span class="n">contacts</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">contact</span><span class="p">[</span><span class="s">&#39;Job Titles&#39;</span><span class="p">]:</span>
-                <span class="k">if</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">cluster</span><span class="p">:</span>
-                    <span class="n">clustered_contacts</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">cluster</span><span class="p">)]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">&#39;</span>
-                            <span class="o">%</span> <span class="p">(</span><span class="n">contact</span><span class="p">[</span><span class="s">&#39;First Name&#39;</span><span class="p">],</span> <span class="n">contact</span><span class="p">[</span><span class="s">&#39;Last Name&#39;</span><span class="p">]))</span>
-
-    <span class="k">return</span> <span class="n">clustered_contacts</span>
-
-
-<span class="n">clustered_contacts</span> <span class="o">=</span> <span class="n">cluster_contacts_by_title</span><span class="p">(</span><span class="n">CSV_FILE</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">clustered_contacts</span>
-<span class="k">for</span> <span class="n">titles</span> <span class="ow">in</span> <span class="n">clustered_contacts</span><span class="p">:</span>
-    <span class="n">common_titles_heading</span> <span class="o">=</span> <span class="s">&#39;Common Titles: &#39;</span> <span class="o">+</span> <span class="s">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">titles</span><span class="p">)</span>
-
-    <span class="n">descriptive_terms</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">titles</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
-    <span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">titles</span><span class="p">:</span>
-        <span class="n">descriptive_terms</span><span class="o">.</span><span class="n">intersection_update</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">title</span><span class="o">.</span><span class="n">split</span><span class="p">()))</span>
-    <span class="n">descriptive_terms_heading</span> <span class="o">=</span> <span class="s">&#39;Descriptive Terms: &#39;</span> \
-        <span class="o">+</span> <span class="s">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">descriptive_terms</span><span class="p">)</span>
-    <span class="k">print</span> <span class="n">descriptive_terms_heading</span>
-    <span class="k">print</span> <span class="s">&#39;-&#39;</span> <span class="o">*</span> <span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">descriptive_terms_heading</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">common_titles_heading</span><span class="p">))</span>
-    <span class="k">print</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">clustered_contacts</span><span class="p">[</span><span class="n">titles</span><span class="p">])</span>
-    <span class="k">print</span>
-</pre></div>
-
-</div>
-</div>
-
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>How to export data (contained in the &quot;clustered contacts&quot; variable) to power faceted display as outlined in Figure 3.</strong></p>
+<p>As alluded to previously, the data structures very much lend themselves to constructing JSON in a very natural way. This is often quite convenient for web application development that involves using a Python server process to send data back to a JavaScript client. The following cell illustrates the general idea.</p>
 </div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
@@ -2435,48 +1873,476 @@ In&nbsp;[]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
+
+<span class="k">print</span> <span class="n">contacts</span>
+<span class="k">print</span> <span class="nb">type</span><span class="p">(</span><span class="n">contacts</span><span class="p">)</span> <span class="c"># list</span>
+
+<span class="c"># json.dumps pronounced (dumps stands for &quot;dump string&quot;) takes a Python data structure</span>
+<span class="c"># that is serializable to JSON and dumps it as a string</span>
+<span class="n">jsonified_contacts</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">contacts</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="c"># indent is used for pretty-printing</span>
+
+<span class="k">print</span> <span class="nb">type</span><span class="p">(</span><span class="n">jsonified_contacts</span><span class="p">)</span> <span class="c"># str</span>
+<span class="k">print</span> <span class="n">jsonified_contacts</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A couple of additional types that you'll run across regularly are tuples and the special None type. Think of a tuple as an immutable list and None as a special value that indicates an empty value, which is neither True nor False.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">a_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">an_int</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c"># You must include a trailing comma when only one item is in the tuple</span>
+
+<span class="n">a_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)</span>
+
+<span class="n">a_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,)</span> <span class="c"># Trailing commans are ok in tuples and lists </span>
+
+<span class="n">none</span> <span class="o">=</span> <span class="bp">None</span>
+
+<span class="k">print</span> <span class="n">none</span> <span class="o">==</span> <span class="bp">None</span>   <span class="c"># True</span>
+<span class="k">print</span> <span class="n">none</span> <span class="o">==</span> <span class="bp">True</span>   <span class="c"># False</span>
+<span class="k">print</span> <span class="n">none</span> <span class="o">==</span> <span class="bp">False</span>  <span class="c"># False</span>
+
+<span class="k">print</span>
+
+<span class="c"># In general, you&#39;ll see the special &#39;is&#39; operator used when comparing a value to </span>
+<span class="c"># None, but most of the time, it works the same as &#39;==&#39;</span>
+
+<span class="k">print</span> <span class="n">none</span> <span class="ow">is</span> <span class="bp">None</span>  <span class="c"># True</span>
+<span class="k">print</span> <span class="n">none</span> <span class="ow">is</span> <span class="bp">True</span>  <span class="c"># False</span>
+<span class="k">print</span> <span class="n">none</span> <span class="ow">is</span> <span class="bp">False</span> <span class="c"># False</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As indicated in the <a href="http://docs.python.org/2/tutorial/controlflow.html#default-argument-values">python.org tutorial</a>, None is often used as a default value in function calls, which are <em>defined</em> by the keyword <em>def</em></p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">square</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span>
+
+<span class="k">print</span> <span class="n">square</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c"># 4</span>
+<span class="k">print</span>
+
+<span class="c"># The default value for L is only created once and shared amongst</span>
+<span class="c"># calls</span>
+
+<span class="k">def</span> <span class="nf">f1</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="n">L</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">L</span>
+
+<span class="k">print</span> <span class="n">f1</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c"># [1]</span>
+<span class="k">print</span> <span class="n">f1</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c"># [1, 2]</span>
+<span class="k">print</span> <span class="n">f1</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c"># [1, 2, 3]</span>
+<span class="k">print</span>
+
+<span class="c"># Each call creates a new value for L</span>
+
+<span class="k">def</span> <span class="nf">f2</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">L</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">L</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">L</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">L</span>
+
+<span class="k">print</span> <span class="n">f2</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c"># [1]</span>
+<span class="k">print</span> <span class="n">f2</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c"># [2]</span>
+<span class="k">print</span> <span class="n">f2</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c"># [3]</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="list-and-string-slicing">List and String Slicing</h3>
+<p>For lists and strings, you'll often want to extract a particular selection using a starting and ending index. In Python, this is called <em>slicing</em>. The syntax involves using square brackets in the same way that you are extracting a single value, but you include an additional parameter to indicate the boundary for the slice.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">a_list</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">,</span> <span class="s">&#39;d&#39;</span><span class="p">,</span> <span class="s">&#39;e&#39;</span><span class="p">,</span> <span class="s">&#39;f&#39;</span><span class="p">,</span> <span class="s">&#39;g&#39;</span><span class="p">]</span>
+
+<span class="k">print</span> <span class="n">a_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>     <span class="c"># a</span>
+<span class="k">print</span> <span class="n">a_list</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>   <span class="c"># [&#39;a&#39;, &#39;b&#39;]</span>
+<span class="k">print</span> <span class="n">a_list</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>    <span class="c"># Same as above. The starting index is implicitly 0</span>
+<span class="k">print</span> <span class="n">a_list</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span>    <span class="c"># [&#39;d&#39;, &#39;e&#39;, &#39;f&#39;, &#39;g&#39;] Ending index is implicitly the length of the list</span>
+<span class="k">print</span> <span class="n">a_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>    <span class="c"># g Negative indices start at the end of the list</span>
+<span class="k">print</span> <span class="n">a_list</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c"># [&#39;e&#39;, &#39;f&#39;] Start at the end and work backwards. (The index after the colon is still excluded)</span>
+<span class="k">print</span> <span class="n">a_list</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span>   <span class="c"># [&#39;e&#39;, &#39;f&#39;, &#39;g&#39;]  The last three items in the list</span>
+<span class="k">print</span> <span class="n">a_list</span><span class="p">[:</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span>   <span class="c"># [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;] # Everything up to the last 4 items</span>
+
+<span class="n">a_string</span> <span class="o">=</span> <span class="s">&#39;abcdefg&#39;</span>
+
+<span class="c"># String slicing works the very same way</span>
+
+<span class="k">print</span> <span class="n">a_string</span><span class="p">[:</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span> <span class="c"># abc</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="list-comprehensions">List Comprehensions</h3>
+<p>Think of Python's list <a href="http://docs.python.org/2/tutorial/datastructures.html#list-comprehensions">list comprehensions</a> idiom as a concise and efficient way to create lists. You'll often see list comprehensions used as an alternative to <code>for</code> loops for a common set of problems. Although they may take some getting used to, you'll soon find them to be a natural expression. See the section entitled &quot;Loops&quot; from <a href="http://wiki.python.org/moin/PythonSpeed/PerformanceTips">Python Performance Tips</a> for more details on some of the details on why list comprehensions may be more performant than loops or functions like <code>map</code> in various situations.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="c"># One way to create a list containing 0..9:</span>
+
+<span class="n">a_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">a_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">a_list</span>    
+    
+<span class="c"># How to do it with a list comprehension</span>
+
+<span class="k">print</span> <span class="p">[</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="p">]</span>
+
+
+<span class="c"># But what about a nested loop like this one, which</span>
+<span class="c"># even contains a conditional expression in it:</span>
+
+<span class="n">a_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">a_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">a_list</span>
+
+<span class="c"># You can achieve a nested list comprehension to </span>
+<span class="c"># achieve the very same result. When reading or writing</span>
+<span class="c"># list comprehension. When written with highly readable</span>
+<span class="c"># indention like below, note the striking similarity to</span>
+<span class="c"># the equivalent code as presented above.</span>
+
+<span class="k">print</span> <span class="p">[</span> <span class="n">i</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
+      <span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="dictionary-comprehensions">Dictionary Comprehensions</h3>
+<p>In the same way that you can concisely construct lists with list comprehensions, you can concicely construct dictionaries with dictionary comprehensions. The underlying concept involved and the syntax is very similar to list comprehensions. The following example illustrates a few different way to create the same dictionary and introduces dictionary construction syntax.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="c"># Literal syntax</span>
+
+<span class="n">a_dict</span> <span class="o">=</span> <span class="p">{</span> <span class="s">&#39;a&#39;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#39;b&#39;</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&#39;c&#39;</span> <span class="p">:</span> <span class="mi">3</span> <span class="p">}</span>
+<span class="k">print</span> <span class="n">a_dict</span>
+<span class="k">print</span>
+
+<span class="c"># Using the dict constructor</span>
+
+<span class="n">a_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">([(</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;c&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)])</span>
+<span class="k">print</span> <span class="n">a_dict</span>
+<span class="k">print</span>
+
+<span class="c"># Dictionary comprehension syntax</span>
+
+<span class="n">a_dict</span> <span class="o">=</span> <span class="p">{</span> <span class="n">k</span> <span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[(</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;c&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span> <span class="p">}</span>
+<span class="k">print</span> <span class="n">a_dict</span>
+<span class="k">print</span>
+
+<span class="c"># A more appropriate circumstance to use dictionary comprehension would </span>
+<span class="c"># involve more complex computation</span>
+
+<span class="n">a_dict</span> <span class="o">=</span> <span class="p">{</span> <span class="n">k</span> <span class="p">:</span> <span class="n">k</span><span class="o">*</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="p">}</span> <span class="c"># {0: 0, 1: 1, 2: 4, 3: 9, ..., 9: 81}</span>
+<span class="k">print</span> <span class="n">a_dict</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="enumeration">Enumeration</h3>
+<p>While iterating over a collection such as a list, it's often handy to know the index for the item that you are looping over in addition to its value. While a reasonable approach is to maintain a looping index, the <code>enumerate</code> function spares you the trouble.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">lst</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">]</span>
+
+<span class="c"># You could opt to maintain a looping index...</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="c"># ...but the enumerate function spares you the trouble of maintaining a loop index</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lst</span><span class="p">):</span>
+    <span class="k">print</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="args-and-kwargs">*args and **kwargs</h3>
+<p>Conceptually, Python functions accept lists of arguments that can be followed by additional keyword arguments. A common idiom that you'll see when calling functions is to <em>dereference</em> a list or dictionary with the asterisk or double-asterisk, respectively, a special trick for satisfying the function's parameterization.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">e</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">print</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">e</span>
+
+<span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>              <span class="c"># 1 2 3 None None</span>
+<span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>         <span class="c"># 1 2 3 4 None</span>
+<span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">e</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>    <span class="c"># 1 2 3 4 5</span>
+
+<span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;d&#39;</span> <span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">&#39;e&#39;</span> <span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
+
+<span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>      <span class="c"># 1 2 3 4 5</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="string-substitutions">String Substitutions</h3>
+<p>It's often clearer in code to use string substitution than to concatenate strings, although both options can get the job done. The string type's built-in format function is also very handy and adds to the readability of code. The following examples illustrate some of the common string substitutions that you'll regularly encounter in the code.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">name1</span><span class="p">,</span> <span class="n">name2</span> <span class="o">=</span> <span class="s">&quot;Bob&quot;</span><span class="p">,</span> <span class="s">&quot;Sally&quot;</span>
+
+<span class="k">print</span> <span class="s">&quot;Hello, &quot;</span> <span class="o">+</span> <span class="n">name1</span> <span class="o">+</span> <span class="s">&quot;. My name is &quot;</span> <span class="o">+</span> <span class="n">name2</span>
+
+<span class="k">print</span> <span class="s">&quot;Hello, </span><span class="si">%s</span><span class="s">. My name is </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name1</span><span class="p">,</span> <span class="n">name2</span><span class="p">,)</span>
+
+<span class="k">print</span> <span class="s">&quot;Hello, {0}. My name is {1}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name1</span><span class="p">,</span> <span class="n">name2</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&quot;Hello, {0}. My name is {1}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">name1</span><span class="p">,</span> <span class="n">name2</span><span class="p">])</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="n">name1</span><span class="p">,</span> <span class="n">name2</span><span class="p">]</span>
+<span class="k">print</span> <span class="s">&quot;Hello, {0}. My name is {1}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">names</span><span class="p">)</span>
+
+
+<span class="k">print</span> <span class="s">&quot;Hello, {you}. My name is {me}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">you</span><span class="o">=</span><span class="n">name1</span><span class="p">,</span> <span class="n">me</span><span class="o">=</span><span class="n">name2</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&quot;Hello, {you}. My name is {me}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="s">&#39;you&#39;</span> <span class="p">:</span> <span class="n">name1</span><span class="p">,</span> <span class="s">&#39;me&#39;</span> <span class="p">:</span> <span class="n">name2</span><span class="p">})</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;you&#39;</span> <span class="p">:</span> <span class="n">name1</span><span class="p">,</span> <span class="s">&#39;me&#39;</span> <span class="p">:</span> <span class="n">name2</span><span class="p">}</span>
+<span class="k">print</span> <span class="s">&quot;Hello, {you}. My name is {me}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">names</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="unicode-in-python-2.x">Unicode in Python 2.x</h2>
+<p>XXX - to be written.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="login-to-the-virtual-machine-with-ssh">Login to the Virtual Machine with SSH</h2>
+<p>Although great care has been taken to try and ensure that you won't have to use a secure shell to login to the virtual machine, there is great value in learning how to use an SSH client to login to a machine and be productive in a terminal session, and there will inevitably be times when you may need to troubleshoot on the virtual machine despite our best efforts. If you are already comfortable using a secure shell, you'll simply type <code>vagrant ssh</code> from the <em>vagrant</em> folder where your <em>Vagrantfile</em> is located, and you'll get automatically logged in if you have an SSH client already installed.</p>
+<p>If you are a Mac or Linux user, you will already have an SSH client installed and your remote login should &quot;just work&quot;, but if you are a Windows user, you will likely not have an SSH client installed unless you're already using a tool like <a href="http://www.putty.org/">PuTTY</a> or <a href="http://msysgit.github.io/">Git for Windows</a>. In any event, if you've used an SSH client before, you'll have no troubles using <code>vagrant ssh</code> to perform a remote login. If you have not used an SSH client before, you won't necessarily need to learn to use one, but it might be in your overall best interest to learn how to use one at your leisure.</p>
+<p>Even without an SSH client, however, there are a couple of creative ways that you can use a Python script and IPython Notebook to give you much of the same functionality that you would achieve by performing a remote login to gain terminal access. The following sections introduce some of the possibilities.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="interact-with-the-virtual-machine-without-an-ssh-client-using-python">Interact with the Virtual Machine without an SSH Client Using Python</h2>
+<p>Although you're probably better off to configure and use an SSH client to login to the virtual machine most of the time, you <em>could</em> even interact with the virtual machine almost as though you are working in a terminal session using IPython Notebook and the <a href="https://github.com/kennethreitz/envoy">envoy</a> package, which wraps the <a href="http://docs.python.org/2/library/subprocess.html">subprocess</a> package in a highly convenient way that allows you to run arbitrary commands and see the results. The following script shows how to run a few remote commands on the virtual machine (where this IPython Notebook server would be running if you are using the virtual machine). Even in situations where you are running a Python program locally, this package can be of significant convenience.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">envoy</span> <span class="c"># pip install envoy</span>
+
+<span class="c"># Run a command just as you would in a terminal on the virtual machine</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">envoy</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s">&#39;ps aux | grep ipython&#39;</span><span class="p">)</span> <span class="c"># show processes containing &#39;ipython&#39;</span>
+
+<span class="c"># Print its standard output</span>
+<span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">std_out</span>
+
+<span class="c"># Print its standard error</span>
+<span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">std_err</span>
+
+<span class="c"># Print the working directory for the IPython Notebook server</span>
+<span class="k">print</span> <span class="n">envoy</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s">&#39;pwd&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">std_out</span>
+
+<span class="c"># Try some commands of your own...</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="bash-cell-magic">Bash Cell Magic</h2>
+<p>An alternative to using the envoy package to interact with the virtual machine through what is called &quot;Bash Cell Magic&quot; in IPython Notebook. The way it works is that if you write <code>%%bash</code> on the first line of a cell, IPython Notebook will automatically take the remainder of the cell and execute it as a <a href="http://tldp.org/LDP/abs/html/">Bash</a> script on the machine where the server is running. In case you come from a Windows background or are a Mac user who hasn't yet encountered Bash, it's the name of the default shell on most Linux systems, including the virtual machine that runs the IPython Notebook server.</p>
+<p>Assuming that you are using the virtual machine, this means that you can essentially write bash scripts in IPython Notebook cells and execute them on the server. The following script demonstrates some of the possibilities, including how to use a command like <code>wget</code> to download a file.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="o">%%</span><span class="k">bash</span>
+<span class="c"># Print the working directory</span>
+<span class="n">pwd</span> 
+
+<span class="c"># Display the date</span>
+<span class="n">date</span>
+
+<span class="c"># View the first 10 lines of a manual page for wget</span>
+<span class="n">man</span> <span class="n">wget</span> <span class="o">|</span> <span class="n">head</span> <span class="o">-</span><span class="mi">10</span>
+
+<span class="c"># Download a webpage to /tmp/index.html</span>
+<span class="n">wget</span> <span class="o">-</span><span class="n">O</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">foo</span><span class="o">.</span><span class="n">html</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">ipython</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">notebook</span><span class="o">.</span><span class="n">html</span>
+
+<span class="c"># Search for &#39;ipython&#39; in the webpage</span>
+<span class="n">grep</span> <span class="n">ipython</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">foo</span><span class="o">.</span><span class="n">html</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="using-bash-cell-magic-to-update-your-source-code">Using Bash Cell Magic to Update Your Source Code</h3>
+<p>Since Bash cell magic works just as though you were executing commands in a terminal, you can use it easily manage your source code by executing commands like &quot;git status&quot; and &quot;git pull&quot;</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="o">%%</span><span class="k">bash</span>
+<span class="n">ls</span> <span class="o">../</span>
+<span class="c"># Displays the status of the local repository</span>
+<span class="n">git</span> <span class="n">status</span>
+
+<span class="c"># Execute &quot;git pull&quot; to perform an update</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="serving-static-content">Serving Static Content</h2>
+<p>IPython Notebook has some handy features for interacting with the web browser that you should know about. A few of the features that you'll see in the source code are embedding inline frames, and serving static content such as images, text files, JavaScript files, etc. The ability to serve static content is especially handy if you'd like to display an inline visualization for analysis, and you'll see this technique used throughout the notebook.</p>
+<p>The following cell illustrates creating and embedding an inline frame and serving the static source file for this notebook, which is serialized as JSON data.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
 <span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">display</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;label&quot;</span> <span class="p">:</span> <span class="s">&quot;name&quot;</span><span class="p">,</span> <span class="s">&quot;temp_items&quot;</span> <span class="p">:</span> <span class="p">{},</span> <span class="s">&quot;items&quot;</span> <span class="p">:</span> <span class="p">[]}</span> 
-<span class="k">for</span> <span class="n">titles</span> <span class="ow">in</span> <span class="n">clustered_contacts</span><span class="p">:</span>
-    <span class="n">descriptive_terms</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">titles</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
-    <span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">titles</span><span class="p">:</span>
-        <span class="n">descriptive_terms</span><span class="o">.</span><span class="n">intersection_update</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">title</span><span class="o">.</span><span class="n">split</span><span class="p">()))</span>
-    <span class="n">descriptive_terms</span> <span class="o">=</span> <span class="s">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">descriptive_terms</span><span class="p">)</span>
+<span class="c"># IPython Notebook can serve files relative to the location of</span>
+<span class="c"># the working notebook into inline frames. Prepend the path </span>
+<span class="c"># with the &#39;files&#39; prefix</span>
 
-    <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;temp_items&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="n">descriptive_terms</span><span class="p">):</span>
-        <span class="n">data</span><span class="p">[</span><span class="s">&#39;temp_items&#39;</span><span class="p">][</span><span class="n">descriptive_terms</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">([{</span><span class="s">&#39;name&#39;</span> <span class="p">:</span> <span class="n">cc</span> <span class="p">}</span> <span class="k">for</span> <span class="n">cc</span> 
-            <span class="ow">in</span> <span class="n">clustered_contacts</span><span class="p">[</span><span class="n">titles</span><span class="p">]])</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">data</span><span class="p">[</span><span class="s">&#39;temp_items&#39;</span><span class="p">][</span><span class="n">descriptive_terms</span><span class="p">]</span> <span class="o">=</span> <span class="p">[{</span><span class="s">&#39;name&#39;</span> <span class="p">:</span> <span class="n">cc</span> <span class="p">}</span> <span class="k">for</span> <span class="n">cc</span> 
-            <span class="ow">in</span> <span class="n">clustered_contacts</span><span class="p">[</span><span class="n">titles</span><span class="p">]]</span>
+<span class="n">static_content</span> <span class="o">=</span> <span class="s">&#39;files/resources/appc-pythontips/hello.txt&#39;</span>
 
-<span class="k">for</span> <span class="n">descriptive_terms</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;temp_items&#39;</span><span class="p">]:</span>
-    <span class="n">data</span><span class="p">[</span><span class="s">&#39;items&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s">&quot;name&quot;</span> <span class="p">:</span> <span class="s">&quot;</span><span class="si">%s</span><span class="s"> (</span><span class="si">%s</span><span class="s">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">descriptive_terms</span><span class="p">,</span> 
-        <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;temp_items&#39;</span><span class="p">][</span><span class="n">descriptive_terms</span><span class="p">]),),</span>
-                              <span class="s">&quot;children&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> 
-                              <span class="n">data</span><span class="p">[</span><span class="s">&#39;temp_items&#39;</span><span class="p">][</span><span class="n">descriptive_terms</span><span class="p">]]})</span>
+<span class="n">display</span><span class="p">(</span><span class="n">IFrame</span><span class="p">(</span><span class="n">static_content</span><span class="p">,</span> <span class="s">&#39;100%&#39;</span><span class="p">,</span> <span class="s">&#39;600px&#39;</span><span class="p">))</span>
+</pre></div>
 
-<span class="k">del</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;temp_items&#39;</span><span class="p">]</span>
+</div>
+</div>
 
-<span class="c"># Open the template and substitute the data</span>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="shared-folders">Shared Folders</h2>
+<p>The Vagrant virtual machine maps the top level directory of your GitHub checkout (the directory containing <em>README.md</em>) on your host machine to its <em>/vagrant</em> folder and automatically synchronizes files between the guest and host environments as an incredible convenience to you. This mapping and synchronization enables IPython Notebooks you are running on the guest machine to access files that you can conveniently manage on your host machine and vice-versa. For example, many of the scripts in IPython Notebooks may write out data files and you can easily access those data files on your host environment (should you desire to do so) without needing to connect into the virtual machine with an SSH session. On the flip side, you can provide data files to IPython Notebook, which is running on the guest machine by copying them anywhere into your top level GitHub checkout.</p>
+<p>In effect, the top level directory of your GitHub checkout is automatically synchronized between the guest and host environments so that you have access to everything that is happening and can manage your source code, modified notebooks, and everything else all from your host machine. See <em>Vagrantfile</em> for more details on how synchronized folders can be configured.</p>
+<p>The following code snippet illustrates how to access files. Keep in mind that the code that you execute in this cell writes data to the guest (virtual machine) environment, and it's Vagrant that automatically synchronizes it back to your guest environment. It's a subtle but important detail.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
 
-<span class="n">TEMPLATE</span> <span class="o">=</span> <span class="s">&#39;resources/ch03-linkedin/viz/dojo_tree.html.template&#39;</span>                                                
-<span class="n">OUT</span> <span class="o">=</span> <span class="s">&#39;resources/ch03-linkedin/viz/dojo_tree.html&#39;</span>
+<span class="c"># The absolute path to the shared folder on the VM</span>
+<span class="n">shared_folder</span><span class="o">=</span><span class="s">&quot;/vagrant&quot;</span>
 
-<span class="n">viz_file</span> <span class="o">=</span> <span class="s">&#39;files/resources/ch03-linkedin/viz/dojo_tree.html&#39;</span>
+<span class="c"># List the files in the shared folder</span>
+<span class="k">print</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">shared_folder</span><span class="p">)</span>
+<span class="k">print</span>
 
-<span class="n">t</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">TEMPLATE</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">OUT</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span>
-<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">t</span> <span class="o">%</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+<span class="c"># How to read and display a snippet of the share/README.md file...</span>
+<span class="n">README</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">shared_folder</span><span class="p">,</span> <span class="s">&quot;README.md&quot;</span><span class="p">)</span>
+<span class="n">txt</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">README</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span> <span class="n">txt</span><span class="p">[:</span><span class="mi">200</span><span class="p">]</span>
+
+<span class="c"># Write out a file to the guest but notice that it is available on the host</span>
+<span class="c"># by checking the contents of your GitHub checkout</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">shared_folder</span><span class="p">,</span> <span class="s">&quot;Hello.txt&quot;</span><span class="p">),</span> <span class="s">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;Hello. This text is written on the guest but synchronized to the host by Vagrant&quot;</span><span class="p">)</span>
 <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-<span class="c"># IPython Notebook can serve files and display them into</span>
-<span class="c"># inline frames. Prepend the path with the &#39;files&#39; prefix</span>
-
-<span class="n">display</span><span class="p">(</span><span class="n">IFrame</span><span class="p">(</span><span class="n">viz_file</span><span class="p">,</span> <span class="s">&#39;400px&#39;</span><span class="p">,</span> <span class="s">&#39;600px&#39;</span><span class="p">))</span>
 </pre></div>
 
 </div>
@@ -2484,7 +2350,10 @@ In&nbsp;[]:
 
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>How to export data to power a dendogram and node-link tree visualization as outlined in Figure 4.</strong></p>
+<h2 id="monitoring-and-debugging-memory-usage-with-vagrant-and-ipython-notebook">Monitoring and Debugging Memory Usage with Vagrant and IPython Notebook</h2>
+<p>IPython Notebook's server kernels are ordinary Python processes that will use as much memory as they need to perform the computation that you give them. Most of the examples in this book do not entail consuming very large amounts of memory (the only notable exception could be Example 7-12 that builds a fairly large in-memory graph), but it's worth noting that most Vagrant boxes, including the default configuration for this book's virtual machine, have fairly low amounts of memory allocated to them by default.</p>
+<p>The amount of memory that's available for the &quot;precise64&quot; box that's used for these notebooks, for example, ships with a default of 334MB of memory that's allocated to it. Consequently, if any of your IPython Notebooks ever consume close to 334MB of memory, you'll reach the limit that's allocated to the guest virtual machine and the kernel will kill the offending Python process. Unfortunately, IPython Notebook isn't able to provide a clear indication of what's gone wrong in this case, so your only clue as to what may have happened is that you'll no longer see a &quot;Kernel Busy&quot; message in the upper-right corner of the screen, and your variables in the notebook become undefined because the IPython Notebook kernel that's servicing the notebook has effectively restarted.</p>
+<p>From within IPython Notebook, you can check the kernel log to see if there is any evidence that it killed your process with the following Bash command that displays the last 100 lines <em>/var/log/kern.log</em></p>
 </div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
@@ -2492,132 +2361,8 @@ In&nbsp;[]:
 In&nbsp;[]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">csv</span>
-<span class="kn">import</span> <span class="nn">random</span>
-<span class="kn">from</span> <span class="nn">nltk.metrics.distance</span> <span class="kn">import</span> <span class="n">jaccard_distance</span>
-<span class="kn">from</span> <span class="nn">cluster</span> <span class="kn">import</span> <span class="n">HierarchicalClustering</span>
-
-<span class="c"># XXX: Place your &quot;Outlook CSV&quot; formatted file of connections from </span>
-<span class="c"># http://www.linkedin.com/people/export-settings at the following</span>
-<span class="c"># location: resources/ch03-linkedin/my_connections.csv</span>
-
-<span class="n">CSV_FILE</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s">&quot;resources&quot;</span><span class="p">,</span> <span class="s">&quot;ch03-linkedin&quot;</span><span class="p">,</span> <span class="s">&#39;my_connections.csv&#39;</span><span class="p">)</span>
-
-<span class="n">OUT_FILE</span> <span class="o">=</span> <span class="s">&#39;resources/ch03-linkedin/viz/d3-data.json&#39;</span>
-
-<span class="c"># Tweak this distance threshold and try different distance calculations </span>
-<span class="c"># during experimentation</span>
-<span class="n">DISTANCE_THRESHOLD</span> <span class="o">=</span> <span class="mf">0.5</span>
-<span class="n">DISTANCE</span> <span class="o">=</span> <span class="n">jaccard_distance</span>
-
-<span class="c"># Adjust sample size as needed to reduce the runtime of the</span>
-<span class="c"># nested loop that invokes the DISTANCE function</span>
-<span class="n">SAMPLE_SIZE</span> <span class="o">=</span> <span class="mi">500</span>
-
-<span class="k">def</span> <span class="nf">cluster_contacts_by_title</span><span class="p">(</span><span class="n">csv_file</span><span class="p">):</span>
-
-    <span class="n">transforms</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="p">(</span><span class="s">&#39;Sr.&#39;</span><span class="p">,</span> <span class="s">&#39;Senior&#39;</span><span class="p">),</span>
-        <span class="p">(</span><span class="s">&#39;Sr&#39;</span><span class="p">,</span> <span class="s">&#39;Senior&#39;</span><span class="p">),</span>
-        <span class="p">(</span><span class="s">&#39;Jr.&#39;</span><span class="p">,</span> <span class="s">&#39;Junior&#39;</span><span class="p">),</span>
-        <span class="p">(</span><span class="s">&#39;Jr&#39;</span><span class="p">,</span> <span class="s">&#39;Junior&#39;</span><span class="p">),</span>
-        <span class="p">(</span><span class="s">&#39;CEO&#39;</span><span class="p">,</span> <span class="s">&#39;Chief Executive Officer&#39;</span><span class="p">),</span>
-        <span class="p">(</span><span class="s">&#39;COO&#39;</span><span class="p">,</span> <span class="s">&#39;Chief Operating Officer&#39;</span><span class="p">),</span>
-        <span class="p">(</span><span class="s">&#39;CTO&#39;</span><span class="p">,</span> <span class="s">&#39;Chief Technology Officer&#39;</span><span class="p">),</span>
-        <span class="p">(</span><span class="s">&#39;CFO&#39;</span><span class="p">,</span> <span class="s">&#39;Chief Finance Officer&#39;</span><span class="p">),</span>
-        <span class="p">(</span><span class="s">&#39;VP&#39;</span><span class="p">,</span> <span class="s">&#39;Vice President&#39;</span><span class="p">),</span>
-        <span class="p">]</span>
-
-    <span class="n">separators</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;/&#39;</span><span class="p">,</span> <span class="s">&#39;and&#39;</span><span class="p">,</span> <span class="s">&#39;&amp;&#39;</span><span class="p">]</span>
-
-    <span class="n">csvReader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">csv_file</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s">&#39;,&#39;</span><span class="p">,</span> <span class="n">quotechar</span><span class="o">=</span><span class="s">&#39;&quot;&#39;</span><span class="p">)</span>
-    <span class="n">contacts</span> <span class="o">=</span> <span class="p">[</span><span class="n">row</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">csvReader</span><span class="p">]</span>
-
-    <span class="c"># Normalize and/or replace known abbreviations</span>
-    <span class="c"># and build up list of common titles</span>
-
-    <span class="n">all_titles</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">contacts</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">contacts</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s">&#39;Job Title&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;&#39;</span><span class="p">:</span>
-            <span class="n">contacts</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s">&#39;Job Titles&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;&#39;</span><span class="p">]</span>
-            <span class="k">continue</span>
-        <span class="n">titles</span> <span class="o">=</span> <span class="p">[</span><span class="n">contacts</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s">&#39;Job Title&#39;</span><span class="p">]]</span>
-        <span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">titles</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">separator</span> <span class="ow">in</span> <span class="n">separators</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">title</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">separator</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
-                    <span class="n">titles</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
-                    <span class="n">titles</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">title</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">title</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">separator</span><span class="p">)</span>
-                                  <span class="k">if</span> <span class="n">title</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">!=</span> <span class="s">&#39;&#39;</span><span class="p">])</span>
-
-        <span class="k">for</span> <span class="n">transform</span> <span class="ow">in</span> <span class="n">transforms</span><span class="p">:</span>
-            <span class="n">titles</span> <span class="o">=</span> <span class="p">[</span><span class="n">title</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="o">*</span><span class="n">transform</span><span class="p">)</span> <span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">titles</span><span class="p">]</span>
-        <span class="n">contacts</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s">&#39;Job Titles&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">titles</span>
-        <span class="n">all_titles</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">titles</span><span class="p">)</span>
-
-    <span class="n">all_titles</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">all_titles</span><span class="p">))</span>
-    
-    <span class="c"># Define a scoring function</span>
-    <span class="k">def</span> <span class="nf">score</span><span class="p">(</span><span class="n">title1</span><span class="p">,</span> <span class="n">title2</span><span class="p">):</span> 
-        <span class="k">return</span> <span class="n">DISTANCE</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">title1</span><span class="o">.</span><span class="n">split</span><span class="p">()),</span> <span class="nb">set</span><span class="p">(</span><span class="n">title2</span><span class="o">.</span><span class="n">split</span><span class="p">()))</span>
-
-    <span class="c"># Feed the class your data and the scoring function</span>
-    <span class="n">hc</span> <span class="o">=</span> <span class="n">HierarchicalClustering</span><span class="p">(</span><span class="n">all_titles</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span>
-
-    <span class="c"># Cluster the data according to a distance threshold</span>
-    <span class="n">clusters</span> <span class="o">=</span> <span class="n">hc</span><span class="o">.</span><span class="n">getlevel</span><span class="p">(</span><span class="n">DISTANCE_THRESHOLD</span><span class="p">)</span>
-
-    <span class="c"># Remove singleton clusters</span>
-    <span class="n">clusters</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">clusters</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">]</span>
-
-    <span class="c"># Round up contacts who are in these clusters and group them together</span>
-
-    <span class="n">clustered_contacts</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">for</span> <span class="n">cluster</span> <span class="ow">in</span> <span class="n">clusters</span><span class="p">:</span>
-        <span class="n">clustered_contacts</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">cluster</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">contact</span> <span class="ow">in</span> <span class="n">contacts</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">contact</span><span class="p">[</span><span class="s">&#39;Job Titles&#39;</span><span class="p">]:</span>
-                <span class="k">if</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">cluster</span><span class="p">:</span>
-                    <span class="n">clustered_contacts</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">cluster</span><span class="p">)]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">&#39;</span>
-                            <span class="o">%</span> <span class="p">(</span><span class="n">contact</span><span class="p">[</span><span class="s">&#39;First Name&#39;</span><span class="p">],</span> <span class="n">contact</span><span class="p">[</span><span class="s">&#39;Last Name&#39;</span><span class="p">]))</span>
-
-    <span class="k">return</span> <span class="n">clustered_contacts</span>
-
-<span class="k">def</span> <span class="nf">display_output</span><span class="p">(</span><span class="n">clustered_contacts</span><span class="p">):</span>
-    
-    <span class="k">for</span> <span class="n">titles</span> <span class="ow">in</span> <span class="n">clustered_contacts</span><span class="p">:</span>
-        <span class="n">common_titles_heading</span> <span class="o">=</span> <span class="s">&#39;Common Titles: &#39;</span> <span class="o">+</span> <span class="s">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">titles</span><span class="p">)</span>
-
-        <span class="n">descriptive_terms</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">titles</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
-        <span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">titles</span><span class="p">:</span>
-            <span class="n">descriptive_terms</span><span class="o">.</span><span class="n">intersection_update</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">title</span><span class="o">.</span><span class="n">split</span><span class="p">()))</span>
-        <span class="n">descriptive_terms_heading</span> <span class="o">=</span> <span class="s">&#39;Descriptive Terms: &#39;</span> \
-            <span class="o">+</span> <span class="s">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">descriptive_terms</span><span class="p">)</span>
-        <span class="k">print</span> <span class="n">descriptive_terms_heading</span>
-        <span class="k">print</span> <span class="s">&#39;-&#39;</span> <span class="o">*</span> <span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">descriptive_terms_heading</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">common_titles_heading</span><span class="p">))</span>
-        <span class="k">print</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">clustered_contacts</span><span class="p">[</span><span class="n">titles</span><span class="p">])</span>
-        <span class="k">print</span>
-
-<span class="k">def</span> <span class="nf">write_d3_json_output</span><span class="p">(</span><span class="n">clustered_contacts</span><span class="p">):</span>
-    
-    <span class="n">json_output</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;name&#39;</span> <span class="p">:</span> <span class="s">&#39;My LinkedIn&#39;</span><span class="p">,</span> <span class="s">&#39;children&#39;</span> <span class="p">:</span> <span class="p">[]}</span>
-
-    <span class="k">for</span> <span class="n">titles</span> <span class="ow">in</span> <span class="n">clustered_contacts</span><span class="p">:</span>
-
-        <span class="n">descriptive_terms</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">titles</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
-        <span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">titles</span><span class="p">:</span>
-            <span class="n">descriptive_terms</span><span class="o">.</span><span class="n">intersection_update</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">title</span><span class="o">.</span><span class="n">split</span><span class="p">()))</span>
-
-        <span class="n">json_output</span><span class="p">[</span><span class="s">&#39;children&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s">&#39;name&#39;</span> <span class="p">:</span> <span class="s">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">descriptive_terms</span><span class="p">)[:</span><span class="mi">30</span><span class="p">],</span> 
-                                    <span class="s">&#39;children&#39;</span> <span class="p">:</span> <span class="p">[</span> <span class="p">{</span><span class="s">&#39;name&#39;</span> <span class="p">:</span> <span class="n">c</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;utf-8&#39;</span><span class="p">,</span> <span class="s">&#39;replace&#39;</span><span class="p">)}</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">clustered_contacts</span><span class="p">[</span><span class="n">titles</span><span class="p">]</span> <span class="p">]</span> <span class="p">}</span> <span class="p">)</span>
-    
-        <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">OUT_FILE</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span>
-        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">json_output</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-        <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-    
-<span class="n">clustered_contacts</span> <span class="o">=</span> <span class="n">cluster_contacts_by_title</span><span class="p">(</span><span class="n">CSV_FILE</span><span class="p">)</span>
-<span class="n">display_output</span><span class="p">(</span><span class="n">clustered_contacts</span><span class="p">)</span>
-<span class="n">write_d3_json_output</span><span class="p">(</span><span class="n">clustered_contacts</span><span class="p">)</span>
+<div class="highlight"><pre><span class="o">%%</span><span class="k">bash</span>
+<span class="n">tail</span> <span class="o">-</span><span class="n">n</span> <span class="mi">100</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">kern</span><span class="o">.</span><span class="n">log</span>
 </pre></div>
 
 </div>
@@ -2625,7 +2370,9 @@ In&nbsp;[]:
 
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Once you've run the code and produced the output for the dendogram and node-link tree visualizations, here's one way to serve it.</strong></p>
+<p>You can increase the amount of memory that's available to your Vagrant box (and therefore to IPython Notebook) by including the following code snippet in your <em>Vagrantfile</em> as a provider-specific configuration option that specifies that the box should be allocated 768MB of memory:</p>
+<p><code> config.vm.provider :virtualbox do |vb| vb.customize [&quot;modifyvm&quot;, :id, &quot;--memory&quot;, &quot;768&quot;] end </code></p>
+<p>While a long-running cell is executing, you can also take advantage of IPython Notebook's Bash cell magic to monitor the memory usage of processes by opening up a different notebook and executing the following code in its own cell. In the example below, we are specifying that we'd like to see a list of the top 10 processes and the amount of memory (in KB) that each process is using.</p>
 </div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
@@ -2633,19 +2380,8 @@ In&nbsp;[]:
 In&nbsp;[]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
-<span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">display</span>
-
-<span class="c"># IPython Notebook can serve files and display them into</span>
-<span class="c"># inline frames. Prepend the path with the &#39;files&#39; prefix</span>
-
-<span class="n">viz_file</span> <span class="o">=</span> <span class="s">&#39;files/resources/ch03-linkedin/viz/node_link_tree.html&#39;</span>
-
-<span class="c"># XXX: Another visualization you could try:</span>
-<span class="c">#viz_file = &#39;files/resources/ch03-linkedin/viz/dendogram.html&#39;</span>
-
-<span class="n">display</span><span class="p">(</span><span class="n">IFrame</span><span class="p">(</span><span class="n">viz_file</span><span class="p">,</span> <span class="s">&#39;100%&#39;</span><span class="p">,</span> <span class="s">&#39;600px&#39;</span><span class="p">))</span>
+<div class="highlight"><pre><span class="o">%%</span><span class="k">bash</span>
+<span class="n">ps</span> <span class="o">-</span><span class="n">e</span> <span class="o">-</span><span class="n">orss</span><span class="o">=</span><span class="p">,</span><span class="n">args</span><span class="o">=</span> <span class="o">|</span> <span class="n">sort</span> <span class="o">-</span><span class="n">b</span> <span class="o">-</span><span class="n">k1</span><span class="p">,</span><span class="mi">1</span><span class="n">n</span> <span class="o">|</span> <span class="n">pr</span> <span class="o">-</span><span class="n">TW</span><span class="err">$</span><span class="n">COLUMNS</span> <span class="o">|</span> <span class="n">tail</span> <span class="o">-</span><span class="n">n</span> <span class="mi">10</span>
 </pre></div>
 
 </div>
@@ -2653,139 +2389,19 @@ In&nbsp;[]:
 
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example-13.-Clustering-your-LinkedIn-professional-network-based-upon-the-locations-of-your-connections-and-emitting-KML-output-for-visualization-with-Google-Earth">Example 13. Clustering your LinkedIn professional network based upon the locations of your connections and emitting KML output for visualization with Google Earth<a class="anchor-link" href="#Example-13.-Clustering-your-LinkedIn-professional-network-based-upon-the-locations-of-your-connections-and-emitting-KML-output-for-visualization-with-Google-Earth">&#182;</a></h2>
+<p>Again, the guidance offered here is fairly advanced advice that you may never need to use, but it the event that you suspect that you have a memory problem with a notebook, it'll be helpful</p>
 </div>
-
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">HTTPError</span>
-<span class="kn">from</span> <span class="nn">geopy</span> <span class="kn">import</span> <span class="n">geocoders</span>
-<span class="kn">from</span> <span class="nn">cluster</span> <span class="kn">import</span> <span class="n">KMeansClustering</span><span class="p">,</span> <span class="n">centroid</span>
-
-<span class="c"># A helper function to munge data and build up an XML tree.</span>
-<span class="c"># It references some code tucked away in another directory, so we have to</span>
-<span class="c"># add that directory to the PYTHONPATH for it to be picked up.</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s">&quot;resources&quot;</span><span class="p">,</span> <span class="s">&quot;ch03-linkedin&quot;</span><span class="p">))</span>
-<span class="kn">from</span> <span class="nn">linkedin__kml_utility</span> <span class="kn">import</span> <span class="n">createKML</span>
-
-<span class="c"># XXX: Try different values for K to see the difference in clusters that emerge</span>
-
-<span class="n">K</span> <span class="o">=</span> <span class="mi">3</span>
-
-<span class="c"># XXX: Get an API key and pass it in here. See https://www.bingmapsportal.com.</span>
-<span class="n">GEO_API_KEY</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
-<span class="n">g</span> <span class="o">=</span> <span class="n">geocoders</span><span class="o">.</span><span class="n">Bing</span><span class="p">(</span><span class="n">GEO_API_KEY</span><span class="p">)</span>
-
-<span class="c"># Load this data from where you&#39;ve previously stored it</span>
-
-<span class="n">CONNECTIONS_DATA</span> <span class="o">=</span> <span class="s">&#39;resources/ch03-linkedin/linkedin_connections.json&#39;</span>
-
-<span class="n">OUT_FILE</span> <span class="o">=</span> <span class="s">&quot;resources/ch03-linkedin/viz/linkedin_clusters_kmeans.kml&quot;</span>
-
-<span class="c"># Open up your saved connections with extended profile information</span>
-<span class="c"># or fetch them again from LinkedIn if you prefer</span>
-
-<span class="n">connections</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">CONNECTIONS_DATA</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())[</span><span class="s">&#39;values&#39;</span><span class="p">]</span>
-
-<span class="n">locations</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="s">&#39;location&#39;</span><span class="p">][</span><span class="s">&#39;name&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">connections</span> <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s">&#39;location&#39;</span><span class="p">)]</span>
-
-<span class="c"># Some basic transforms may be necessary for geocoding services to function properly</span>
-<span class="c"># Here are a couple that seem to help.</span>
-
-<span class="n">transforms</span> <span class="o">=</span> <span class="p">[(</span><span class="s">&#39;Greater &#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39; Area&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">)]</span>
-
-<span class="c"># Step 1 - Tally the frequency of each location</span>
-
-<span class="n">coords_freqs</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="k">for</span> <span class="n">location</span> <span class="ow">in</span> <span class="n">locations</span><span class="p">:</span>
-
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">c</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s">&#39;location&#39;</span><span class="p">):</span> <span class="k">continue</span>
-    
-    <span class="c"># Avoid unnecessary I/O and geo requests by building up a cache</span>
-
-    <span class="k">if</span> <span class="n">coords_freqs</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="n">location</span><span class="p">):</span>
-        <span class="n">coords_freqs</span><span class="p">[</span><span class="n">location</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="k">continue</span>
-    <span class="n">transformed_location</span> <span class="o">=</span> <span class="n">location</span>
-
-    <span class="k">for</span> <span class="n">transform</span> <span class="ow">in</span> <span class="n">transforms</span><span class="p">:</span>
-        <span class="n">transformed_location</span> <span class="o">=</span> <span class="n">transformed_location</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="o">*</span><span class="n">transform</span><span class="p">)</span>
-        
-        <span class="c"># Handle potential I/O errors with a retry pattern...</span>
-        
-        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-            <span class="n">num_errors</span> <span class="o">=</span> <span class="mi">0</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="n">results</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">geocode</span><span class="p">(</span><span class="n">transformed_location</span><span class="p">,</span> <span class="n">exactly_one</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-                <span class="k">break</span>
-            <span class="k">except</span> <span class="n">HTTPError</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span>
-                <span class="n">num_errors</span> <span class="o">+=</span> <span class="mi">1</span>
-                <span class="k">if</span> <span class="n">num_errors</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">:</span>
-                    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
-                <span class="k">print</span> <span class="o">&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span> <span class="n">e</span>
-                <span class="k">print</span> <span class="o">&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#39;Encountered an urllib2 error. Trying again...&#39;</span>
-                
-        <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
-            <span class="c"># Each result is of the form (&quot;Description&quot;, (X,Y))</span>
-            <span class="n">coords_freqs</span><span class="p">[</span><span class="n">location</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">]</span>
-            <span class="k">break</span> <span class="c"># Disambiguation strategy is &quot;pick first&quot;</span>
-
-<span class="c"># Step 2 - Build up data structure for converting locations to KML            </span>
-            
-<span class="c"># Here, you could optionally segment locations by continent or country</span>
-<span class="c"># so as to avoid potentially finding a mean in the middle of the ocean.</span>
-<span class="c"># The k-means algorithm will expect distinct points for each contact, so</span>
-<span class="c"># build out an expanded list to pass it.</span>
-
-<span class="n">expanded_coords</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">coords_freqs</span><span class="p">:</span>
-    <span class="c"># Flip lat/lon for Google Earth</span>
-    <span class="p">((</span><span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">),</span> <span class="n">f</span><span class="p">)</span> <span class="o">=</span> <span class="n">coords_freqs</span><span class="p">[</span><span class="n">label</span><span class="p">]</span>
-    <span class="n">expanded_coords</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">label</span><span class="p">,</span> <span class="p">[(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">)]</span> <span class="o">*</span> <span class="n">f</span><span class="p">))</span>
-
-<span class="c"># No need to clutter the map with unnecessary placemarks...</span>
-
-<span class="n">kml_items</span> <span class="o">=</span> <span class="p">[{</span><span class="s">&#39;label&#39;</span><span class="p">:</span> <span class="n">label</span><span class="p">,</span> <span class="s">&#39;coords&#39;</span><span class="p">:</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">,</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">coords</span><span class="p">[</span><span class="mi">0</span><span class="p">]}</span> <span class="k">for</span> <span class="p">(</span><span class="n">label</span><span class="p">,</span>
-             <span class="n">coords</span><span class="p">)</span> <span class="ow">in</span> <span class="n">expanded_coords</span><span class="p">]</span>
-
-<span class="c"># It would also be helpful to include names of your contacts on the map</span>
-
-<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">kml_items</span><span class="p">:</span>
-    <span class="n">item</span><span class="p">[</span><span class="s">&#39;contacts&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s">&#39;</span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">.&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s">&#39;firstName&#39;</span><span class="p">],</span> <span class="n">c</span><span class="p">[</span><span class="s">&#39;lastName&#39;</span><span class="p">])</span>
-        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">connections</span> <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s">&#39;location&#39;</span><span class="p">)</span> <span class="ow">and</span> 
-                                <span class="n">c</span><span class="p">[</span><span class="s">&#39;location&#39;</span><span class="p">][</span><span class="s">&#39;name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">item</span><span class="p">[</span><span class="s">&#39;label&#39;</span><span class="p">]])</span>
-
-<span class="c"># Step 3 - Cluster locations and extend the KML data structure with centroids</span>
-    
-<span class="n">cl</span> <span class="o">=</span> <span class="n">KMeansClustering</span><span class="p">([</span><span class="n">coords</span> <span class="k">for</span> <span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">coords_list</span><span class="p">)</span> <span class="ow">in</span> <span class="n">expanded_coords</span>
-                      <span class="k">for</span> <span class="n">coords</span> <span class="ow">in</span> <span class="n">coords_list</span><span class="p">])</span>
-
-<span class="n">centroids</span> <span class="o">=</span> <span class="p">[{</span><span class="s">&#39;label&#39;</span><span class="p">:</span> <span class="s">&#39;CENTROID&#39;</span><span class="p">,</span> <span class="s">&#39;coords&#39;</span><span class="p">:</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">,</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">centroid</span><span class="p">(</span><span class="n">c</span><span class="p">)}</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span>
-             <span class="n">cl</span><span class="o">.</span><span class="n">getclusters</span><span class="p">(</span><span class="n">K</span><span class="p">)]</span>
-
-<span class="n">kml_items</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">centroids</span><span class="p">)</span>
-
-<span class="c"># Step 4 - Create the final KML output and write it to a file</span>
-
-<span class="n">kml</span> <span class="o">=</span> <span class="n">createKML</span><span class="p">(</span><span class="n">kml_items</span><span class="p">)</span>
-
-<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">OUT_FILE</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span>
-<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">kml</span><span class="p">)</span>
-<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-<span class="k">print</span> <span class="s">&#39;Data written to &#39;</span> <span class="o">+</span> <span class="n">OUT</span>
-</pre></div>
-
-</div>
-</div>
-
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="copyright-and-licensing">Copyright and Licensing</h2>
+<p>You are free to use or adapt this notebook for any purpose you'd like. However, please respect the following <a href="https://github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/blob/master/LICENSE.txt">Simplified BSD License</a> (also known as &quot;FreeBSD License&quot;) that governs its use. Basically, you can do whatever you want with the code so long as you retain the copyright notice.</p>
+<p>Copyright (c) 2013, Matthew A. Russell All rights reserved.</p>
+<p>Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:</p>
+<ol style="list-style-type: decimal">
+<li>Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.</li>
+<li>Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.</li>
+</ol>
+<p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
+<p>The views and conclusions contained in the software and documentation are those of the authors and should not be interpreted as representing official policies, either expressed or implied, of the FreeBSD Project.</p>
 </div>
 </body>
 </html>
