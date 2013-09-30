@@ -50,22 +50,20 @@ The recommended way of getting started with the example code is by taking advant
 
 This project takes advantage of its GitHub repository's [wiki](https://github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/wiki) to act as a point of collaboration for consumers of the source code. Feel free to use the wiki however you'd like to share your experiences, and create additional pages as needed to curate additional information.
 
-One of the more important wiki pages that you may want to bookmark is the [Advisories](https://github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/wiki/Advisories) page, which is an archive of notes about particularly  disruptive commits or other changes that may affect you.
+One of the more important wiki pages that you may want to bookmark is the [Advisories](https://github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/wiki/Advisories) page, which is an archive of notes about particularly disruptive commits or other changes that may affect you.
 
 ## "Premium Support"
 
-The source code in this repository is free for your use however you'd like. If you'd like to complete a more rigorous study about social web mining much like you would experience by following along with a textbook in a classroom, however, you should consider picking up a copy of [Mining the Social Web](http://bit.ly/135dHfs) and follow along. _Think of the book as offering a form of "premium support" for this open source project._ The publisher's description of the book follows for your convenience:
+The source code in this repository is free for your use however you'd like. If you'd like to complete a more rigorous study about social web mining much like you would experience by following along with a textbook in a classroom, however, you should consider picking up a copy of [Mining the Social Web](http://bit.ly/135dHfs) and follow along. _Think of the book as offering a form of "premium support" for this open source project._ 
 
-With this Early Access edition of Mining the Social Web (2nd Ed), you'll get access the author's raw and unedited content as he finishes writing so that you can take advantage of this powerful content long before the official release. You'll be able to influence and shape the final manuscript of the book by leaving the author direct feedback, and you'll also receive updates when significant changes are made, new chapters as they're written, and the final ebook bundle once it's available.
+The publisher's description of the book follows for your convenience:
 
-Facebook, Twitter, LinkedIn, Google+, and other social web properties generate a wealth of valuable social data, but how can you tap into this data and discover who’s connecting with whom, which insights are lurking just beneath the surface, and what people are talking about? This book shows you how to answer these questions and many more. Each chapter combines popular and useful social web data with analysis techniques and visualization to help you find the needles in the social haystack that you've been looking for—as well as many you probably didn't even know existed. 
+How can you tap into the wealth of social web data to discover who’s making connections with whom, what they’re talking about, and where they’re located? With this expanded and thoroughly revised edition, you’ll learn how to acquire, analyze, and summarize data from all corners of the social web including Facebook, Twitter, LinkedIn, Google+, GitHub, email, websites, and blogs. 
 
-In this expanded and thoroughly revised second edition you’ll learn how to:
+* Employ IPython Notebook, the Natural Language Toolkit, NetworkX, and other scientific computing tools to mine popular social web sites
+* Apply advanced text-mining techniques, such as clustering and TF-IDF, to extract meaning from human language data
+* Bootstrap interest graphs from GitHub by discovering affinities among people, programming languages, and coding projects
+* Build interactive visualizations with D3.js, a state-of-the-art HTML5 and JavaScript toolkit 
+* Take advantage of more than two-dozen Twitter recipes presented in O’Reilly’s popular and well-known cookbook format
 
-* Navigate the most popular social web APIs to access, collect, analyze, and visualize social web data
-* Employ IPython Notebook and other easy to use Python packages such as the Natural Language Toolkit, NetworkX, and Matplotlib to efficiently sift through social web data as part of an experimentally-driven approach to discovering insights in social web data
-* Apply advanced text-mining techniques such as TF-IDF, cosine similarity, collocation analysis, document summarization, and clique detection to human language data that you'll encounter all over the web
-* Bootstrap interest graphs by discovering latent affinities between people, programming languages, and coding projects from GitHub data
-* Visualize social web data with D3, a state-of-the-art HTML5 and JavaScript toolkit
-
-The book's source code is maintained here in this GitHub repository by its author and can be deployed as turn-key virtual machine with each chapter's source code presented in an interactive and easy to use IPython Notebook format. No complex third-party installations or advanced Python knowledge is required to get the most out of this book.
+The example code for this data science book is maintained in a public GitHub repository and is designed to be especially accessible through a turn-key virtual machine that facilitates interactive learning with an easy-to-use collection of IPython Notebooks. 
