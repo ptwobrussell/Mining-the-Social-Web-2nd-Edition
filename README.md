@@ -7,7 +7,7 @@ _Mining the Social Web, 2nd Edition_ is available through O'Reilly Media, Amazon
 
 There's an incredible turn-key virtual machine experience for this second edition of the book that provides you with a powerful social web mining toolbox. This toolbox provides the ability to explore and run all of the source code in a hassle-free manner. All that you have to do is [follow a few simple steps](https://rawgithub.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/html/_Appendix A - Virtual Machine Experience.html) to get the virtual machine installed, and you'll be running the example code in as little as 20-30 minutes. (And by the way, most of that time is waiting for files to download.)
 
-This [short screencast](https://www.youtube.com/watch?v=BTyKPMfi_JQ) demonstrates the steps involved in installing the virtual machine, which installs every single dependency for you automatically and save you a lot of time. Even sophisticated power users tend to prefer using it versus using their own environments.
+This [short screencast](https://vimeo.com/72383764) demonstrates the steps involved in installing the virtual machine, which installs every single dependency for you automatically and save you a lot of time. Even sophisticated power users tend to prefer using it versus using their own environments.
 
 If you experience any problems at all with installation of the virtual machine, file an issue here on GitHub. Be sure to also follow [@SocialWebMining](http://twitter.com/socialwebmining) on Twitter and like http://facebook.com/MiningTheSocialWeb on Facebook.
 
@@ -33,9 +33,15 @@ A bit.ly bundle of all of these links is also available: http://bit.ly/mtsw2e-ip
 * [Appendix B - OAuth Primer](https://rawgithub.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/html/_Appendix B - OAuth Primer.html)
 * [Appendix C - Python & IPython Notebook Tips](https://rawgithub.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/html/_Appendix C - Python & IPython Notebook Tips.html)
 
+## Blog & Screencasts
+
+Be sure to bookmark the [Mining the Social Web Vimeo Channel]() to stay up to date with short instructional videos that demonstrate how to use the tools in this repository. More screencasts are being added all the time, so check back often -- or better yet, subscribe to the channel. 
+
+You might also benefit from the content that is being regularly added to the companion blog at http://MiningTheSocialWeb.com
+
 ## The _Mining the Social Web_ Virtual Machine
 
-_You may enjoy [this short screencast](https://www.youtube.com/watch?v=BTyKPMfi_JQ) that demonstrates the step-by-step instructions involved in installing the book's virtual machine._
+_You may enjoy [this short screencast](https://vimeo.com/72383764) that demonstrates the step-by-step instructions involved in installing the book's virtual machine._
 
 The code for _Mining the Social Web_ is organized by chapter in an [IPython Notebook](http://ipython.org/notebook.html) format to maximize enjoyment of following along with examples as part of an interactive experience. Unfortunately, some of the Python dependencies for the example code can be a little bit tricky to get installed and configured, so providing a completely turn-key virtual machine to make your reading experience as simple and enjoyable as possible is in order. Even if you are a seasoned developer, you may still find some value in using this virtual machine to get started and save yourself some time. The virtual machine is powered with [Vagrant](http://vagrantup.com/), an amazing development tool that you'll probably want to know about and arguably makes working with virtualization even easier than a native [Virtualbox](http://www.virtualbox.org/) or VMWare image.  
 
