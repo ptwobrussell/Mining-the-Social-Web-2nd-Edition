@@ -37,7 +37,8 @@ A bit.ly bundle of all of these links is also available: http://bit.ly/mtsw2e-ip
 
 Be sure to bookmark the [Mining the Social Web Vimeo Channel]() to stay up to date with short instructional videos that demonstrate how to use the tools in this repository. More screencasts are being added all the time, so check back often -- or better yet, subscribe to the channel. 
 
-![cover_art!](https://github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/raw/master/screencast-installing-vm.png)
+<a href="https://vimeo.com/channels/MiningTheSocialWeb" target="_blank"><img src="https://github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/raw/master/images/screencast-installing-vm.png"
+alt="Installing the Virtual Machine" width="240" height="180" border="10" /></a>
 
 You might also benefit from the content that is being regularly added to the companion blog at http://MiningTheSocialWeb.com
 
