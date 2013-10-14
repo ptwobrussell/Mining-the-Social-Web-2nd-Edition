@@ -65,6 +65,8 @@ This project takes advantage of its GitHub repository's [wiki](https://github.co
 
 One of the more important wiki pages that you may want to bookmark is the [Advisories](https://github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/wiki/Advisories) page, which is an archive of notes about particularly disruptive commits or other changes that may affect you.
 
+Another page of interest is a listing of all [100+ numbered examples](https://github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/wiki/Numbered-Examples) from the book that conveniently hyperlink to read-only version of the IPython Notebooks
+
 ## "Premium Support"
 
 The source code in this repository is free for your use however you'd like. If you'd like to complete a more rigorous study about social web mining much like you would experience by following along with a textbook in a classroom, however, you should consider picking up a copy of [Mining the Social Web](http://bit.ly/135dHfs) and follow along. _Think of the book as offering a form of "premium support" for this open source project._ 
