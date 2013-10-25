@@ -13,6 +13,16 @@ If you experience any problems at all with installation of the virtual machine, 
 
 Be sure to also visit http://MiningTheSocialWeb.com for additional content, news, and updates about the book and code in this GitHub repository.
 
+## Preview the Full-Text of Chapter 1 (Mining Twitter)
+
+Chapter 1 of the book provides a gentle introduction to hacking on Twitter data. It's available in a variety of convenient formats
+
+* A free [PDF download](http://bit.ly/135dHfs)
+* An [online ebook](http://bit.ly/1an184a) excerpt
+* An [IPython Notebook (ipynb) file](http://bit.ly/1aIQkfm)  (checked into this repository)
+
+Choose one, or choose them all. There's no better way to get started than following along with the opening chapter.
+
 ## Preview the IPython Notebooks
 
 This edition of _Mining the Social Web_ extensively uses [IPython Notebook](http://ipython.org/notebook.html) to facilitate the learning and development process. If you're interested in what the example code for any particular chapter does, the best way to preview it is with the links below. When you're ready to develop, pull the source for this GitHub repository and follow the instructions for installing the virtual machine to get started.
