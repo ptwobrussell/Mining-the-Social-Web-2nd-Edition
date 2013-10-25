@@ -19,7 +19,7 @@ Chapter 1 of the book provides a gentle introduction to hacking on Twitter data.
 
 * A free [PDF download](http://bit.ly/135dHfs)
 * An [online ebook](http://bit.ly/1an184a) excerpt
-* An [IPython Notebook (ipynb) file](http://bit.ly/1aIQkfm)  (checked into this repository)
+* An [IPython Notebook (ipynb) file](http://bit.ly/1aIXjFf)  (checked into this repository)
 
 Choose one, or choose them all. There's no better way to get started than following along with the opening chapter.
 
