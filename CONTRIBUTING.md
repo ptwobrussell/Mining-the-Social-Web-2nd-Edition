@@ -1,4 +1,4 @@
-Mining the Social Web (2nd Edition)
+Before you file an issue...
 =================================
 
 Thanks for taking the time to file an issue! I want you to know that I'll do everything I possibly can to support you in as timely a manner as possible. Assuming I am not traveling or on vacation, I typically am able to respond to tickets within ~24 hours (and oftentimes much sooner.)
