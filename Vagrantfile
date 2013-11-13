@@ -68,7 +68,8 @@ Vagrant.configure("2") do |config|
 
     # A Precise64 Ubuntu image that will run as a microinstance in the
     # region specified
-    aws.ami = "ami-fb68f8cb" 
+    aws.ami = "ami-2ec0581e"  # Used for the Strata Tutorial
+    #aws.ami = "ami-fb68f8cb" 
     aws.region = "us-west-2"
     aws.instance_type = "t1.micro"
 
