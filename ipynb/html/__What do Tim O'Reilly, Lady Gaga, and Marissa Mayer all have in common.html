@@ -1698,7 +1698,7 @@ init_mathjax();
 </div>
 
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This IPython Notebook provides a compilation of the sample code for <a href="http://miningthesocialweb.com/">Mining the Social Web</a>'s multi-part series on exploring <a href="http://miningthesocialweb.com/category/twitter-influence/">Twitter influence</a>. The code in this notebook harvests follower IDs and the corresponding account profiles for arbitrary accounts of interest along with some initial exercises to get you busy analyzing the data. We'll apply the same &quot;Aspire, Acquire, Analyze, Summarize&quot; data science framework that has been presented in previous posts as a guide through this notebook.</p>
+<p>This IPython Notebook provides a compilation of the sample code for <a href="http://miningthesocialweb.com/">Mining the Social Web</a>'s multi-part series on exploring <a href="http://miningthesocialweb.com/category/twitter-influence/">Twitter influence</a>. The code in this notebook harvests follower IDs and the corresponding account profiles for arbitrary accounts of interest along with some initial exercises to get you busy analyzing the data. We'll applly the same &quot;Aspire, Acquire, Analyze, Summarize&quot; data science framework that has been presented in previous posts as a guide through this notebook.</p>
 <p>For the educational purpose of investigating the intuition behind popularity (number of followers) as a measure of influence on Twitter with a concrete set of data, Tim O'Reilly and his followers provide the primary basis of this examination. Sample output from the analysis section of the notebook is left in place for easy review.</p>
 <p>In the spirit of <em><a href="http://www.amazon.com/Freakonomics-Rev-Ed-Riddles-Modern-ebook/dp/B002VL1CLW/?tag=oreonbl-20">Freakonomics</a></em> (but mostly just for entertainment purposes), we'll also briefly juxtapose some of Tim O'Reilly's data with that of Lady Gaga to see what followers they have in common and even compute a Jaccard similarity score for them based on the followers that they have in common.</p>
 <p>But a Jaccard score all by itself is no fun at all, so Marissa Mayer's data will also make a brief guest appearance so that we can make a couple of additional comparisons. The selection of Marissa Mayer seemed interesting since she's a female technologist and thus has something in common with both Tim O'Reilly and Lady Gaga (as arbitrary as that may seem.)</p>
@@ -1718,7 +1718,7 @@ init_mathjax();
 <li>Lady Gaga has a higher Jaccard similarity to Tim O'Reilly than to Lady Gaga. (However, Tim O'Reilly and Marissa Mayer have a <em>much</em> higher Jaccard similarity to one another than either one of them have to Lady Gaga.)</li>
 <li>The total number of followers that Tim O'Reilly, Marissa Mayer, and Lady Gaga have in common is about 25k. This figure represents about 5% of Marissa Mayer's total followers.</li>
 </ul>
-<p>This remainder of this IPython notebook provides the source code and fodder to reproduce these results. Visit <a href="http://MiningTheSocialWeb.com">Mining the Social Web</a> for the <a href="http://wp.me/p3QiJd-4k">corresponding blog post</a> and related content.</p>
+<p>This remainder of this IPython notebook provides the source code and fodder to reproduce these results. Visit <a href="http://MiningTheSocialWeb.com">Mining the Social Web</a> for <a href="http://wp.me/p3QiJd-4k">the corresponding blog post</a> and related content.</p>
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="1.-Aspire">1. Aspire<a class="anchor-link" href="#1.-Aspire">&#182;</a></h1>
@@ -2141,12 +2141,12 @@ In&nbsp;[]:
 
 
 <div class="hbox output_area"><div class="prompt output_prompt">
-    Out[13]:</div>
+    Out[3]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 
 
 <pre>
-&lt;matplotlib.text.Text at 0x1a0525d0&gt;
+&lt;matplotlib.text.Text at 0x30b26d0&gt;
 </pre>
 
 </div>
@@ -2371,12 +2371,12 @@ In&nbsp;[]:
 
 
 <div class="hbox output_area"><div class="prompt output_prompt">
-    Out[14]:</div>
+    Out[4]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 
 
 <pre>
-&lt;matplotlib.text.Text at 0x2ab3dd10&gt;
+&lt;matplotlib.text.Text at 0x3081b10&gt;
 </pre>
 
 </div>
@@ -2750,12 +2750,12 @@ In&nbsp;[]:
 
 
 <div class="hbox output_area"><div class="prompt output_prompt">
-    Out[16]:</div>
+    Out[6]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 
 
 <pre>
-&lt;matplotlib.text.Text at 0x32fcb810&gt;
+&lt;matplotlib.text.Text at 0x26f3d7d0&gt;
 </pre>
 
 </div>
@@ -3122,7 +3122,7 @@ In&nbsp;[]:
 <li>When were these suspect accounts created? (What you'll discover is that the majority of them were all created in the year 2009. Why might this be? Twitter experienced <a href="http://techcrunch.com/2009/10/05/twitter-data-analysis-an-investors-perspective-2/">unprecedented growth</a> in early 2009. Perhaps there was an attach of spam bots that it was not yet well equipped to handle?)</li>
 <li>When did these suspect accounts last tweet? Is there a correlation to account creation time?</li>
 <li>How many of these accounts have changed profile images to something other than the default profile image?</li>
-<li>Who are the most popular accounts that follow Tim O'Reilly and how influenceable are they likely to be?</li>
+<li>Who are the most popular accounts that follow Tim O'Reilly and how influenceable are they likely to be? (One of these followers is high among the most popular users in the world -- almost as popular as Lady Gaga.)</li>
 </ul>
 <p>We already have all of the data on hand to answer these questions and much more from the account profiles. The answers to these questions may surprise you.</p>
 <p>A more advanced exercise:</p>
@@ -3196,7 +3196,7 @@ Tim O&apos;Reilly and Lady Gaga have 261450 followers in common.
 
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Interesting. It seems like more than 250k followers is a non-trivial number of followers to have in common. Let's investigate how many of the common followers with Lady Gaga are from the Tim O'Reilly's suspect set of followers.</p>
+<p>Interesting. It seems like more than 250k followers is a non-trivial number of followers to have in common. Let's investigate how many of the common followers with Lady Gaga are from Tim O'Reilly's suspect set of followers.</p>
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Do-suspect-followers-dominate-Tim-O'Reilly's-set-of-followers-in-common-with-Lady-Gaga?">Do suspect followers dominate Tim O'Reilly's set of followers in common with Lady Gaga?<a class="anchor-link" href="#Do-suspect-followers-dominate-Tim-O'Reilly's-set-of-followers-in-common-with-Lady-Gaga?">&#182;</a></h3>
@@ -3308,6 +3308,62 @@ Tim O&apos;Reilly and Marissa Mayer&apos;s Jaccard Index 0.0492571582527
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>It's not that surprising that Tim O'Reilly and Marissa Mayer have a much higher similarity score to one another than either of them do to Lady Gaga, is it? Given that their statuses as &quot;celebrity technologists&quot; or &quot;business leaders&quot; (amongst other things) are going to drive more interest than a basic variable like gender, the results are as we'd probably have expected them to be.</p>
 <p>That said, how do we account for the (slightly) higher similarity score between Tim O'Reilly and Lady Gaga as compared to Lady Gaga and Marissa Mayer? One thought is that Tim O'Reilly's base of followers is substantially larger than Marissa Mayer's so the sheer numbers are probably the deciding factor.</p>
+<p>Let's re-run the numbers after adjusting for suspect followers to see if anything changes. (Although we aren't adjusting Lady Gaga's set of followers IDs by subtracting out the suspect followers, this should probably be fine for relative comparisons since it's a constant factor for each of the calculations.)</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">timoreilly_followers_ids_not_suspect</span> <span class="o">=</span> <span class="n">timoreilly_followers_ids</span> <span class="o">-</span> <span class="n">timoreilly_suspect_followers_ids</span>
+
+<span class="n">timoreilly_ladygaga_jaccard_not_suspect</span> <span class="o">=</span> <span class="n">jaccard</span><span class="p">(</span><span class="n">timoreilly_followers_ids_not_suspect</span><span class="p">,</span> <span class="n">ladygaga_followers_ids</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&quot;Tim O&#39;Reilly and Lady Gaga&#39;s Jaccard Index adjusted for suspect followers: {0}&quot;</span>\
+<span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">timoreilly_ladygaga_jaccard_not_suspect</span><span class="p">)</span>
+
+<span class="c"># Need to define this variable, assuming you&#39;ve pulled down the data for this account</span>
+
+<span class="n">marissamayer_followers_ids</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">fid</span>
+                 <span class="k">for</span> <span class="n">ids</span> <span class="ow">in</span> <span class="n">load_from_mongo</span><span class="p">(</span><span class="s">&#39;marissamayer&#39;</span><span class="p">,</span> <span class="s">&#39;followers_ids&#39;</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;ids&#39;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+                     <span class="k">for</span> <span class="n">fid</span> <span class="ow">in</span> <span class="n">ids</span><span class="p">[</span><span class="s">&#39;ids&#39;</span><span class="p">]</span>
+                 <span class="p">])</span>
+
+<span class="n">marissamayer_followers_ids_not_suspect</span> <span class="o">=</span> <span class="n">marissamayer_followers_ids</span> <span class="o">-</span> <span class="n">marissamayer_suspect_followers_ids</span>
+
+<span class="n">marissamayer_ladygaga_jaccard_not_suspect</span> <span class="o">=</span> <span class="n">jaccard</span><span class="p">(</span><span class="n">marissamayer_followers_ids_not_suspect</span><span class="p">,</span> <span class="n">ladygaga_followers_ids</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&quot;Marissa Mayer and Lady Gaga&#39;s Jaccard Index adjusted for suspect followers: {0}&quot;</span>\
+<span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">marissamayer_ladygaga_jaccard_not_suspect</span><span class="p">)</span>
+
+<span class="n">timoreilly_marissamayer_jaccard_not_suspect</span> <span class="o">=</span> <span class="n">jaccard</span><span class="p">(</span><span class="n">timoreilly_followers_ids_not_suspect</span><span class="p">,</span> <span class="n">marissamayer_followers_ids</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&quot;Tim O&#39;Reilly and Marissa Mayer&#39;s Jaccard Index adjusted for suspect followers {0}&quot;</span>\
+<span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">timoreilly_marissamayer_jaccard_not_suspect</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt"></div>
+<div class="box-flex1 output_subarea output_stream output_stdout">
+<pre>
+Tim O&apos;Reilly and Lady Gaga&apos;s Jaccard Index adjusted for suspect followers: 0.00542391691954
+Marissa Mayer and Lady Gaga&apos;s Jaccard Index: 0.00177032283699
+Tim O&apos;Reilly and Marissa Mayer&apos;s Jaccard Index 0.0825309743004
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It would appear that the relative comparisons don't change if adjusting for suspect followers. Tim O'Reilly and Lady Gaga are more similar based upon their followers than are Lady Gaga and Marissa Mayer.</p>
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="What-do-Tim-O'Reilly,-Lady-Gaga,-and-Marissa-Mayer-all-have-in-common?">What do Tim O'Reilly, Lady Gaga, and Marissa Mayer all have in common?<a class="anchor-link" href="#What-do-Tim-O'Reilly,-Lady-Gaga,-and-Marissa-Mayer-all-have-in-common?">&#182;</a></h2>
@@ -3325,7 +3381,7 @@ In&nbsp;[]:
 <div class="highlight"><pre><span class="c"># Calculate the number of followers in common between each person of interest</span>
 <span class="c"># by using set intersections.</span>
 
-<span class="n">all_common_followers_ids</span> <span class="o">=</span> <span class="n">timoreilly_followers_ids</span> <span class="o">&amp;</span> <span class="n">ladygaga_followers_ids</span> <span class="o">&amp;</span> <span class="n">marissamayer_followers_ids</span>
+<span class="n">all_common_followers_ids</span> <span class="o">=</span> <span class="n">marissamayer_followers_ids</span> <span class="o">&amp;</span> <span class="n">timoreilly_followers_ids</span> <span class="o">&amp;</span> <span class="n">ladygaga_followers_ids</span>
 
 <span class="k">print</span> <span class="s">&quot;Tim O&#39;Reilly, Lady Gaga, and Marissa Mayer have {0} followers in common.&quot;</span>\
 <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">all_common_followers_ids</span><span class="p">))</span>
@@ -3396,12 +3452,12 @@ Marissa Mayer has 69538 &apos;suspect&apos; followers for MIN=10
 </div>
 
 <div class="hbox output_area"><div class="prompt output_prompt">
-    Out[22]:</div>
+    Out[12]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 
 
 <pre>
-&lt;matplotlib.text.Text at 0x546c38d0&gt;
+&lt;matplotlib.text.Text at 0xd81c690&gt;
 </pre>
 
 </div>
@@ -3715,8 +3771,7 @@ In&nbsp;[]:
 <div class="highlight"><pre><span class="n">marissamayer_suspect_followers_ids</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">f</span><span class="p">[</span><span class="s">&#39;id&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">marissamayer_suspect_followers</span><span class="p">])</span>
 
 <span class="n">all_common_followers_ids_not_suspect</span> <span class="o">=</span> <span class="n">all_common_followers_ids</span> <span class="o">-</span> \
-                                       <span class="n">timoreilly_suspect_followers_ids</span> <span class="o">-</span> \
-                                       <span class="n">marissamayer_suspect_followers_ids</span>
+                                       <span class="p">(</span><span class="n">timoreilly_suspect_followers_ids</span> <span class="o">|</span> <span class="n">marissamayer_suspect_followers_ids</span><span class="p">)</span>
 
 <span class="k">print</span> <span class="s">&quot;Tim O&#39;Reilly, Lady Gaga, and Marissa Mayer have {0} non-suspect followers in common.&quot;</span>\
 <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">all_common_followers_ids_not_suspect</span><span class="p">))</span>
@@ -3743,14 +3798,78 @@ Tim O&apos;Reilly, Lady Gaga, and Marissa Mayer have 25470 non-suspect followers
 
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>It appears that the vast majority of the common followers are non suspect at all and may be active users! In other words, Tim O'Reilly, Lady Gaga, and Marissa Mayer have 25k followers in common that have passed the initial test of scrutiny.</p>
-<p>There are countless possibilities for exploring the data, and I hope that this notebook has given you more ideas than you know what to do with.</p>
+<p>It appears that the vast majority of the common followers are not suspect at all and may be active users! In other words, Tim O'Reilly, Lady Gaga, and Marissa Mayer have 25k followers in common that have passed the initial test of scrutiny.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Rewind:-Wrapping-up-a-few-loose-ends">Rewind: Wrapping up a few loose ends<a class="anchor-link" href="#Rewind:-Wrapping-up-a-few-loose-ends">&#182;</a></h2>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Before wrapping up, there are just a few additional unanswered questions that we can answer in order to create a little more symmetry and closure for some of the comparisons. In particular, we have the data and variables already defined to answer these questions:</p>
+<ul>
+<li>How many of Marissa Mayer's followers follow Lady Gaga?</li>
+<li>How many followers do Tim O'Reilly and Marissa Mayer have in common?</li>
+</ul>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">marissamayer_ladygaga_followers_ids</span> <span class="o">=</span> <span class="n">marissamayer_followers_ids</span> <span class="o">&amp;</span> <span class="n">ladygaga_followers_ids</span>
+<span class="n">marissamayer_ladygaga_followers_ids_not_suspect</span> <span class="o">=</span> <span class="n">marissamayer_ladygaga_followers_ids</span> <span class="o">-</span> <span class="n">marissamayer_suspect_followers_ids</span>
+                                                  
+
+<span class="n">timoreilly_marissamayer_followers_ids</span> <span class="o">=</span> <span class="n">timoreilly_followers_ids</span> <span class="o">&amp;</span> <span class="n">marissamayer_followers_ids</span>
+<span class="n">timoreilly_marissamayer_followers_ids_not_suspect</span> <span class="o">=</span> <span class="n">timoreilly_marissamayer_followers_ids</span> <span class="o">-</span> <span class="n">marissamayer_suspect_followers_ids</span>
+                                                    
+
+<span class="k">print</span> <span class="s">&quot;Marissa Mayer and Lady Gaga have {0} followers in common. {1} of them are not suspect.&quot;</span>\
+<span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">marissamayer_ladygaga_followers_ids</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">marissamayer_ladygaga_followers_ids_not_suspect</span><span class="p">))</span>    
+    
+<span class="k">print</span> <span class="s">&quot;Tim O&#39;Reilly and Marissa Mayer have {0} followers in common. {1} of them are not suspect.&quot;</span>\
+<span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">timoreilly_marissamayer_followers_ids</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">timoreilly_marissamayer_followers_ids_not_suspect</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt"></div>
+<div class="box-flex1 output_subarea output_stream output_stdout">
+<pre>
+Marissa Mayer and Lady Gaga have 82553 followers in common. 72107 of them are not suspect.
+Tim O&apos;Reilly and Marissa Mayer have 99457 followers in common. 94612 of them are not suspect.
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Recalling that more than 225k of Tim O'Reilly's non-suspect followers also follow Lady Gaga (~25% of his non-suspect follower base), we can now see that ~72k of Marissa Mayer's followers also follow Lady Gaga (~18% of her non-suspect follower base.)</p>
+<p>Marissa Mayer and Tim O'Reilly have approximately 100k common followers between them with about 95k of these common followers passing the test of scrutiny.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Where-to-go-from-here">Where to go from here<a class="anchor-link" href="#Where-to-go-from-here">&#182;</a></h2>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There are countless possibilities for exploring the data, and I hope that this notebook has given you more ideas than you know what to do with. Although we've just considered a narrow dimension of it, there is much, much more tucked away in the account profiles.</p>
 <p>Enjoy the process of extending this notebook and stay tuned at http://MiningTheSocialWeb.com for more content like it. If there is sufficient interest, there may be an encore presentation that picks up from here.</p>
 <p>Enjoy!</p>
 <p>Suggested exercises:</p>
 <ul>
-<li>How many followers do Tim O'Reilly and Marissa Mayer have in common? Do you expect that Marissa Mayer's followers will be largely subsumed by Tim O'Reilly's followers?</li>
+<li>Apply similar analysis for the accounts that Tim O'Reilly, Lady Gaga, and Marissa Mayer are following (the accounts that they are <em>interested</em> in.) How influenceable are these accounts? What metrics would you apply to try and make this determination?</li>
 <li>Would you expect that a higher percentage of females might follow Marissa Mayer than Tim O'Reilly? (You can analyze first names to get a reasonable idea of whether or not this is the case. See http://tedwise.com/check-name for a list of fist names that you can use.)</li>
+<li>Pick a figure of your own choosing and introduce them to the comparison matrix. Who are they most similar to based upon the Jaccard similarity of their followers?</li>
 </ul>
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -3765,10 +3884,12 @@ Tim O&apos;Reilly, Lady Gaga, and Marissa Mayer have 25470 non-suspect followers
 <ul>
 <li>Although purely speculative at this point, <strong>there may have been a spam-bot attack in early 2009</strong> that explains this given that the majority of Tim O'Reilly's suspect users are from that year, which is the same year that Twitter experiences unprecedented user growth. Further investigation would be needed to say for sure. (Marissa Mayer wouldn't yet have been a popular or well-known Twitter user back then since she didn't create an account until late 2008. Tim O'Reilly, on the other hand, was already an established and well-known user who would have been a ripe target for spam-bots.)</li>
 </ul></li>
-<li><p>Tim O'Reilly and Lady Gaga have more than 250k followers in common with almost 225k of them passing the test of scrutiny. What's interesting about this finding is that it means that <strong>roughly 25% of Tim O'Reilly's followers also follow Lady Gaga</strong> if you filter out the suspect accounts.</p></li>
+<li><p>Tim O'Reilly and Lady Gaga have more than 250k followers in common with almost 225k of them passing the test of scrutiny. What's interesting about this finding is that it means that <strong>roughly 25% of Tim O'Reilly's followers also follow Lady Gaga as compared to 18% for Marissa Mayer</strong> once you filter out the suspect accounts.</p></li>
+<li><p>Tim O'Reilly and Marissa Mayer have about 100k followers in common with 95k of these followers being non-suspect.</p></li>
 <li><p>We computed Jaccard similarity for the combinations of Tim O'Reilly, Lady Gaga, and Marissa Mayer. Not too surprisingly, <strong>Tim O'Reilly and Marissa Mayer had a higher Jaccard similarity than the other two possible combinations involving Lady Gaga</strong>.</p></li>
-<li><p><strong>Tim O'Reilly, Lady Gaga, and Marissa Mayer have more than 25k total followers in common</strong> that have passed the initial test of scrutiny. <strong>This number represents about 5% of Marissa Mayer's total followers</strong>.</p></li>
+<li><p><strong>Tim O'Reilly, Lady Gaga, and Marissa Mayer have more than 25k total followers in common</strong> that have passed the initial test of scrutiny.</p></li>
 </ul>
+<p>See <a href="http://wp.me/p3QiJd-4k">http://wp.me/p3QiJd-4k</a> for a more detailed write-up of this summary.</p>
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Recommended-Links">Recommended Links<a class="anchor-link" href="#Recommended-Links">&#182;</a></h1>
