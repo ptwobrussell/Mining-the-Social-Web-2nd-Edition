@@ -46,6 +46,31 @@ Vagrant.configure("2") do |config|
     override.vm.network :forwarded_port, host: 27019, guest: 27019
     override.vm.network :forwarded_port, host: 28017, guest: 28017
   end
+
+  config.vm.provider :vmware_fusion do |v, override|
+    #Building Config from: http://docs.vagrantup.com/v2/vmware/configuration.html
+    # v.gui = True
+    # v.vmx["memsize"] = "1024"
+    # v.vmx["numvcpus"] = "2"
+
+    # The Virtualbox image
+    override.vm.box = "precise64"
+    override.vm.box_url = "http://files.vagrantup.com/precise64.box"
+
+    # Port forwarding details
+  
+    # IPython Notebook
+    override.vm.network :forwarded_port, host: 8888, guest: 8888
+
+    # Flask
+    override.vm.network :forwarded_port, host: 5000, guest: 5000
+
+    # MongoDB
+    override.vm.network :forwarded_port, host: 27017, guest: 27017
+    override.vm.network :forwarded_port, host: 27018, guest: 27018
+    override.vm.network :forwarded_port, host: 27019, guest: 27019
+    override.vm.network :forwarded_port, host: 28017, guest: 28017
+  end
  
   #########################################################################
   # AWS configuration - an experimental provider for running this VM in the
