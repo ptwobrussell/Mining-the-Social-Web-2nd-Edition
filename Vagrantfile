@@ -34,13 +34,6 @@ Vagrant.configure("2") do |config|
 
     # Port forwarding details
   
-    # Note: Unfortunately, port forwarding currently is not implemented for
-    # the AWS provider plugin, so you'll need to manually open them through the 
-    # AWS console or with the EC2 CLI tools. (It would be possible to do it
-    # all through an additional Chef recipe that runs as part of MTSW2E, but
-    # just isn't implemented yet.) Only port 8888 is essential
-    # to initially access IPython Notebook and get started.
-
     # IPython Notebook
     override.vm.network :forwarded_port, host: 8888, guest: 8888
 
@@ -62,6 +55,18 @@ Vagrant.configure("2") do |config|
   #########################################################################
   
   config.vm.provider :aws do |aws, override|
+
+    # Port forwarding details
+  
+    # Note: Unfortunately, port forwarding currently is not implemented for
+    # the AWS provider plugin, so you'll need to manually open them through the 
+    # AWS console or with the EC2 CLI tools. (It would be possible to do it
+    # all through an additional Chef recipe that runs as part of MTSW2E, but
+    # just isn't implemented yet.) Only port 8888 is essential
+    # to initially access IPython Notebook and get started.
+
+
+
     aws.access_key_id = ENV['MTSW_AWS_ACCESS_KEY_ID']
     aws.secret_access_key = ENV['MTSW_AWS_SECRET_ACCESS_KEY']
     aws.keypair_name = ENV['MTSW_KEYPAIR_NAME']
