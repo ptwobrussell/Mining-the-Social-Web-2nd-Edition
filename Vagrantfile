@@ -55,7 +55,7 @@ Vagrant.configure("2") do |config|
 
     # The Virtualbox image
     override.vm.box = "precise64"
-    override.vm.box_url = "http://files.vagrantup.com/precise64.box"
+    override.vm.box_url = "http://files.vagrantup.com/precise64_vmware.box"
 
     # Port forwarding details
   
