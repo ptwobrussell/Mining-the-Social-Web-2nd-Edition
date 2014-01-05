@@ -59,14 +59,22 @@ execute "install_requirements" do
 end
 
 # Install a few ancillary packages for NLTK in a central location. See http://nltk.org/data.html
-"punkt maxent_treebank_pos_tagger maxent_ne_chunker words stopwords".each_line do |data|
-  execute "download_nltk_#{data}" do
-    command "python -m nltk.downloader -d /usr/share/nltk_data #{data}"
-    not_if do
-      ::File.exists?("/usr/share/nltk_data/#{data}")
-    end
-  end
-end
+#
+# XXX:
+# TEMPORARILY COMMENTING THESE DOWNLOADS OUT UNTIL CHEF HANDLING CAN BE ADDED TO IGNORE A 
+# Mixlib::ShellOut::CommandTimeout ERROR DUE TO BANDWIDTH LIMITATIONS. TOO MANY READERS ARE
+# INTERMITTENTLY EXPERIENCING THIS PROBLEM AND HAVING TO WORKAROUND THE IT. SINCE THERE ARE
+# CUES TO DOWNLOAD THESE ADD-ONS IN THE NOTEBOOKS THAT REQUIRE THEM, IT SEEMS BETTER TO
+# AVOID THE ISSUE ALL TOGETHER AT THIS PARTICULAR JUNCTURE.
+#
+#"punkt maxent_treebank_pos_tagger maxent_ne_chunker words stopwords".each_line do |data|
+#  execute "download_nltk_#{data}" do
+#    command "python -m nltk.downloader -d /usr/share/nltk_data #{data}"
+#    not_if do
+#      ::File.exists?("/usr/share/nltk_data/#{data}")
+#    end
+#  end
+#end
 
 runit_service "ipython" do
   default_logger true
