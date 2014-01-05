@@ -52,6 +52,10 @@ Vagrant.configure("2") do |config|
     override.vm.network :forwarded_port, host: 27018, guest: 27018
     override.vm.network :forwarded_port, host: 27019, guest: 27019
     override.vm.network :forwarded_port, host: 28017, guest: 28017
+    
+    # You can increase the default amount of memory used by your VM by
+    # adjusting this value below (in MB) and reprovisioning.
+    vb.customize ["modifyvm", :id, "--memory", "384"]
   end
  
   #########################################################################
@@ -68,8 +72,7 @@ Vagrant.configure("2") do |config|
 
     # A Precise64 Ubuntu image that will run as a microinstance in the
     # region specified
-    aws.ami = "ami-2ec0581e"  # Used for the Strata Tutorial
-    #aws.ami = "ami-fb68f8cb" 
+    aws.ami = "ami-fb68f8cb" 
     aws.region = "us-west-2"
     aws.instance_type = "t1.micro"
 
