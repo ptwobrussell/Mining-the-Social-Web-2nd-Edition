@@ -54,7 +54,7 @@ packages.each do |package|
 end
 
 execute "install_requirements" do
-  command "pip install -r /vagrant/mtsw2e-requirements.txt"
+  command "pip install -r /vagrant/mtsw2e-requirements.txt --allow-unverified matplotlib --allow-all-external"
   # action :nothing
 end
 
