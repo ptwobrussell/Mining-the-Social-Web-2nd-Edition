@@ -11,3 +11,5 @@ twitter.oauth_access
 Berksfile.lock
 
 *.swp
+
+*.ipynb
