@@ -27,7 +27,7 @@ readline==6.2.4.1
 requests==1.2.3
 requests-oauthlib==0.3.2
 tornado==2.4.1
-twitter==1.9.2
+twitter==1.12.1
 wsgiref==0.1.2
 oauth2==1.5.211
 twitter-text-py==2.0.0
