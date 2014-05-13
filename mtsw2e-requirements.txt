@@ -21,7 +21,7 @@ prettytable==0.7.1
 pymongo==2.5.1
 python-dateutil==2.1
 python-gflags==2.0
-python-linkedin==3.0
+python-linkedin
 pyzmq==13.0.0
 readline==6.2.4.1
 requests==1.2.3
