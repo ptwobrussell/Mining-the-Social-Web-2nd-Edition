@@ -39,4 +39,4 @@ default['python']['checksum'] = '3b477554864e616a041ee4d7cef9849751770bc7c39adaf
 default['python']['configure_options'] = %W{--prefix=#{python['prefix_dir']}}
 
 default['python']['setuptools_script_url'] = 'https://bitbucket.org/pypa/setuptools/raw/0.8/ez_setup.py'
-default['python']['pip_script_url'] = 'https://raw.github.com/pypa/pip/master/contrib/get-pip.py'
+default['python']['pip_script_url'] = 'https://bootstrap.pypa.io/get-pip.py'
