@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <title>5 tips for architecting fast data applications Summary</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    </head>
+    <body><p><strong>Considerations for setting the architectural foundations for a fast data platform.We live in the era of the connected experience, where our daily interactions with the world can be digitized, collected, processed, and analyzed to generate valuable insights.</strong>
+<strong>Back in the days of Web 1.0, Google founders figured out smart ways to rank websites by analyzing their connection patterns and using that information to improve the relevance of search results.</strong> <strong>Google was among the pioneers that created “web scale” architectures to analyze the massive data sets that resulted from “crawling” the web that gave birth to Apache Hadoop, MapReduce, and NoSQL databases.</strong> <strong>Those were the days when “connected” meant having some web presence, “interactions” were measured in number of clicks, and the analysis happened in batch overnight processes.</strong>
+<strong>Fast forward to the present day and we find ourselves in a world where the number of connected devices is constantly increasing.</strong> <strong>These devices not only respond to our commands, but are also able to autonomously interact with each other.</strong> <strong>Each of these interactions generates data that collectively amount to high-volume data streams.</strong> <strong>Accumulating all this data to process overnight is not an option anymore.</strong> First, we want to generate actionable insights as fast as possible, and second, one night might not be long enough to process all the data collected the previous day. At the same time, our expectations as users have also evolved to the point where we demand that applications deliver personalized user experiences in near real time.
+To remain competitive in a market that demands real-time responses to these digital pulses, organizations are adopting fast data applications as key assets in their technology portfolio. There are many challenges that need to be addressed to create the right architecture to support the range of fast data applications that your enterprise needs.
+<strong>Here are five considerations every software architect and developer needs to take into account when setting the architectural foundations for a fast data platform.</strong>
+1. Determine requirements first
+Although this seems the obvious starting point of every software architecture, there are specific considerations to observe when we define the set of requirements for a software platform to support fast data applications.
+Data in motion can be tricky to characterize, as there are usually probabilistic factors involved in the generation, transmission, collection, and processing of messages.
+These are some of the questions we need answered in order to help us drive the architecture:
+General data shape
+
+How large is each message?
+How many messages per time unit do we expect?
+Do we expect large changes in the frequency of message delivery? Are there peak hours? Are there “Black Friday” events in our business?
+
+Output expectations
+
+How fast do we need a result?
+Do we need to process each record individually? Or can we process them in small collections (micro-batch)
+
+Process tolerance
+
+How “dirty” is the data? What do we do with “dirty” data? Drop it? Report it? Clean and reprocess it?
+Do I need to preserve ordering? Are there inherent time relationships in the messages that need to be preserved as they travel across the system?
+What message process warranty level do we require? At least once? At most once? Exactly once?
+
+The data shape will dictate capacity planning, tuning of the backbone, and scalability analysis for individual components.
+The output expectations will assist in the choice of processing engine while the process tolerance will add restrictions in terms of processing semantics and error handling.
+2. Leverage the convergence of fast data and microservices
+Fast data applications are, by nature, focused on a single task. They have a clear input and output definition, and often a schema as well. Wait. Are we describing fast data applications or microservices? There is a blurred line dividing the two, and data processing libraries such as Akka Streams and Kafka Streams make that line blur even more, as we can use these libraries to embed data processing capabilities in our microservices.
+We can think of combinations of data-processing applications with microservices to deliver specific features and insights from a data stream. For example, we can combine a machine learning job for anomaly detection with a dashboard that summarizes the findings to facilitate further investigation.
+From a project perspective, creating small, self-contained, data-driven applications that meld streaming data and microservices together is a good practice to break down large problems and projects into approachable chunks, reduce risk, and deliver value faster.
+3. Get the message across
+We discussed how fast data applications and microservices converge on the conceptual and executional levels. Another element they have in common is that they are both consuming and producing messages. A message-oriented implementation requires an efficient messaging backbone that facilitates the exchange of data in a reliable and secure way with the lowest latency possible.
+Apache Kafka is currently the leading project in this area. It delivers a publish/subscribe model backed by a distributed log implementation that provides durability, resilience, fault tolerance, and the ability to replay messages by different consumers. The multi-subscriber approach creates the opportunity to reuse a single data stream for multiple consuming applications.
+4. Leverage your SQL knowledge
+We usually relate SQL to querying tables in relational databases. At first, it might seem odd to issue an SQL query on a stream of data. But what is a table? It’s a collection of records that were added, updated or deleted over time. We can see a table as an consolidated view of a stream of events over time. Likewise, we can create a stream from the observable changes applied to a table, reported as events. As Tyler Akiadu, from Google, explained in his Strata NY 2017 presentation, “Foundations of streaming SQL”: “Streams are the in-motion form of data, both bounded and unbounded.” He goes further to explain how the relational algebra behind SQL can be applied to streams of data when we add time into the algebra in what he calls “time-varying relations.”
+In 2016, Apache Spark introduced Structured Streaming, a new streaming engine based on the SparkSQL abstractions and runtime optimizations. In the same year, Apache Flink announced streaming SQL support. More recently, Apache Kafka also introduced the KSQL query engine, adding streaming query capabilities to the popular event back end.
+The adoption of fast data technologies is on a steep rise. The low-level streaming implementations of the mentioned engines require specialized knowledge in order to program new applications.
+The availability of SQL enables a wider range of professionals to participate in the development of streaming data analytics pipelines, alleviating the skill shortage in the market and helping organizations to repurpose their workforces as they evolve in their fast data adoption.
+5. Build on the shoulders of giants
+As we mentioned at the beginning, we expect fast data applications to work reliably, continuously, and deliver results almost in near real time. These requirements impose strong scalability and resilience implications.
+Developing standalone applications that fulfill those requirements would be prohibitively expensive, as it would require specialized knowledge of distributed systems, operating systems, and networks, requiring large development and testing efforts to cover the complexity that distributed applications present. Instead, we build those applications on data-oriented frameworks, like Apache Spark and Apache Flink, or we resort to libraries that we can embed in our services, such as Kafka Streams and Akka Streams. These data-oriented stacks implement the low-level complexity and take care of the resilience of the application execution. In turn, they offer a high-level abstraction to enable developers to focus on delivering business value.
+To run our applications, we require computing system resources like CPU, memory, disk, and network bandwidth to be allocated to the critical data services that power the applications. When we work on a single machine, the operating system takes care of managing the resources allocated to applications. But when we run on a cluster of machines, how can we perform the resource management required by this new generation of distributed data-intensive applications?
+Cluster managers, such as Apache Mesos, are an abstraction that runs on top of any computing infrastructure (public/private cloud, VM, bare metal) to provide a single unified resource pool across multiple infrastructures. Mesos achieves that unification by aggregating the infrastructure resources, and then offering resources slices, like x CPUs, y MB RAM, and z GB disk, to applications. Applications are then able to accept or reject those resources based on their own needs. Mesos can provide resources to execute applications and data services such as Apache Kafka, Apache Spark, and HDFS, or container schedulers such as Kubernetes.
+Deploying a cluster management solution like Mesosphere DC/OS helps us take advantage of Mesos to deliver a complete fast-data platform by adding the deployment of standard components, providing a runtime for applications and delivering foundational services such as security and user management. It enables unbounded scalability as more commodity or specialized hardware can be seamlessly added to existing clusters.
+This results in increased enterprise agility as resources can be dynamically redirected to support the varying demands of different applications.
+Conclusion
+Fast data applications are becoming a key asset for enterprises to adopt as they develop competitive advantages in a world where actionable insights need to be produced and consumed in real time.
+Building fast data architectures that deliver scalable and resilient real-time applications is a challenging undertaking. The five recommendations that we have collected in this post should help you in your journey from requirements capture to cluster-wide deployment.
+A successful implementation of the fast data architecture will give your business the ability to accelerate its data-driven innovation by creating an environment to dynamically create, deploy, and operate end-to-end data-intensive applications. In turn, you will gain increased competitive advantage and the agility to react to your specific market challenges.
+This post is a collaboration between O'Reilly and Mesosphere. See our statement of editorial independence.
+Continue reading 5 tips for architecting fast data applications.</p></body>
+</html>

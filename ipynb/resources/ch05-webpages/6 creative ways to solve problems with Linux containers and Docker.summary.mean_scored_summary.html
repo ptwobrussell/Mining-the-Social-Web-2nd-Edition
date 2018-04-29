@@ -1,0 +1,199 @@
+<html>
+    <head>
+        <title>6 creative ways to solve problems with Linux containers and Docker Summary</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    </head>
+    <body><p><strong>An outside-the-box exploration of how containers can be used to provide novel solutions.Most people are introduced to Docker and Linux containers as a way to approach solving a very specific problem they are experiencing in their organization.</strong> <strong>The problem they want to solve often revolves around either making the dev/test cycle faster and more reliable while simultaneously shortening the related feedback loops, or improving the packaging and deploying of applications into production in a very similar fashion.</strong> <strong>Today, there are a lot of tools in the ecosystem that can significantly decrease the time it takes to accomplish these tasks while also vastly improving the ability of individuals, teams, and organizations to reliably perform repetitive tasks successfully.</strong>
+<strong>That being said, tools have become such a big focus in the ecosystem that there are many people who haven’t really spent much time thinking about all the ways containers alone can provide interesting solutions to problems that can occur in the course of any technical task.</strong>
+<strong>To get the creative juices flowing and help folks start thinking outside the box, we’ll examine a few scenarios and explore how containers can be used to provide possible solutions.</strong> You'll notice that many of these examples utilize file mounts to access data stored on local machines.
+Note that all of these were tested on Mac OS X running a current stable release of Docker: Community Edition. Also, most of the examples assume you have a unix-based operating system, but they can often be adjusted to work on Windows.
+
+Preparation
+If you are planning on running these examples, go ahead and download the following images ahead of time so you can see how the commands run without the additional time required to pull down the images the first time:
+$ docker pull acleancoder/imagemagick-full:latest
+$ docker pull jasperla/docker-go-cross:latest
+$ docker pull spkane/dell-openmanage:latest
+$ docker pull debian:latest
+$ docker pull spkane/train-os:latest
+$ docker pull alpine:latest
+$ docker pull jess/firefox:latest
+
+
+Scenario 1
+
+Using containers for console commands
+There are often applications that are very useful to have but don't run or are very difficult to compile on the platform we are using. Containers can provide a very easy way to run these applications, despite the apparent barriers (and even if we can run the application natively, containers can be a very compelling approach to packaging and distributing programs). In this example, we are using an ImageMagick container to resize an image. Although this particular example is easy to accomplish in other ways, it should give some insight into how a container can be used to take advantage of a wide variety of similar console-based tools.
+$ curl -o docker.png \
+  https://www.docker.com/sites/default/files/vertical-whitespace.png
+$ ls
+$ docker run -ti -v $(pwd):/data acleancoder/imagemagick-full:latest \
+  convert /data/docker.png -resize 50% /data/half_docker.png
+$ ls
+
+
+
+
+Scenario 2
+
+Using containers for development environments
+
+
+Have you ever needed to set up your development environment at a new job or on a new computer and struggled to get it right?
+
+
+Have you ever had problems because your development and Q/A environments used slightly different versions of the compiler?
+
+
+By using containers, it is possible to ensure your builds are repeatable, even for complex development environments. In this example, we are using a Docker image that contains a robust Go development environment to compile a small console game for Linux, OS X, and Windows.
+$ git clone https://github.com/spkane/go-paranoia.git
+$ cd go-paranoia/paranoia
+
+
+Mac OS X
+$ docker run -ti --rm -e APPNAME=paranoia \
+  -e GOLANG_TARGET_PLATFORM="darwin/amd64" -v "$(pwd):/go/src/app" \
+  jasperla/docker-go-cross
+$ ./paranoia-darwin-amd64
+
+
+
+Linux
+$ docker run -ti --rm -e APPNAME=paranoia \
+  -e GOLANG_TARGET_PLATFORM="linux/amd64" -v "$(pwd):/go/src/app" \
+  jasperla/docker-go-cross
+$ ./paranoia-linux-amd64
+
+
+
+Windows
+> docker run -ti --rm -e APPNAME=paranoia \
+  -e GOLANG_TARGET_PLATFORM="windows/amd64" -v "$(pwd):/go/src/app" \
+  jasperla/docker-go-cross
+> .\paranoia-windows-amd64
+
+
+
+
+
+Scenario 3
+
+Using containers to solve OS version incompatibilities
+This example will only work on a Linux server running on Dell hardware, but it provides a good example of how containers can make it easier to run certain classes of software.
+Dell's OpenManage Server Administrator (OMSA) is critical for monitoring and configuring Dell hardware, but Dell supports only a few Linux distributions and can be slow to provide updates for newer releases. By using containers, we can ensure that OMSA is packaged with the Linux platform (e.g., CentOS 7) and libraries that it requires, while still having the freedom to run it on the Linux platform (e.g., CoreOS) that we require.
+In the example below, we launch a container that runs continuously in the background with a few processes that Dell uses to facilitate communication between the Dell tools and the underlying hardware. We then wait 40 seconds while the container finishes starting up all the background process that it launches.
+$ docker run --privileged -d -p 161:161/udp -p 1311:1311 \
+  --restart=always --net=host --name=omsa \
+  -v /lib/modules/`uname -r`:/lib/modules/`uname -r` \
+  spkane/dell-openmanage:latest
+$ sleep 40s
+
+Once the container is running, we can utilize docker exec to treat the running container like a simple command line tool and query the hardware, just as if the OMSA tools were installed and running in a more traditional manner. With this command, we retrieve the chassis info.
+$ docker exec omsa omreport chassis info
+
+Chassis Information
+
+Index                                    : 0
+Chassis Name                             : Main System Chassis
+Host Name                                : dell-host.example.net
+iDRAC8 Version                           : 2.30.30.30 (Build 50)
+Lifecycle Controller Version             : 2.30.30.30
+Chassis Model                            : PowerEdge R430
+Chassis Lock                             : Present
+Chassis Service Tag                      : 245XWE2
+Express Service Code                     : 0000924034
+Chassis Asset Tag                        : Unknown
+Flash chassis identify LED state         : Off
+Flash chassis identify LED timeout value : 300
+
+And then we can immediately run another command to clear the ESM log, or whatever else we might need.
+$ docker exec omsa omconfig system esmlog action=clear
+
+Embedded System Management (ESM) log cleared successfully.
+
+
+
+
+Scenario 4
+
+Using containers to explore the underlying host
+Docker: Community Edition (CE) does a great job of making the Docker server feel like it runs natively on Mac OS X and Windows. Honestly, it does too good a job. When you are first trying to learn how Docker works, it can actually be very deceiving because Docker: CE launches a lightweight Linux virtual machine (VM) on both of these platforms, but it is not obvious to the end user that this is the case, and there is no way to log in to this VM and take a look around. So, given all this, how do you learn more about how the Docker VM works?
+In this scenario, we can utilize a partially privileged container and Linux namespaces to launch a container that will allow us to see all the processes that are running on the underlying host and explore its filesystem.
+$ docker run --rm -it --cap-add SYS_ADMIN --cap-add SYS_PTRACE \
+  --pid=host debian:latest nsenter -t 1 -m -u -n -i sh
+
+/ # cat /etc/os-release
+PRETTY_NAME="Docker for Mac"
+
+/ # exit
+
+Note: This is an important example of why running privileged containers in production can be very dangerous. Although we have only shared the host's PID namespace with this container and given it two Linux capabilities, it can easily access the host's underlying filesystem.
+
+
+
+Scenario 5
+
+Using containers to sidestep a read-only filesystem
+Another quirk of Docker: Community Edition is that the virtual machine's root filesystem has been made read-only in recent releases. This was done to help prevent people from breaking Docker by fooling around inside the VM, utilizing techniques like the one we just showed. This is understandable since they need to be able to support their product in such a wide range of environments, but it can also be problematic.
+While teaching classes about Docker and specifically trying to demonstrate how Linux Control Groups (cgroups) impact the resources that are available to a container, it is often desirable to run a simple tool on the Linux host that makes it easy to monitor the processes that are running and see how they are performing. 
+In class, we will often run a container that stresses the underlying VM by generating some load on the CPU and memory so that we can see what effect it has on the underlying VM.
+$ docker run -d spkane/train-os:latest stress -v --cpu 2 --io 1 --vm 2 --vm-bytes 128M --timeout 480s
+
+A simple and visually appealing tool, like htop is ideal for observing the impact on the VM, but since the root filesystem of the virtual machine is read-only, there is no way to install htop directly into the VM. 
+$ docker run --rm -it --cap-add SYS_ADMIN --cap-add SYS_PTRACE \
+  --pid=host debian:latest nsenter -t 1 -m -u -n -i sh
+
+/ # apk update
+ERROR: Unable to lock database: Read-only file system
+ERROR: Failed to open apk database: Read-only file system
+
+/ # exit
+
+So, instead of using the VM directly, we can run a container that shares the host's PID (process) namespace so that htop can see all the processes running on the host and allow us to understand how our stress program is impacting the Docker server.
+$ docker run --rm -it --pid=host alpine:latest sh
+
+/ # apk update
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.6/main/x86_64/APKINDEX.tar.gz
+...
+OK: 8437 distinct packages available
+
+/ # apk add htop
+(1/4) Installing ncurses-terminfo-base (6.0_p20171125-r0)
+...
+OK: 11 MiB in 15 packages
+
+/ # htop -p $(pgrep stress | tr '\n' ',')   # Press q to exit
+
+/ # exit
+
+
+
+Scenario 6
+
+Using containers to run X11 graphical applications
+This specific example is designed for Mac OS X, but it can be easily modified for Linux and Windows. On Windows, you will also need to install a third-party X11 server, like Xming, Cygwin/X or MobaXterm.
+On Mac OS X, if you do not already have the homebrew package manager installed, you can get it from Homebrew.
+To make this X11 container work, we need to prepare our system the first time by installing socat and Xquartz, an X11 server, on the Mac. Once Xquartz is installed, we need to reboot the Mac so that the X11 server is set up properly for the current user.
+$ brew install socat
+$ brew cask install xquartz
+$ shutdown -r now
+
+After this one-time setup, we can now run a Linux X11 graphical application by running socat to facilitate communication between the container and the Mac's X11 server, and then launching the desired container.
+$ socat TCP-LISTEN:6000,reuseaddr,fork UNIX-CLIENT:\"$DISPLAY\" &
+$ IP=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
+$ docker run -it --rm -e DISPLAY=${IP}:0 jess/firefox
+
+After a few moments you should see a usable Firefox browser window open on your system.
+Note: On the Mac, it is actually possible to set the DISPLAY to docker.for.mac.host.internal:0 instead of using the primary IP address. Also, don't forget to kill the socat process when you are done playing around with this.
+
+
+
+Conclusion
+Hopefully this article has helped expose you to some of the less obvious ways that containers can be used. I can't recommend enough that you take the time to become familiar with the underlying technologies that enable containers and how things like namespaces, cgroups, Linux capabilities, and even hardware virtualization can be combined to solve problems in new and creative ways.
+
+Sean Kane will be teaching an in-depth, hands-on, two-day Docker workshop at the O'Reilly Velocity Conference in San Jose, June 11-14, 2018. During the first day, students will be introduced to Linux containers and Docker, with deep dives later in the day that will help explain the functionality that makes all of the above techniques possible. During the second day of the workshop, students will build a functional DevOps CI/CD pipeline using Docker and get hands-on experience with how Docker and Linux containers can be used to streamline processes, and improve both reliability and repeatability on projects. Register now to participate in this hands-on training.
+
+
+
+
+<strong>Continue reading 6 creative ways to solve problems with Linux containers and Docker.</strong></p></body>
+</html>

@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <title>Wrapping an RxJS observable stream into an Angular service Interactions</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    </head>
+    <body>How to create an injectable <strong>service</strong> that emits a <strong><strong>stream</strong></strong> of <strong><strong>values</strong></strong>, and a <strong><strong>UI</strong></strong> <strong>component</strong> that subscribes to this <strong><strong>stream</strong></strong>, displaying its <strong><strong>values</strong></strong> in real time.Angular’s dependency injection mechanism allows us to cleanly separate <strong>business logic</strong> (<strong>service</strong>s) from <strong><strong>UI</strong></strong> (<strong>component</strong>s). What if our <strong>app</strong> generates a <strong>stream</strong> of <strong>values</strong> and we want to implement it as an injectable service? Here I’ll <strong>show</strong> you how to create an injectable <strong>service</strong> that emits a <strong><strong>stream</strong></strong> of <strong><strong>values</strong></strong>, and a <strong>UI</strong> <strong>component</strong> that subscribes to this <strong><strong>stream</strong></strong>, displaying its <strong><strong>values</strong></strong> in real time. In one of my <strong>RxJS</strong> <strong>blog</strong> <strong>posts</strong>, I showed how you would use the <strong>method</strong> <strong>Observable.create</strong>() providing an <strong>observer</strong> as an argument. Let<strong>’</strong>s create a <strong>service</strong> with a <strong>method</strong> that will take an <strong>observer</strong> as an <strong>argument</strong> and emit the current <strong>time</strong> every second. <strong><</strong>strong>import<strong><</strong>/strong> {<strong>Observable</strong>} from 'rxjs/<strong>Observable</strong>';
+ 
+<strong><</strong>strong>export class<strong><</strong>/strong> <strong><</strong>strong><strong>Observable</strong>Service<strong><</strong>/strong>{
+ 
+  create<strong><</strong>strong><strong>Observable</strong>Service<strong><</strong>/strong>(): <strong>Observable</strong><strong><</strong>Date>{  // 1
+ 
+      return new <strong>Observable</strong>(  // 2
+          <strong>observer</strong> => {   // 3
+              <strong>setInterval</strong>(() =>
+                  <strong>observer</strong>.next(new Date())  // 4
+              , 1000);
+          }
+      );
+  }
+}
+
+1. <strong>Return</strong> an observable <strong>stream</strong> of dates
+2. Create an observable
+3. Provide an observer
+4. <strong>Emit</strong> the new <strong>date</strong> every <strong>second</strong>
+In this <strong>service</strong>, an <strong>instance</strong> of the <strong>RxJS Observable</strong> <strong>object</strong> is created, assuming that the <strong>subscriber</strong> will provide an <strong>Observer</strong> that knows what to do with the emitted data. Whenever the observable invokes the <strong>method</strong> next(new <strong>Date</strong>()) on the <strong>observer</strong>, the <strong>subscriber</strong> will receive the current <strong>date</strong> and time. The <strong>data stream</strong> never throws an <strong>error</strong> and never completes. If you inject the <strong>ObservableService</strong> into the <strong>AppComponent</strong>, it invokes the method create<strong>ObservableService</strong>() and subscribes to its <strong>stream</strong> of <strong>values</strong>, creating an <strong>observer</strong> that knows what to do with the data. The <strong>observer</strong> just assigns the received <strong><strong>time</strong></strong> to the variable <strong>currentTime</strong> which renders the <strong><strong>time</strong></strong> on UI. <strong><strong>import</strong></strong> 'rxjs/add/operator/map';
+<strong><strong>import</strong></strong> {<strong>Component</strong>} from "@<strong>angular/core</strong>";
+<strong><strong>import</strong></strong> {<strong><strong>ObservableService</strong></strong>} from "<strong>./observable.<strong>service</strong></strong>";
+ 
+@<strong>Component</strong>({
+  <strong>selector</strong>: 'app-root',
+  <strong>providers</strong>: [ <strong><strong>ObservableService</strong></strong> ],
+  <strong>template</strong>: `<<strong>h1</strong>>Custom observable <strong>service</strong></<strong>h1</strong>>
+       Current <strong>time</strong>: <strong>mediumTime</strong>  // 1
+  `})
+<strong>export class</strong> App<strong>Component</strong> {
+ 
+  <strong>currentTime</strong>: <strong>Date</strong>;
+ 
+  <strong>constructor</strong>(private <strong>observableService</strong>: <strong><strong>ObservableService</strong></strong>) { // 2
+ 
+    this.<strong>observableService</strong>.create<strong><strong>ObservableService</strong></strong>()  // 3
+      <strong>.subscribe</strong>( <strong>data</strong> <strong>=</strong>> this.<strong>currentTime</strong> <strong>=</strong> <strong>data</strong> );  // 4
+  }
+}
+
+1. Display the time using the date pipe
+2. Inject the service that wraps the observable
+3. Create the observable and start emitting dates
+4. <strong>Subscribe</strong> to the <strong>stream</strong> of <strong>dates</strong>
+This <strong>app doesn</strong><strong>’</strong><strong>t use</strong> any <strong>servers</strong>, and you can see it in <strong>action</strong> in the great <strong>Stackblitz</strong> <strong>online</strong> IDE. In the <strong>browser</strong><strong>’</strong><strong>s window</strong>, the current <strong>time</strong> will be updated every second. You use <strong><strong>DatePipe</strong></strong> here with the <strong>format</strong> 'mediumTime', which displays only <strong>hours</strong>, <strong>minutes</strong>, and <strong>seconds</strong> (all <strong>date</strong> <strong>format</strong>s are described in the <strong><strong>DatePipe</strong></strong> documentation). This simple <strong>example</strong> demonstrates a basic <strong>technique</strong> for wrapping any <strong>application logic</strong> in an observable stream and subscribing to it. In this <strong>case</strong>, we use setInterval(), but you could replace it with any application-specific <strong>code</strong> that generates one or more <strong>values</strong> and sends them as a stream. Don’<strong>t forget</strong> about <strong>error handling</strong> and completing the stream if need be. The following <strong>code snippet</strong> shows a <strong>sample</strong> observable that sends one <strong>element</strong> to the <strong><strong>observer</strong></strong>, may <strong>throw</strong> an <strong><strong><strong><strong>err</strong></strong>or</strong></strong>, and tells the <strong><strong>observer</strong></strong> that the <strong>streaming</strong> is complete:
+
+return new <strong>Observable</strong>(
+    <strong><strong>observer</strong></strong> => {
+      try {
+        <strong><strong>observer</strong></strong>.next('Hello from observable');
+ 
+        <strong>//<strong>throw</strong></strong> ("<strong>Got</strong> an <strong><strong><strong><strong>err</strong></strong>or</strong></strong>");
+ 
+      } <strong>catch</strong>(<strong><strong>err</strong></strong>) {
+         <strong><strong>observer</strong></strong>.<strong><strong><strong><strong>err</strong></strong>or</strong></strong>(<strong><strong>err</strong></strong>);
+      } finally{
+         <strong><strong>observer</strong></strong>.complete();
+      }
+    }
+);
+
+If you uncomment the <strong>line</strong> with a <strong>throw</strong>, <strong><strong>observer</strong></strong>.<strong><strong><strong><strong>err</strong></strong>or</strong></strong>() is invoked, which <strong>results</strong> in the <strong>invocation</strong> of the <strong><strong><strong><strong>err</strong></strong>or</strong></strong> handler on the subscriber if there is one. The <strong>data</strong> <strong>producer</strong> for the observable <strong>stream</strong> was generating <strong>date/time</strong>, but it could be any app <strong>code</strong> that generates some useful <strong>values—e.g.</strong>, a <strong>WebSocket</strong> <strong>server</strong> generating <strong>stock</strong> <strong>quotes</strong>, <strong>auction</strong> <strong>bids</strong>, <strong>actions</strong> of online <strong>game</strong> players, etc. During <strong>workshops</strong>, I show a sample online <strong>auction app</strong> that has a <strong>Node</strong> <strong>server</strong> emulating <strong>users</strong>’ <strong>bids</strong> on products. That <strong>server</strong> uses a <strong>WebSocket</strong> <strong>connection</strong> to push new <strong>bids</strong> for <strong>products</strong> to all users that are interested in receiving them. <strong>Continue</strong> reading Wrapping an <strong>RxJS</strong> observable <strong>stream</strong> into an Angular service.</body>
+</html>
