@@ -8,6 +8,7 @@ My co-author, Mikhail Klassen, now maintains the code, and you can get it here: 
 Enjoy!
 
 Matthew A. Russell
+
 Jan 17, 2019
 
 Mining the Social Web (2nd Edition)
