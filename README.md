@@ -1,3 +1,15 @@
+HTTP 301: Don't Use This Repository - 17 Jan 2019
+========================================
+
+There's good news! Mining the Social Web is now availabe in it's 3rd Edition, and there's a fully updated repository available with all of the latest changes that you will definitely not want to miss out on: the code has been fully revised and ported to Python 3, the runtime has been converted to a more convenient Docker-based setup, and there's a brand new chapter on mining Instagram data.
+
+My co-author, Mikhail Klassen, now maintains the code, and you can get it here: https://github.com/mikhailklassen/Mining-the-Social-Web-3rd-Edition
+
+Enjoy!
+
+Matthew A. Russell
+Jan 17, 2019
+
 Mining the Social Web (2nd Edition)
 =================================
 
