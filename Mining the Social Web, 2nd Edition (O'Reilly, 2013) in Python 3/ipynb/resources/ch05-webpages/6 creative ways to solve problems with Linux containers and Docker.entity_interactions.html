@@ -1,0 +1,149 @@
+<html>
+    <head>
+        <title>6 creative ways to solve problems with Linux containers and Docker Interactions</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    </head>
+    <body>An outside-the-box <strong>exploration</strong> of how <strong><strong>containers</strong></strong> can be used to provide novel <strong>solutions.Most</strong> <strong>people</strong> are introduced to <strong>Docker</strong> and <strong>Linux</strong> <strong><strong>containers</strong></strong> as a <strong>way</strong> to approach solving a very specific <strong>problem</strong> they are experiencing in their organization. The <strong>problem</strong> they want to solve often revolves around either making the dev/test <strong>cycle</strong> faster and more reliable while simultaneously shortening the related <strong>feedback</strong> <strong>loops</strong>, or improving the <strong>packaging</strong> and <strong>deploying</strong> of <strong>applications</strong> into <strong>production</strong> in a very similar fashion. <strong>Today</strong>, there are a <strong>lot</strong> of <strong>tools</strong> in the <strong>ecosystem</strong> that can significantly decrease the <strong>time</strong> it takes to accomplish these <strong>tasks</strong> while also vastly improving the <strong>ability</strong> of <strong>individuals</strong>, <strong>teams</strong>, and <strong>organizations</strong> to reliably perform repetitive <strong>tasks</strong> successfully. That being said, <strong>tools</strong> have become such a big <strong>focus</strong> in the <strong>ecosystem</strong> that there are many <strong>people</strong> who haven<strong>’</strong>t really spent much <strong>time</strong> thinking about all the <strong>ways containers</strong> alone can provide interesting <strong>solutions</strong> to <strong>problems</strong> that can occur in the <strong>course</strong> of any technical task. To get the creative <strong>juices</strong> flowing and help <strong>folks</strong> start thinking outside the <strong>box</strong>, we’ll <strong>examine</strong> a few <strong>scenarios</strong> and explore how <strong>containers</strong> can be used to provide possible solutions. You'll notice that many of these <strong>examples</strong> utilize file <strong>mounts</strong> to <strong>access</strong> <strong>data</strong> stored on local machines. <strong>Note</strong> that all of these were tested on <strong>Mac OS X</strong> running a current stable <strong>release</strong> of <strong>Docker</strong>: Community Edition. Also, most of the <strong>examples</strong> assume you have a unix-based <strong>operating system</strong>, but they can often be adjusted to work on Windows. <strong>Preparation</strong>
+If you are planning on running these <strong>examples</strong>, go ahead and download the following <strong><strong>images</strong></strong> ahead of <strong><strong><strong>time</strong></strong></strong> so you can see how the <strong><strong>commands</strong></strong> run without the additional <strong><strong><strong>time</strong></strong></strong> required to pull down the <strong><strong>images</strong></strong> the first <strong><strong><strong>time</strong></strong></strong>:
+$ <strong><strong><strong><strong>docker</strong></strong></strong></strong> pull <strong>acleancoder/imagemagick-full</strong>:latest
+$ <strong><strong><strong><strong>docker</strong></strong></strong></strong> pull jasperla/<strong><strong><strong><strong>docker</strong></strong></strong></strong>-go-cross:latest
+$ <strong><strong><strong><strong>docker</strong></strong></strong></strong> pull <strong>spkane/dell-openmanage</strong>:latest
+$ <strong><strong><strong><strong>docker</strong></strong></strong></strong> pull debian:latest
+$ <strong><strong><strong><strong>docker</strong></strong></strong></strong> pull <strong>spkane/train-os</strong>:latest
+$ <strong><strong><strong><strong>docker</strong></strong></strong></strong> pull alpine:latest
+$ <strong><strong><strong><strong>docker</strong></strong></strong></strong> pull jess/firefox:latest
+
+
+<strong>Scenario</strong> 1
+
+<strong>Using</strong> <strong>containers</strong> for console <strong><strong>commands</strong></strong>
+There are often <strong>applications</strong> that are very useful to have but don't run or are very difficult to compile on the platform we are using. <strong>Containers</strong> can provide a very easy <strong>way</strong> to run these <strong><strong>application</strong>s</strong>, despite the apparent <strong>barriers</strong> (and even if we can run the <strong>application</strong> natively, <strong>containers</strong> can be a very compelling <strong>approach</strong> to <strong>packaging</strong> and <strong>distributing</strong> programs). In this <strong>example</strong>, we are using an <strong>ImageMagick</strong> <strong>container</strong> to resize an image. Although this particular <strong>example</strong> is easy to accomplish in other <strong>ways</strong>, it should give some <strong>insight</strong> into how a <strong>container</strong> can be used to take <strong>advantage</strong> of a wide <strong>variety</strong> of similar console-based tools. $ <strong>curl</strong> <strong>-o</strong> <strong><strong>docker</strong>.png</strong> <strong>\</strong>
+  <strong>https</strong>://www.<strong>docker</strong>.com/sites/default/files/vertical-whitespace.png
+$ ls
+$ <strong>docker</strong> run <strong>-ti -v</strong> $(<strong>pwd</strong>):/data <strong>acleancoder/imagemagick-full</strong>:latest <strong>\</strong>
+  convert /data/<strong><strong>docker</strong>.png</strong> -resize 50<strong>%</strong> /data/half_<strong><strong>docker</strong>.png</strong>
+$ ls
+
+
+
+
+<strong>Scenario</strong> 2
+
+<strong>Using</strong> <strong>containers</strong> for <strong>development</strong> <strong>environments</strong>
+
+
+Have you ever needed to set up your <strong>development</strong> environment at a new <strong>job</strong> or on a new computer and struggled to get it right? Have you ever had <strong>problems</strong> because your <strong>development</strong> and <strong>Q/A</strong> <strong>environments</strong> used slightly different <strong>versions</strong> of the compiler? By using <strong>containers</strong>, it is possible to ensure your <strong>builds</strong> are repeatable, even for complex <strong>development</strong> environments. In this <strong>example</strong>, we are using a <strong>Docker</strong> <strong>image</strong> that contains a robust <strong>Go</strong> <strong>development environment</strong> to compile a small console <strong>game</strong> for <strong>Linux</strong>, <strong>OS X</strong>, and Windows. $ git <strong>clone https</strong>://github.com/spkane/go-paranoia.git
+$ <strong>cd</strong> go-paranoia/paranoia
+
+
+<strong>Mac <strong>OS</strong> X</strong>
+$ <strong><strong>docker</strong></strong> run <strong>-ti</strong> --rm -e APPNAME=paranoia \
+  -e GOLANG_TARGET_PLATFORM="<strong>darwin/amd64</strong>" -v "$(<strong><strong><strong>pwd</strong></strong></strong>):<strong><strong><strong>/go/src/app</strong></strong></strong>" \
+  jasperla/<strong><strong>docker</strong></strong>-go-cross
+$ ./paranoia-darwin-amd64
+
+
+
+<strong><strong>Linux</strong></strong>
+$ <strong><strong>docker</strong></strong> run <strong>-ti</strong> --rm -e APPNAME=paranoia \
+  -e GOLANG_TARGET_PLATFORM="<strong>linux/amd64</strong>" -v "$(<strong><strong><strong>pwd</strong></strong></strong>):<strong><strong><strong>/go/src/app</strong></strong></strong>" \
+  jasperla/<strong><strong>docker</strong></strong>-go-cross
+$ ./paranoia-linux-amd64
+
+
+
+Windows
+> <strong><strong>docker</strong></strong> run <strong>-ti</strong> --rm -e APPNAME=paranoia \
+  -e GOLANG_TARGET_PLATFORM="<strong>windows/amd64</strong>" -v "$(<strong><strong><strong>pwd</strong></strong></strong>):<strong><strong><strong>/go/src/app</strong></strong></strong>" \
+  jasperla/<strong><strong>docker</strong></strong>-go-cross
+> .\paranoia-windows-amd64
+
+
+
+
+
+<strong>Scenario</strong> 3
+
+Using <strong><strong>containers</strong></strong> to solve <strong>OS</strong> <strong>version</strong> <strong>incompatibilities</strong>
+This <strong><strong>example</strong></strong> will only work on a <strong><strong>Linux</strong></strong> <strong>server</strong> running on <strong>Dell</strong> <strong>hardware</strong>, but it provides a good <strong><strong>example</strong></strong> of how <strong><strong>containers</strong></strong> can make it easier to run certain <strong>classes</strong> of software. <strong><strong><strong>Dell</strong></strong></strong>'s <strong>OpenManage Server Administrator</strong> (<strong>OMSA</strong>) is critical for <strong>monitoring</strong> and configuring <strong><strong><strong>Dell</strong></strong></strong> <strong>hardware</strong>, but <strong><strong><strong>Dell</strong></strong></strong> supports only a few <strong>Linux</strong> <strong>distributions</strong> and can be slow to provide <strong>updates</strong> for newer releases. By using <strong>containers</strong>, we can ensure that <strong>OMSA</strong> is packaged with the <strong><strong>Linux</strong></strong> <strong><strong>platform</strong></strong> (e.g., <strong>CentOS</strong> 7) and libraries that it requires, while still having the <strong>freedom</strong> to run it on the <strong><strong>Linux</strong></strong> <strong><strong>platform</strong></strong> (e.g., CoreOS) that we require. In the <strong>example</strong> below, we launch a <strong>container</strong> that runs continuously in the <strong>background</strong> with a few <strong>processes</strong> that <strong><strong>Dell</strong></strong> uses to facilitate <strong>communication</strong> between the <strong><strong>Dell</strong></strong> <strong>tools</strong> and the underlying hardware. We then wait 40 <strong>seconds</strong> while the <strong>container</strong> <strong>finishes</strong> starting up all the background process that it launches. $ <strong>docker run</strong> -<strong>-p</strong>rivileged -d <strong>-p</strong> 161:161/udp <strong>-p</strong> 1311:1311 <strong>\</strong>
+  --<strong>restart=always</strong> --net=host --name=omsa <strong>\</strong>
+  <strong>-v <strong>/lib/modules/`uname</strong> <strong>-r`</strong></strong>:<strong>/lib/modules/`uname</strong> <strong>-r`</strong> <strong>\</strong>
+  <strong>spkane/dell-openmanage</strong>:latest
+$ sleep 40s
+
+Once the <strong><strong>container</strong></strong> is running, we can utilize <strong>docker exec</strong> to treat the running <strong><strong>container</strong></strong> like a simple <strong>command line tool</strong> and query the <strong>hardware</strong>, just as if the <strong>OMSA</strong> <strong>tools</strong> were installed and running in a more traditional manner. With this command, we retrieve the chassis info. $ <strong>docker exec</strong> omsa <strong>omreport chassis</strong> info
+
+Chassis Information
+
+Index                                    : 0
+<strong>Chassis <strong>Name</strong></strong>                             : <strong>Main</strong> System Chassis
+Host <strong>Name</strong>                                : dell-host.example.net
+iDRAC8 <strong>Version</strong>                           : 2.30.30.30 (<strong>Build</strong> 50)
+Lifecycle Controller <strong>Version</strong>             : 2.30.30.30
+<strong>Chassis Model</strong>                            : PowerEdge R430
+Chassis Lock                             : Present
+<strong>Chassis Service Tag</strong>                      : 245XWE2
+<strong>Express Service Code</strong>                     : 0000924034
+<strong>Chassis Asset Tag</strong>                        : Unknown
+<strong>Flash</strong> <strong><strong>chassis identify</strong></strong> <strong><strong>LED</strong></strong> <strong>state</strong>         : Off
+<strong>Flash</strong> <strong><strong>chassis identify</strong></strong> <strong><strong>LED</strong></strong> timeout <strong>value</strong> : 300
+
+And then we can immediately run another <strong>command</strong> to clear the <strong>ESM</strong> log, or whatever else we might need. $ <strong>docker exec</strong> omsa omconfig <strong>system esmlog</strong> action=clear
+
+<strong>Embedded System Management</strong> (<strong>ESM</strong>) log cleared successfully. <strong>Scenario</strong> 4
+
+Using <strong>containers</strong> to explore the underlying host
+<strong>Docker</strong>: <strong>Community Edition</strong> (<strong>CE</strong>) does a great <strong>job</strong> of making the <strong>Docker</strong> <strong>server feel</strong> like it runs natively on <strong>Mac OS X</strong> and Windows. Honestly, it does too good a job. When you are first trying to learn how <strong><strong>Docker</strong></strong> works, it can actually be very deceiving because <strong><strong>Docker</strong></strong>: <strong>CE</strong> launches a lightweight <strong>Linux</strong> virtual <strong>machine</strong> (<strong><strong>VM</strong></strong>) on both of these <strong>platforms</strong>, but it is not obvious to the <strong>end user</strong> that this is the <strong>case</strong>, and there is no <strong>way</strong> to log in to this <strong><strong>VM</strong></strong> and take a look around. So, given all this, how do you learn more about how the Docker VM works? In this <strong>scenario</strong>, we can utilize a partially privileged <strong><strong>container</strong></strong> and <strong>Linux</strong> <strong>namespaces</strong> to launch a <strong><strong>container</strong></strong> that will allow us to see all the <strong>processes</strong> that are running on the underlying <strong>host</strong> and explore its filesystem. $ <strong>docker run<<strong><strong>/</strong><<strong>/</strong>strong>strong> --rm <strong>-it<<strong><strong>/</strong><<strong>/</strong>strong>strong> --cap-add <strong>SYS_ADMIN<<strong><strong>/</strong><<strong>/</strong>strong>strong> --cap-add <strong>SYS_PTRACE \<<strong><strong>/</strong><<strong>/</strong>strong>strong>
+  --<strong>pid=host<<strong><strong>/</strong><<strong>/</strong>strong>strong> debian:latest <strong>nsenter<<strong><strong>/</strong><<strong>/</strong>strong>strong> -t 1 <strong>-m -u -n -i<<strong><strong>/</strong><<strong>/</strong>strong>strong> sh
+
+<strong><strong>/</strong><<strong>/</strong>strong> # <strong>cat<<strong>/</strong>strong> <strong><strong>/</strong><<strong>/</strong>strong>etc<strong><strong>/</strong><<strong>/</strong>strong>os-release
+<strong>PRETTY_NAME=<<strong>/</strong>strong>"<strong>Docker<<strong>/</strong>strong> for <strong>Mac<<strong>/</strong>strong>"
+
+<strong><strong>/</strong><<strong>/</strong>strong> # exit
+
+Note: This is an important <strong>example</strong> of why running privileged <strong>containers</strong> in production can be very dangerous. Although we have only shared the <strong><strong>host</strong></strong>'s <strong>PID</strong> <strong>namespace</strong> with this <strong>container</strong> and given it two <strong>Linux</strong> <strong>capabilities</strong>, it can easily <strong>access</strong> the <strong><strong>host</strong></strong>'s underlying filesystem. <strong>Scenario</strong> 5
+
+Using <strong>containers</strong> to sidestep a read-only <strong>filesystem</strong>
+Another <strong>quirk</strong> of <strong>Docker</strong>: <strong>Community Edition</strong> is that the virtual <strong>machine</strong>'s root <strong>filesystem</strong> has been made read-only in recent releases. This was done to help prevent <strong>people</strong> from breaking <strong>Docker</strong> by fooling around inside the <strong>VM</strong>, utilizing techniques like the one we just showed. This is understandable since they need to be able to support their <strong>product</strong> in such a wide <strong>range</strong> of environments, but it can also be problematic. While teaching <strong>classes</strong> about <strong>Docker</strong> and specifically trying to demonstrate how <strong><strong>Linux</strong> Control Groups</strong> (<strong>cgroups</strong>) impact the <strong>resources</strong> that are available to a <strong>container</strong>, it is often desirable to run a simple <strong>tool</strong> on the <strong>Linux</strong> <strong>host</strong> that makes it easy to monitor the processes that are running and see how they are performing. In <strong>class</strong>, we will often run a <strong>container</strong> that stresses the underlying <strong>VM</strong> by generating some <strong>load</strong> on the <strong>CPU</strong> and <strong>memory</strong> so that we can see what <strong>effect</strong> it has on the underlying <strong>VM</strong>. $ <strong>docker</strong> run -d spkane/train-os:latest <strong>stress -v</strong> --cpu 2 --io 1 --vm 2 --vm-bytes 128M --timeout 480s
+
+<strong>A</strong> <strong>simple</strong> and visually appealing <strong>tool</strong>, like <strong>htop</strong> is ideal for observing the <strong>impact</strong> on the <strong>VM</strong>, but since the <strong>root filesystem</strong> of the virtual <strong>machine</strong> is read-only, there is no <strong>way</strong> to install <strong>htop</strong> directly into the <strong>VM</strong>. $ <strong>docker run<<strong><strong>/</strong><<strong>/</strong>strong>strong> --rm <strong>-it<<strong><strong>/</strong><<strong>/</strong>strong>strong> --cap-add <strong>SYS_ADMIN<<strong><strong>/</strong><<strong>/</strong>strong>strong> --cap-add <strong>SYS_PTRACE \<<strong><strong>/</strong><<strong>/</strong>strong>strong>
+  --<strong>pid=<strong><strong>host</strong></strong><<strong><strong>/</strong><<strong>/</strong>strong>strong> debian:latest <strong>nsenter<<strong><strong>/</strong><<strong>/</strong>strong>strong> -t 1 <strong>-m -u -n -i<<strong><strong>/</strong><<strong>/</strong>strong>strong> sh
+
+<strong><strong>/</strong><<strong>/</strong>strong> # apk update
+<strong><strong>ERROR<<strong>/</strong>strong><<strong>/</strong>strong>: Unable to lock <strong><strong>database<<strong>/</strong>strong><<strong>/</strong>strong>: Read-only <strong><strong>file system<<strong>/</strong>strong><<strong>/</strong>strong>
+<strong><strong>ERROR<<strong>/</strong>strong><<strong>/</strong>strong>: Failed to open apk <strong><strong>database<<strong>/</strong>strong><<strong>/</strong>strong>: Read-only <strong><strong>file system<<strong>/</strong>strong><<strong>/</strong>strong>
+
+<strong><strong>/</strong><<strong>/</strong>strong> # <strong>exit</strong>
+
+So, instead of using the <strong>VM</strong> directly, we can run a <strong>container</strong> that <strong>shares</strong> the <strong><strong>host</strong></strong>'s <strong>PID</strong> (<strong>process</strong>) <strong>namespace</strong> so that <strong>htop</strong> can see all the <strong>process</strong>es running on the <strong><strong>host</strong></strong> and allow us to understand how our <strong>stress program</strong> is impacting the <strong>Docker</strong> server. $ <s<strong>tr</strong>ong>docker run</s<strong>tr</strong>ong> --rm <s<strong>tr</strong>ong>-it</s<strong>tr</strong>ong> -<s<strong>tr</strong>ong>-p</s<strong>tr</strong>ong>id=host <s<strong>tr</strong>ong>alpine</s<strong>tr</strong>ong>:latest sh
+
+/ # apk update
+<s<strong>tr</strong>ong>fetch http</s<strong>tr</strong>ong>://dl-cdn.<s<strong>tr</strong>ong>alpine</s<strong>tr</strong>ong>linux.org/<s<strong>tr</strong>ong>alpine</s<strong>tr</strong>ong>/v3.6/main/x86_64/APKINDEX.tar.gz
+...
+<s<strong>tr</strong>ong>OK</s<strong>tr</strong>ong>: 8437 <s<strong>tr</strong>ong>distinct</s<strong>tr</strong>ong> <s<strong>tr</strong>ong><s<strong>tr</strong>ong>packages</s<strong>tr</strong>ong></s<strong>tr</strong>ong> available
+
+/ # apk add <s<strong>tr</strong>ong>htop</s<strong>tr</strong>ong>
+(1/4) Installing ncurses-terminfo-base (6.0_p20171125-r0)
+...
+<s<strong>tr</strong>ong>OK</s<strong>tr</strong>ong>: 11 <s<strong>tr</strong>ong>MiB</s<strong>tr</strong>ong> in 15 <s<strong>tr</strong>ong><s<strong>tr</strong>ong>packages</s<strong>tr</strong>ong></s<strong>tr</strong>ong>
+
+/ # <s<strong>tr</strong>ong>htop</s<strong>tr</strong>ong> <s<strong>tr</strong>ong>-p</s<strong>tr</strong>ong> $(pgrep <s<strong>tr</strong>ong>s<strong>tr</strong>ess</s<strong>tr</strong>ong> <s<strong>tr</strong>ong>|</s<strong>tr</strong>ong> <strong>tr</strong> <strong>'\n</strong>' ',')   # <strong>Press</strong> <strong>q</strong> to exit
+
+/ # exit
+
+
+
+Scenario 6
+
+Using <strong>containers</strong> to run <strong>X11</strong> graphical <strong>applications</strong>
+This specific <strong>example</strong> is designed for <strong>Mac OS X</strong>, but it can be easily modified for <strong>Linux</strong> and Windows. On <strong>Windows</strong>, you will also need to install a third-party <strong>X11 server</strong>, like Xming, <strong>Cygwin/X</strong> or MobaXterm. On <strong>Mac OS X</strong>, if you do not already have the homebrew <strong>package manager</strong> installed, you can get it from Homebrew. To make this <strong>X11</strong> <strong>container work</strong>, we need to prepare our <strong>system</strong> the first <strong>time</strong> by installing <strong>socat</strong> and <strong>Xquartz</strong>, an <strong>X11</strong> server, on the Mac. Once <strong>Xquartz</strong> is installed, we need to reboot the <strong>Mac</strong> so that the <strong>X11</strong> <strong>server</strong> is set up properly for the current user. $ brew install <strong>socat</strong>
+$ brew <strong>cask install</strong> <strong>xquartz</strong>
+$ shutdown <strong>-r</strong> now
+
+After this one-time <strong>setup</strong>, we can now run a <strong>Linux <strong>X11</strong></strong> graphical <strong>application</strong> by running <strong>socat</strong> to facilitate <strong>communication</strong> between the <strong>container</strong> and the <strong>Mac</strong>'s <strong>X11</strong> <strong>server</strong>, and then launching the desired <strong>container</strong>. $ socat <strong>TCP-LISTEN:6000</strong>,<strong>reuseaddr</strong>,fork UNIX-CLIENT:<strong>\</strong>"$DISPLAY<strong>\</strong>" &
+$ <strong><strong>IP</strong>=</strong>$(ifconfig <strong>en0</strong> <strong><strong>|</strong></strong> <strong>grep <strong>inet</strong></strong> <strong><strong>|</strong></strong> <strong>awk</strong> '$1=="<strong>inet</strong>" {print $2}')
+$ <strong>docker</strong> run -it --rm -e <strong>DISPLAY=</strong>${<strong>IP</strong>}<strong>:0</strong> <strong>jess/firefox</strong>
+
+After a few <strong>moments</strong> you should see a usable <strong>Firefox</strong> <strong>browser window</strong> open on your system. <strong>Note</strong>: On the <strong>Mac</strong>, it is actually possible to set the <strong>DISPLAY</strong> to docker.for.mac.host.internal:0 instead of using the primary <strong>IP</strong> address. Also, don't forget to kill the socat process when you are done playing around with this. Conclusion
+Hopefully this <strong>article</strong> has helped expose you to some of the less obvious <strong>ways</strong> that containers can be used. I can't recommend enough that you take the <strong>time</strong> to become familiar with the underlying <strong>technologies</strong> that enable <strong>containers</strong> and how <strong>things</strong> like <strong>namespaces</strong>, <strong>cgroups</strong>, <strong>Linux</strong> <strong>capabilities</strong>, and even hardware <strong>virtualization</strong> can be combined to solve <strong>problems</strong> in new and creative ways. <strong>Sean Kane</strong> will be teaching an in-depth, hands-on, two-day <strong>Docker</strong> <strong>workshop</strong> at the <strong>O'Reilly Velocity Conference</strong> in <strong>San Jose</strong>, June 11-14, 2018. During the first <strong><strong>day</strong></strong>, <strong>students</strong> will be introduced to <strong>Linux</strong> <strong>containers</strong> and <strong>Docker</strong>, with deep <strong>dives</strong> later in the <strong><strong>day</strong></strong> that will help explain the <strong>functionality</strong> that makes all of the above techniques possible. During the second <strong>day</strong> of the <strong>workshop</strong>, <strong>students</strong> will build a functional <strong>DevOps CI/CD</strong> <strong>pipeline</strong> using <strong><strong>Docker</strong></strong> and get hands-on <strong>experience</strong> with how <strong><strong>Docker</strong></strong> and <strong>Linux</strong> <strong>containers</strong> can be used to streamline <strong>processes</strong>, and improve both <strong>reliability</strong> and <strong>repeatability</strong> on projects. Register now to participate in this hands-on training. <strong>Continue</strong> reading 6 creative <strong>ways</strong> to solve <strong>problems</strong> with <strong>Linux</strong> <strong>containers</strong> and Docker.</body>
+</html>

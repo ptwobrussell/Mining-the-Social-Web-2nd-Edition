@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>How to customize an Istio service mesh Summary</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    </head>
+    <body><p><strong>Choose an Istio sidecar for reliability, observability, and security.Even though service meshes provide value outside of the use of microservices and containers, it's in these environments that many teams first consider using a service mesh.</strong> <strong>The sheer volume of services that must be managed on an individual, distributed basis with microservices (versus centrally for a monolith) creates challenges for ensuring reliability, observability, and security of these services.</strong>
+Adoption of a container orchestrator addresses a layer of infrastructure needs, but leaves some application or service-level needs unmet. <strong>Rather than attempting to overcome distributed systems concerns by writing infrastructure logic into application code, some teams choose to manage these challenges with a service mesh.</strong> <strong>A service mesh can help by ensuring the responsibility of service management is centralized, avoiding redundant instrumentation, and making observability ubiquitous and uniform across services.</strong>
+<strong>Choosing a service mesh
+Factors such as your teams’ operational and technology expertise, existing observability, and access control tooling will influence the service mesh components, adapters, and deployment model you choose.</strong> Among others, Istio is a popularly adopted, open source service mesh. Some choose Istio (or any service mesh) for the automatic and immediate visibility it provides into top-line service metrics. In fact, many become hooked on service meshes for the observability they provide alone.
+As a microservices platform, Istio is extensible through the way in which it offers choice of adapters and sidecars. Istio envelops and integrates with other open source projects to deliver a full-service mesh, which both bolsters its set of capabilities and offers a choice of which specific projects are included and deployed. Whether through Mixer adapters for observability or through swapping sidecars, Istio allows you to choose which components to include in your deployment.
+Customizing an Istio service mesh
+There are multiple deployment models you can use to lay down a service mesh. One of the most popular options is to deploy your service proxies as sidecars. Sidecarring your service proxy offers benefits like fine-grained policy enforcement and intra-cluster service-to-service encryption. This deployment model is the model of choice for Istio. Other Istio deployment choices include:
+
+
+Mixer adapters: typically used for integrating with access control, telemetry, quota enforcement, and billing systems.
+
+Service proxies: abstract the network, translating requests between a client and service.
+
+Though Envoy is the default service proxy sidecar, you may choose another service proxy for your sidecar. While there are multiple service proxies in the ecosystem, outside of Envoy, only two have currently demonstrated integration with Istio: Linkerd and NGINX. The arrival of choice in service proxies for Istio has generated a lot of excitement. Linkerd’s integration was created early in Istio’s 0.1.6 release. Similarly, the nginMesh project has drawn much interest in the use of NGINX as Istio’s service proxy, as many organizations have broad and deep operational expertise built around this battle-tested proxy.
+
+Learn more about how to deploy your sidecar (Istio proxy) of choice in the free webcast "Istio—The extensible service mesh."
+
+This post is a collaboration between O'Reilly and NGINX. See our statement of editorial independence.
+Continue reading How to customize an Istio service mesh.</p></body>
+</html>

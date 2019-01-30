@@ -1,0 +1,136 @@
+<html>
+    <head>
+        <title>How to run a custom version of Spark on hosted Kubernetes Summary</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    </head>
+    <body><p><strong>Learn how Spark 2.3.0+ integrates with K8s clusters on Google Cloud and Azure.Do you want to try out a new version of Apache Spark without waiting around for the entire release process?</strong> <strong>Does running alpha-quality software sound like fun?</strong> <strong>Does setting up a test cluster sound like work?</strong> This is the blog post for you, my friend! We will help you deploy code that hasn't even been reviewed yet (if that is the adventure you seek). If you’re a little cautious, reading this might sound like a bad idea, and often it is, but it can be a great way to ensure that a PR really fixes your bug, or the new proposed Spark release doesn’t break anything you depend on (and if it does, you can raise the alarm). <strong>This post will help you try out new (2.3.0+) and custom versions of Spark on Google/Azure with Kubernetes.</strong> <strong>Just don't run this in production without a backup and a very fancy support contract for when things go sideways.</strong>
+Note: This is a cross-vendor post (Azure's Spark on AKS and Google Cloud's Custom Spark on GKE), each of which have their own vendor-specific posts if that’s more your thing.
+Warning: it’s important to make sure your tests don’t destroy your real data, so consider using a sub-account with lesser permissions.
+Setting up your version of Spark to run
+If there is an off-the-shelf version of Spark you want to run, you can go ahead and download it. If you want to try out a specific patch, you can checkout the pull request to your local machine with git fetch origin pull/ID/head:BRANCHNAME, where ID is the PR number, and then follow the directions to build Spark (remember to include the -P components you want/need, including your cluster manager of choice).
+Now that we’ve got Spark built, we will build a container image and upload it to the registry of your choice, like shipping a PXE boot image in the early 90s (bear with me, I miss the 90s).
+Depending on which registry you want to use, you’ll need to point both the build tool and spark-submit in the correct location. We can do this with an environment variable—for Docker Hub, this is the name of the registry; for Azure Container Registry (ACR), this value is the ACR login server name; and for Google Container Registry, this is gcr.io/$PROJECTNAME.
+export REGISTRY=value
+For Google cloud users who want to use the Google-provided Docker registry, you will need to set up Docker to run through gcloud. In the bash shell, you can do this with an alias:
+shopt -s expand_aliases && alias docker="gcloud docker --"
+For Azure users who want to use Azure Container Registry (ACR), you will need to grant Azure Container Service (AKS) cluster read access to the ACR resource.
+For non-Google users, you don’t need to wrap the Docker command, and just skip that step and keep going:
+
+export DOCKER_REPO=$REGISTRY/spark
+export SPARK_VERSION=`git rev-parse HEAD`
+./bin/docker-image-tool.sh -r $DOCKER_REPO -t $SPARK_VERSION build
+./bin/docker-image-tool.sh -r $DOCKER_REPO -t $SPARK_VERSION push
+
+Building your Spark project for deployment (or, optionally, starting a new one)
+Spark on K8s does not automatically handle pushing JARs to a distributed file system, so we will need to upload whatever JARs our project requires to work. One of the easiest ways to do this is to turn our Spark project into an assembly JAR.
+If you’re starting a new project and you have sbt installed, you can use the Spark template project:
+sbt new holdenk/sparkProjectTemplate.g8
+If you have an existing SBT-based project, you can add the sbt-assembly plugin:
+
+touch project/assembly.sbt
+echo 'addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.6")' >> project/assembly.sbt
+
+With SBT, once you have the SBT assembly plugin (either through creating a project with it included in the template or adding it to an existing one), you can produce an assembly JAR by running:
+sbt assembly
+The resulting JAR not only will have your source code, but all of the requirements as well. Note that this JAR may have multiple entry points, so later on, we’re going to need to tell Spark submit about the entry point we want it to use. For the world standard wordcount example, we might use:
+export CLASS_NAME=org.apache.spark.examples.JavaWordCount
+If you have a maven or other project, there are a few different options for building assembly JARs. Sometimes, these may be referred to as “fat jars” in the documentation.
+If starting a new project sounds like too much work and you really just want to double check that your Spark on K8s deployment works, you can use the example JAR that Spark ships with (e.g., examples/target/spark-examples).
+Uploading your JARs
+One of the differences between Spark on K8s and Spark in the other cluster managers is that there is no automatic tool to distribute our JARs (or other job dependencies). To make sure your containers have access to your JAR, the fastest option is normally to upload it.
+Regardless of platform, we need to specify which JAR, container / bucket, and the target:
+
+export FOLDER_NAME=mybucket
+export SRCJAR=target/scala-2.11/...
+export MYJAR=myjar
+
+With Azure:
+
+RESOURCE_GROUP=sparkdemo
+STORAGE_ACCT=sparkdemo$RANDOM
+az group create --name $RESOURCE_GROUP --location eastus
+az storage account create --resource-group $RESOURCE_GROUP --name $STORAGE_ACCT --sku Standard_LRS
+export AZURE_STORAGE_CONNECTION_STRING=`az storage account show-connection-string --resource-group $RESOURCE_GROUP --name $STORAGE_ACCT -o tsv`
+az storage container create --name $FOLDER_NAME
+az storage container set-permission --name $FOLDER_NAME --public-access blob
+az storage blob upload --container-name $FOLDER_NAME --file $SRCJAR --name $MYJAR
+
+With Google Cloud:
+gsutil cp $SRCJAR gs://$JARBUCKETNAME/$MYJAR
+For now though, we don’t have the JARs installed to access the GCS or Azure blob storage, and Spark on K8s doesn’t currently support spark-packages, which we could use to access those, so we need to make our JAR accessible over http.
+With Azure:
+JAR_URL=$(az storage blob url --container-name $FOLDER_NAME --name $MYJAR | tr -d '"')
+With Google Cloud:
+export PROJECTNAME=boos-demo-projects-are-rad
+gcloud iam service-accounts create signer --display-name "signer"
+gcloud projects add-iam-policy-binding $PROJECTNAME --member serviceAccount:signer@$PROJECTNAME.iam.gserviceaccount.com --role roles/storage.objectViewer
+gcloud iam service-accounts keys create     ~/key.json     --iam-account signer@$PROJECTNAME.iam.gserviceaccount.com
+export JAR_URL=`gsutil signurl -m GET ~/key.json gs://$JARBUCKETNAME/$MYJAR | cut  -f 4 | tail -n 1`
+
+Starting your cluster
+Now you are ready to kick off your super-fancy K8s Spark cluster.
+For Azure:
+
+az group create --name mySparkCluster --location eastus
+az aks create --resource-group mySparkCluster --name mySparkCluster --node-vm-size Standard_D3_v2
+az aks get-credentials --resource-group mySparkCluster --name mySparkCluster
+kubectl proxy &
+
+For Google cloud:
+
+gcloud container clusters create  mySparkCluster --zone us-east1-b --project $PROJECTNAME
+gcloud container clusters get-credentials mySparkCluster --zone us-east1-b --project $PROJECTNAME
+kubectl proxy &
+
+On Google Cloud, before we kick off our Spark job, we need to make a service account for Spark that will have permission to edit the cluster:
+
+kubectl create serviceaccount spark
+kubectl create clusterrolebinding spark-role --clusterrole=edit --serviceaccount=default:spark --namespace=default
+
+Running your Spark job
+And now we can finally run our Spark job:
+
+./bin/spark-submit --master k8s://http://127.0.0.1:8001  \
+  --deploy-mode cluster --conf \
+ spark.kubernetes.container.image=$DOCKER_REPO/spark:$SPARK_VERSION \
+--conf spark.executor.instances=1 \
+--class $CLASS_NAME \
+--conf spark.kubernetes.authenticate.driver.serviceAccountName=spark \
+--name wordcount \
+$JAR_URL \
+inputpath
+
+And we can verify the output with:
+kubectl logs [podname-from-spark-submit]
+Handling dependencies in Spark K8s (and accessing your data/code without making it public):
+What if we want to directly read our JARs from the storage engine without using https? Or if we have dependencies that we don’t want to package in our assembly JARs? In that case, can the necessary dependencies to our docker file as follows:
+
+mkdir /tmp/build && echo “FROM $DOCKER_REPO/spark:$SPARK_VERSION
+
+# Manually update Guava deleting the old JAR to ensure we don’t have class path conflicts
+RUN rm \$SPARK_HOME/jars/guava-14.0.1.jar
+ADD http://central.maven.org/maven2/com/google/guava/guava/23.0/guava-23.0.jar \$SPARK_HOME/jars
+# Add the GCS connectors
+ADD https://storage.googleapis.com/hadoop-lib/gcs/gcs-connector-latest-hadoop2.jar \$SPARK_HOME/jars
+# Add the Azure Hadoop/Storage JARs
+ADD http://central.maven.org/maven2/org/apache/hadoop/hadoop-azure/2.7.0/hadoop-azure-2.7.0.jar
+ADD http://central.maven.org/maven2/com/microsoft/azure/azure-storage/7.0.0/azure-storage-7.0.0.jar
+
+ENTRYPOINT [ '/opt/entrypoint.sh' ]” > /tmp/build/dockerfile
+docker build -t $DOCKER_REPO/spark:$SPARK_VERSION-with-deps -f /tmp/build/dockerfile /tmp/build
+
+Push to our registry:
+
+docker push $DOCKER_REPO/spark:$SPARK_VERSION-with-deps
+
+For Azure folks wanting to launch using Azure Storage rather than https:
+
+export JAR_URL=wasbs://$FOLDER_NAME@$STORAGE_ACCT.blob.core.windows.net/$MYJAR
+
+For Google folks wanting to launch using GCS rather than https:
+export JAR_URL=gs://$JARBUCKETNAME/$MYJAR
+And then run the same spark-submit as shown previously.
+Wrapping up
+Notably, each vendor has a more detailed guide to running Spark jobs on hosted K8s focused on their own platforms (e.g., Azure’s guide, Google’s guide, etc.), but hopefully this cross-vendor version shows you the relative portability between the different hosted K8s engines and our respective APIs with Spark. If you’re interested in helping join in Spark code reviews, you can see the contributing guide and also watch Karau’s past streamed code reviews on YouTube (and subscribe to her YouTube or Twitch channels for new livestreams). You can also follow the authors on their respective Twitter accounts: Alena Hall and Holden Karau.
+Continue reading How to run a custom version of Spark on hosted Kubernetes.</p></body>
+</html>
