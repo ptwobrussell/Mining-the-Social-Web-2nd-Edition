@@ -59,6 +59,15 @@ Vagrant.configure("2") do |config|
   end
  
   #########################################################################
+  # Parallels configuration - For running the box in Parallels Desktop
+  # See https://github.com/Parallels/vagrant-parallels
+  #########################################################################
+  config.vm.provider :parallels do |vb, override|
+    override.vm.box = "precise64"
+    override.vm.box_url = "http://download.parallels.com/desktop/vagrant/precise64.box"
+  end
+
+  #########################################################################
   # AWS configuration - an experimental provider for running this VM in the
   # cloud. See https://github.com/mitchellh/vagrant-aws for configuration
   # details. User specific values for your own environment are referenced
