@@ -34,13 +34,31 @@ Vagrant.configure("2") do |config|
 
     # Port forwarding details
   
-    # Note: Unfortunately, port forwarding currently is not implemented for
-    # the AWS provider plugin, so you'll need to manually open them through the 
-    # AWS console or with the EC2 CLI tools. (It would be possible to do it
-    # all through an additional Chef recipe that runs as part of MTSW2E, but
-    # just isn't implemented yet.) Only port 8888 is essential
-    # to initially access IPython Notebook and get started.
+    # IPython Notebook
+    override.vm.network :forwarded_port, host: 8888, guest: 8888
 
+    # Flask
+    override.vm.network :forwarded_port, host: 5000, guest: 5000
+
+    # MongoDB
+    override.vm.network :forwarded_port, host: 27017, guest: 27017
+    override.vm.network :forwarded_port, host: 27018, guest: 27018
+    override.vm.network :forwarded_port, host: 27019, guest: 27019
+    override.vm.network :forwarded_port, host: 28017, guest: 28017
+  end
+
+  config.vm.provider :vmware_fusion do |v, override|
+    #Building Config from: http://docs.vagrantup.com/v2/vmware/configuration.html
+    # v.gui = True
+    # v.vmx["memsize"] = "1024"
+    # v.vmx["numvcpus"] = "2"
+
+    # The Virtualbox image
+    override.vm.box = "precise64"
+    override.vm.box_url = "http://files.vagrantup.com/precise64_vmware.box"
+
+    # Port forwarding details
+  
     # IPython Notebook
     override.vm.network :forwarded_port, host: 8888, guest: 8888
 
@@ -66,6 +84,18 @@ Vagrant.configure("2") do |config|
   #########################################################################
   
   config.vm.provider :aws do |aws, override|
+
+    # Port forwarding details
+  
+    # Note: Unfortunately, port forwarding currently is not implemented for
+    # the AWS provider plugin, so you'll need to manually open them through the 
+    # AWS console or with the EC2 CLI tools. (It would be possible to do it
+    # all through an additional Chef recipe that runs as part of MTSW2E, but
+    # just isn't implemented yet.) Only port 8888 is essential
+    # to initially access IPython Notebook and get started.
+
+
+
     aws.access_key_id = ENV['MTSW_AWS_ACCESS_KEY_ID']
     aws.secret_access_key = ENV['MTSW_AWS_SECRET_ACCESS_KEY']
     aws.keypair_name = ENV['MTSW_KEYPAIR_NAME']

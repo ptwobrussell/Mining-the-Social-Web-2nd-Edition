@@ -9,3 +9,7 @@ vagrant/.vagrant/
 twitter.oauth_access
 .vagrant
 Berksfile.lock
+
+*.swp
+
+*.ipynb
