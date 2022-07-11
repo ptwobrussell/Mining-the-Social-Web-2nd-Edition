@@ -1,7 +1,7 @@
 HTTP 301: Don't Use This Repository - 17 Jan 2019
 ========================================
 
-There's good news! Mining the Social Web is now availabe in it's 3rd Edition, and there's a fully updated repository available with all of the latest changes that you will definitely not want to miss out on: the code has been fully revised and ported to Python 3, the runtime has been converted to a more convenient Docker-based setup, and there's a brand new chapter on mining Instagram data.
+There's good news! Mining the Social Web is now available in its 3rd Edition, and there's a fully updated repository available with all of the latest changes that you will definitely not want to miss out on: the code has been fully revised and ported to Python 3, the runtime has been converted to a more convenient Docker-based setup, and there's a brand new chapter on mining Instagram data.
 
 My co-author, Mikhail Klassen, now maintains the code, and you can get it here: https://github.com/mikhailklassen/Mining-the-Social-Web-3rd-Edition
 
@@ -20,7 +20,7 @@ _Mining the Social Web, 2nd Edition_ is available through O'Reilly Media, Amazon
 
 There's an incredible turn-key virtual machine experience for this second edition of the book that provides you with a powerful social web mining toolbox. This toolbox provides the ability to explore and run all of the source code in a hassle-free manner. All that you have to do is [follow a few simple steps](https://rawgithub.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/html/_Appendix A - Virtual Machine Experience.html) to get the virtual machine installed, and you'll be running the example code in as little as 20-30 minutes. (And by the way, most of that time is waiting for files to download.)
 
-This [short screencast](https://vimeo.com/72383764) demonstrates the steps involved in installing the virtual machine, which installs every single dependency for you automatically and save you a lot of time. Even sophisticated power users tend to prefer using it versus using their own environments.
+This [short screencast](https://vimeo.com/72383764) demonstrates the steps involved in installing the virtual machine, which installs every single dependency for you automatically and saves you a lot of time. Even sophisticated power users tend to prefer using it versus using their own environments.
 
 If you experience any problems at all with installation of the virtual machine, file an issue here on GitHub. Be sure to also follow [@SocialWebMining](http://twitter.com/socialwebmining) on Twitter and like http://facebook.com/MiningTheSocialWeb on Facebook.
 
@@ -77,7 +77,7 @@ The code for _Mining the Social Web_ is organized by chapter in an [IPython Note
 
 ## Quick Start Guide
 
-The recommended way of getting started with the example code is by taking advantage of the Vagrant-powered virtual machine as illusrated in [this short screencast](https://www.youtube.com/watch?v=BTyKPMfi_JQ). After all, you're more interested in following along and learning from the examples than installing and managing all of the system dependencies just to get to that point, right? 
+The recommended way of getting started with the example code is by taking advantage of the Vagrant-powered virtual machine as illustrated in [this short screencast](https://www.youtube.com/watch?v=BTyKPMfi_JQ). After all, you're more interested in following along and learning from the examples than installing and managing all of the system dependencies just to get to that point, right?
 
 [Appendix A - Virtual Machine Experience](https://rawgithub.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/master/ipynb/html/_Appendix A - Virtual Machine Experience.html) provides clear step-by-step instructions for installing the virtual machine and is intended to serve as a quick start guide.
 
@@ -98,7 +98,7 @@ The publisher's description of the book follows for your convenience:
 
 How can you tap into the wealth of social web data to discover who’s making connections with whom, what they’re talking about, and where they’re located? With this expanded and thoroughly revised edition, you’ll learn how to acquire, analyze, and summarize data from all corners of the social web including Facebook, Twitter, LinkedIn, Google+, GitHub, email, websites, and blogs. 
 
-* Employ IPython Notebook, the Natural Language Toolkit, NetworkX, and other scientific computing tools to mine popular social web sites
+* Employ IPython Notebook, the Natural Language Toolkit, NetworkX, and other scientific computing tools to mine popular social websites
 * Apply advanced text-mining techniques, such as clustering and TF-IDF, to extract meaning from human language data
 * Bootstrap interest graphs from GitHub by discovering affinities among people, programming languages, and coding projects
 * Build interactive visualizations with D3.js, a state-of-the-art HTML5 and JavaScript toolkit 
